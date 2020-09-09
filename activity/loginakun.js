@@ -29,7 +29,7 @@ export default class LoginAkun extends Component {
     return (
       <Container style={styles.container}>
         <ScrollView>
-            <Icon name="repeat"/>
+            <Icon type={"AntDesign"} name="arrowleft" style={{marginTop: 20, marginLeft: 10}}/>
             <View>
                 <Text style={styles.text}>Log in</Text>
             </View>
@@ -51,8 +51,7 @@ export default class LoginAkun extends Component {
                 <Input placeholder='Password' style={{fontSize: 20, marginLeft: 20}}/>
             </Item>
             <Text style={styles.forgot}>Forgot your password?</Text>
-            <Button full rounded style={styles.btn1}
-            onPress={() => this.props.navigation.navigate('Log')}>
+            <Button full rounded style={styles.btn1}>
                 <Text style={styles.btnTxt}>Log In</Text>
             </Button>
             <Text style={styles.sign}>Don't have an account? 

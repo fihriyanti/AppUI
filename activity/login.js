@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   btn2: {
     marginLeft: 30,
     marginRight: 30,
-    marginBottom: 10,
+    marginBottom: 20,
     marginTop: 10,
     backgroundColor: '#fafafa'
   },
@@ -97,4 +97,3 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
 });
-

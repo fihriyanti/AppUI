@@ -29,7 +29,7 @@ export default class LoginAkun extends Component {
     return (
       <Container style={styles.container}>
         <ScrollView>
-            <Icon name='arrow-back'/>
+            <Icon type={"AntDesign"} name="arrowleft" style={{marginTop: 20, marginLeft: 10}}/>
             <View>
                 <Text style={styles.text}>Sign up</Text>
             </View>
@@ -45,7 +45,7 @@ export default class LoginAkun extends Component {
             </View>
             <Text style={styles.email}>or sign up with email</Text>
             <Item rounded style={styles.item}>
-                <Input placeholder='Fisrt Name' style={{fontSize: 20, marginLeft: 20}}/>
+                <Input placeholder='First Name' style={{fontSize: 20, marginLeft: 20}}/>
             </Item>
             <Item rounded style={styles.item2}>
                 <Input placeholder='Last Name' style={{fontSize: 20, marginLeft: 20}}/>
@@ -56,8 +56,7 @@ export default class LoginAkun extends Component {
             <Item rounded style={styles.item2}>
                 <Input placeholder='Password' style={{fontSize: 20, marginLeft: 20}}/>
             </Item>
-            <Button full rounded style={styles.btn1}
-            onPress={() => this.props.navigation.navigate('Log')}>
+            <Button full rounded style={styles.btn1}>
                 <Text style={styles.btnTxt}>Sign up</Text>
             </Button>
             <Text style={styles.by}>By signing up, you agreed with our Termd of Services and Privacy Policy.</Text>
@@ -137,6 +136,7 @@ const styles = StyleSheet.create({
   sign: {
       fontSize: 20,
       marginTop: 60,
+      marginBottom: 20,
       textAlign: 'center',
       color: '#9e9e9e'
   },
