@@ -20,29 +20,27 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Item, Icon, Input, Button } from 'native-base';
+import { Item, Icon, Input, Button, Segment } from 'native-base';
 
 export default class Home extends Component {
 
   render() {
     return (
-        <ScrollView>
-            <View>
-              <ImageBackground source={require('../gambar/get.jpg')} style={styles.backgroundImage}>
-                  <Item searchBar rounded style={styles.search}>
-                    <Icon type='AntDesign' name="search1" style={{color: '#00ddbf', marginLeft:10}} />
-                    <Input style={{fontSize:12}} placeholder="Where are you going?" />
-                  </Item>
-                  <Text style={styles.judul}>trips</Text>
-                  <Text style={styles.txt}>Extraordinary five-star outdoor activities</Text>
-                  <Button full rounded style={styles.btn}>
-                      <Text style={styles.txtBtn}>View Hotels</Text>
-                  </Button>
-              </ImageBackground>
-              <Text style={styles.txtPop}>Popular Destinations</Text>
-              <Image source={require('../gambar/gmb1.jpg')} style={styles.gambar}>
-              </Image>
-            </View>
+        <ScrollView style={{backgroundColor: 'white'}}>
+          <View>
+            <Text></Text>
+          </View>
+            <Segment style={{backgroundColor: '#eeeeee'}}>
+              <Button first style={{flexDirection: "row", justifyContent: 'space-between'}}>
+                <Text>Upcoming</Text>
+              </Button>
+              <Button>
+                <Text>Finished</Text>
+              </Button>
+              <Button last active>
+                <Text>Favorites</Text>
+              </Button>
+            </Segment>
         </ScrollView>
     );
   }

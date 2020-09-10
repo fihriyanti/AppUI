@@ -26,7 +26,7 @@ export default class Home extends Component {
 
   render() {
     return (
-        <ScrollView>
+        <ScrollView style={{backgroundColor: 'white'}}>
             <View>
               <ImageBackground source={require('../gambar/get.jpg')} style={styles.backgroundImage}>
                   <Item searchBar rounded style={styles.search}>
@@ -41,10 +41,12 @@ export default class Home extends Component {
               </ImageBackground>
               <Text style={styles.txtPop}>Popular Destinations</Text>
               <View style={{flexDirection: 'row', marginLeft: 20, marginTop: 10}}>
-                <Image source={require('../gambar/gmb1.jpg')} style={styles.gambar}>
-                </Image>
-                <Image source={require('../gambar/gmb1.jpg')} style={styles.gambar}>
-                </Image>
+                <ScrollView horizontal>
+                    <Image source={require('../gambar/gmb1.jpg')} style={styles.gambar}>
+                    </Image>
+                    <Image source={require('../gambar/gmb2.jpg')} style={styles.gambar}>
+                    </Image>
+                </ScrollView>
               </View>
             </View>
         </ScrollView>
