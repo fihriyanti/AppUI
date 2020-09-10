@@ -29,7 +29,8 @@ export default class LoginAkun extends Component {
     return (
       <Container style={styles.container}>
         <ScrollView>
-            <Icon type={"AntDesign"} name="arrowleft" style={{marginTop: 20, marginLeft: 10}}/>
+            <Icon type={"AntDesign"} name="arrowleft" style={{marginTop: 20, marginLeft: 10}}
+            onPress={() => this.props.navigation.navigate('Login')}/>
             <View>
                 <Text style={styles.text}>Log in</Text>
             </View>
@@ -50,7 +51,10 @@ export default class LoginAkun extends Component {
             <Item rounded style={styles.item2}>
                 <Input placeholder='Password' style={{fontSize: 20, marginLeft: 20}}/>
             </Item>
-            <Text style={styles.forgot}>Forgot your password?</Text>
+            <Text style={styles.forgot}
+            onPress={() => this.props.navigation.navigate('Forgot')}>
+              Forgot your password?
+            </Text>
             <Button full rounded style={styles.btn1}>
                 <Text style={styles.btnTxt}>Log In</Text>
             </Button>
@@ -130,6 +134,7 @@ const styles = StyleSheet.create({
   sign: {
       fontSize: 20,
       marginTop: 200,
+      marginBottom: 20,
       textAlign: 'center',
       color: '#9e9e9e'
   },

@@ -38,8 +38,9 @@ export default class Login extends Component {
                 onPress={() => this.props.navigation.navigate('Masuk')}>
                   <Text style={styles.btnTxt}>Log In</Text>
                 </Button>
-                <Button full rounded style={styles.btn2}>
-                  <Text style={styles.btnTxt2}>Creat Account</Text>
+                <Button full rounded style={styles.btn2}
+                onPress={() => this.props.navigation.navigate('SignUp')}>
+                  <Text style={styles.btnTxt2}>Create Account</Text>
                 </Button>
             </View>
         </ScrollView>
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 50,
     fontFamily: 'notoserif',
-    alignSelf: 'center'
+    textAlign: 'center'
   },
   txt2: {
     alignSelf: 'center',

@@ -22,9 +22,6 @@ import {
 
 import { Button} from 'native-base';
 
-// const image = require('./gambar/12.jpg');
-// const logo = require('./gambar/logo.png');
-
 export default class Home extends Component {
 
   render() {
@@ -39,7 +36,8 @@ export default class Home extends Component {
                 <Text style={styles.bwhJudul}>
                   Best hotel deals for your holiday
                 </Text>
-                <Button full rounded style={styles.btn1}>
+                <Button full rounded style={styles.btn1}
+                onPress={() => this.props.navigation.navigate('Tab')}>
                   <Text style={styles.btnTxt}>Get started</Text>
                 </Button>
                 <Text style={styles.login}

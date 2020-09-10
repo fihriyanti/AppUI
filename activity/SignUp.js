@@ -18,7 +18,7 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Container, Button, Header, Left, Icon, Item, Input} from 'native-base';
+import { Container, Button, Icon, Item, Input} from 'native-base';
 
 import { SocialIcon } from 'react-native-elements';
 import {} from 'react-native-vector-icons';
@@ -29,7 +29,8 @@ export default class LoginAkun extends Component {
     return (
       <Container style={styles.container}>
         <ScrollView>
-            <Icon type={"AntDesign"} name="arrowleft" style={{marginTop: 20, marginLeft: 10}}/>
+            <Icon type={"AntDesign"} name="arrowleft" style={{marginTop: 8, marginLeft: 10}}
+                onPress={() => this.props.navigation.navigate('Login')}/>
             <View>
                 <Text style={styles.text}>Sign up</Text>
             </View>
@@ -61,7 +62,7 @@ export default class LoginAkun extends Component {
             </Button>
             <Text style={styles.by}>By signing up, you agreed with our Termd of Services and Privacy Policy.</Text>
             <Text style={styles.sign}>Already have an account? 
-                <Text style={{color: '#00ddbf', fontSize: 20}}
+                <Text style={{color: '#00ddbf', fontSize: 15}}
                 onPress={() => this.props.navigation.navigate('Masuk')}>
                     Log in
                 </Text>
@@ -80,40 +81,39 @@ const styles = StyleSheet.create({
       backgroundColor: '#f5f5f5'
   },
   text:{
-      fontSize: 45,
+      fontSize: 35,
       fontFamily: 'notoserif',
-      marginTop: 15,
       marginLeft: 20,
       fontWeight: 'bold'
   },
   fb: {
       width: 160,
       height: 50,
-      marginTop: 35,
+      marginTop: 20,
   },
   tw: {
      height: 50,
       width: 160,
-      marginTop: 35,
+      marginTop: 20,
   },
   email: {
-      fontSize: 20,
-      marginTop: 25,
+      fontSize: 15,
+      marginTop: 15,
       textAlign: 'center',
       color: '#9e9e9e'
   },
   item: {
-      height: 60,
+      height: 50,
       marginLeft: 20,
       marginRight: 20,
-      marginTop: 35,
+      marginTop: 25,
       backgroundColor: '#fff'
   },
   item2: {
-      height: 60,
+      height: 50,
       marginLeft: 20,
       marginRight: 20,
-      marginTop: 15,
+      marginTop: 8,
       backgroundColor: '#fff'
   },
   forgot: {
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   btn1: {
     marginLeft: 30,
     marginRight: 30,
-    marginTop: 20,
+    marginTop: 15,
     backgroundColor: '#00ddbf'
   },
   btnTxt: {
@@ -134,15 +134,15 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   sign: {
-      fontSize: 20,
-      marginTop: 60,
+      fontSize: 15,
+      marginTop: 20,
       marginBottom: 20,
       textAlign: 'center',
       color: '#9e9e9e'
   },
   by: {
-      fontSize: 15,
-      marginTop: 15,
+      fontSize: 12,
+      marginTop: 5,
       marginLeft: 40,
       marginRight: 40,
       textAlign: 'center',
