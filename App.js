@@ -53,13 +53,10 @@ function MyTabs() {
         inactiveTintColor : '#00ddbf'
       }}
     >
-      <Tab.Screen 
-        name="Explore" 
-        component={Started}
-        
-        />
+      <Tab.Screen name="Explore" component={Started}/>
       <Tab.Screen name="Trips" component={Trips} />
       <Tab.Screen name="Profile" component={Profile} />
+      {/* <Tab.Screen name="Settings" component={Settings}/> */}
     </Tab.Navigator>
   );
 }
