@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {Component } from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -14,6 +14,7 @@ import {
   Text,
   Image,
   ImageBackground,
+  ImageStore,
 } from 'react-native';
 
 import {
@@ -22,26 +23,45 @@ import {
 
 import { Item, Icon, Input, Button, Segment } from 'native-base';
 
+const image = [
+  'https://i.pinimg.com/564x/84/5e/26/845e268a29b111b8137a7e0fbdfa8d12.jpg',
+  'https://i.pinimg.com/564x/3b/55/80/3b55806dc652eeccb1fb9ff421a61390.jpg',
+  'https://i.pinimg.com/236x/28/6e/38/286e38d49ddff3d9a39588f5d9709ac4.jpg',
+  'https://i.pinimg.com/236x/9d/ab/ff/9dabff8eacef9141a8dd05835509ec31.jpg'
+]
+
 export default class Home extends Component {
+  state = {
+    activate: 0
+  }
 
   render() {
     return (
-        <ScrollView style={{backgroundColor: 'white'}}>
-          <View>
-            <Text></Text>
-          </View>
-            <Segment style={{backgroundColor: '#eeeeee'}}>
-              <Button first style={{flexDirection: "row", justifyContent: 'space-between'}}>
-                <Text>Upcoming</Text>
-              </Button>
-              <Button>
-                <Text>Finished</Text>
-              </Button>
-              <Button last active>
-                <Text>Favorites</Text>
-              </Button>
-            </Segment>
+      <View>
+        <ScrollView
+          pagingEnabled
+          horizontal
+          showsHorizontalScrollIndicator={false}>
+          {
+            image.map((image, index) => (
+              <ImageBackground
+                key={index}
+                source={{ uri: image }}
+                style={{ width: 360, height: 380, resizeMode: 'cover' }}>
+                <Item searchBar rounded style={styles.search}>
+                  <Icon type='AntDesign' name="search1" style={{ color: '#00ddbf', marginLeft: 10 }} />
+                  <Input style={{ fontSize: 12 }} placeholder="Where are you going?" />
+                </Item>
+                <Text style={styles.judul}>Cape Town</Text>
+                <Text style={styles.txt}>Extraordinary five-star outdoor activities</Text>
+                <Button full rounded style={styles.btn}>
+                  <Text style={styles.txtBtn}>View Hotels</Text>
+                </Button>
+              </ImageBackground>
+            ))
+          }
         </ScrollView>
+      </View>
     );
   }
 }
@@ -50,56 +70,6 @@ const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: Colors.lighter,
   },
-  backgroundImage: {
-    flex: 1,
-    resizeMode: "stretch",
-    justifyContent: "center"
-  },
-  search: {
-    backgroundColor:'white',
-    marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
-  },
-  judul: {
-      color: 'white',
-      fontSize: 33,
-      marginLeft: 20,
-      marginTop: 100,
-      fontFamily: 'serif',
-      fontWeight: 'bold'
-  },
-  txt: {
-    color: 'white',
-    fontSize: 15,
-    marginLeft: 20,
-    marginRight: 80,
-    marginTop: 10,
-    fontFamily: 'serif',
-    fontWeight: 'bold'
-},
-btn: {
-    backgroundColor: '#00ddbf',
-    marginLeft: 20,
-    width: 150,
-    marginTop: 20,
-    marginBottom: 20
-},
-txtBtn: {
-    color: 'white',
-},
-txtPop: {
-    marginLeft: 20,
-    marginTop: 20,
-    fontSize: 18,
-    fontWeight: 'bold',
-    fontFamily: 'serif'
-},
-gambar: {
-    marginTop: 10,
-    marginLeft: 20,
-    width: 250,
-    height: 130,
-    borderRadius: 10
-}
+  pagingText: { color: '#fff', margin: 3 },
+  pagingActiveText: { color: '#00ddbf' },
 });

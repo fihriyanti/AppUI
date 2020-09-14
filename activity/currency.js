@@ -27,65 +27,81 @@ export default class Home extends Component {
         <ScrollView style={{backgroundColor: 'white'}}>
             <View>
               <Icon type={"AntDesign"} name="arrowleft" style={{marginTop: 20, marginLeft: 10}}
-              onPress={() => this.props.navigation.navigate('Profile')}/>
+              onPress={() => this.props.navigation.navigate('Settings')}/>
               <View>
-                <Text style={styles.text}>Settings</Text>
+                <Text style={styles.text}>Currency</Text>
               </View>
               <List style={styles.list}>
                   <ListItem>
                       <Left>
-                          <Text>Notifications</Text>
+                          <Text>Australian Dollar</Text>
                       </Left>
                       <Right>
-                          <Icon type='Ionicons' name='notifications' color='#bcbcbc'/>
+                          <Text style={{color: '#bcbcbc'}}>AUD</Text>
                       </Right>
                   </ListItem>
                   <ListItem>
                       <Left>
-                          <Text>Country</Text>
+                          <Text>Argentine Peso</Text>
                       </Left>
                       <Right>
-                          <Text style={{color:'#bcbcbc', fontSize: 12}}>Australia</Text>
-                      </Right>
-                  </ListItem>
-                  <ListItem onPress={() => this.props.navigation.navigate('Currency')}>
-                      <Left>
-                          <Text>Currency</Text>
-                      </Left>
-                      <Right>
-                          <Text style={{color:'#bcbcbc'}}>$ AUD</Text>
+                          <Text style={{color: '#bcbcbc'}}>ARS</Text>
                       </Right>
                   </ListItem>
                   <ListItem>
                       <Left>
-                          <Text>Terms of Services</Text>
+                          <Text>Belgian Euro</Text>
                       </Left>
                       <Right>
-                          <Icon type='AntDesign' name='right' color='#bcbcbc'/>
+                          <Text style={{color: '#bcbcbc'}}>Euro</Text>
                       </Right>
                   </ListItem>
                   <ListItem>
                       <Left>
-                          <Text>Privacy Policy</Text>
+                          <Text>Brazilian Real</Text>
                       </Left>
                       <Right>
-                          <Icon type='AntDesign' name='right' color='#bcbcbc'/>
+                          <Text style={{color: '#bcbcbc'}}>REAL</Text>
                       </Right>
                   </ListItem>
                   <ListItem>
                       <Left>
-                          <Text>Give Us Feedbacks</Text>
+                          <Text>Canadian Dollar</Text>
                       </Left>
                       <Right>
-                          <Icon type='AntDesign' name='right' color='#bcbcbc'/>
+                          <Text style={{color: '#bcbcbc'}}>CAD</Text>
                       </Right>
                   </ListItem>
                   <ListItem>
                       <Left>
-                          <Text>Log out</Text>
+                          <Text>Buban Peso</Text>
                       </Left>
                       <Right>
-                          <Icon type='AntDesign' name='right' color='#bcbcbc'/>
+                          <Text style={{color: '#bcbcbc'}}>PESO</Text>
+                      </Right>
+                  </ListItem>
+                  <ListItem>
+                      <Left>
+                          <Text>French Euro</Text>
+                      </Left>
+                      <Right>
+                          <Text style={{color: '#bcbcbc'}}>EURO</Text>
+                      </Right>
+                  </ListItem>
+                  <ListItem>
+                      <Left>
+                          <Text>Hong Kong Dollar</Text>
+                      </Left>
+                      <Right>
+                          <Text style={{color: '#bcbcbc'}}>HKD</Text>
+                      </Right>
+                  </ListItem>
+                  <ListItem>
+                      <Left>
+                          <Text>Italian Euro</Text>
+                      </Left>
+                      <Right>
+                          <Text style={{color: '#bcbcbc'}}>EURO</Text>
                       </Right>
                   </ListItem>
               </List>
@@ -100,7 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.lighter,
   },
   text:{
-    fontSize: 35,
+    fontSize: 30,
     fontFamily: 'roboto',
     marginLeft: 30,
     fontWeight: 'bold',
