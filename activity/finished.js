@@ -34,44 +34,35 @@ export default class Home extends Component {
     return (
       <Container>
         <View>
-          <Text style={styles.text}>My Trips</Text>
+          <Text style={styles.text}>Finished</Text>
         </View>
         <View style={styles.tab}>
           <View>
-            <Text style={{ color: '#1de9b6', fontSize: 13 }}>Upcoming</Text>
+            <Text style={{ fontSize: 13 }}
+            onPress={() => this.props.navigation.navigate('Trips')}>Upcoming</Text>
           </View>
           <View style={{ marginLeft: 30, marginRight: 30 }}>
-            <Text style={{ fontSize: 13 }}
-              onPress={() => this.props.navigation.navigate('Finished')}>Finished</Text>
+            <Text style={{  color: '#1de9b6', fontSize: 13 }}>Finished</Text>
           </View>
           <View>
             <Text style={{ fontSize: 13 }}
-              onPress={() => this.props.navigation.navigate('Favorites')}>Favorites</Text>
+            onPress={() => this.props.navigation.navigate('Favorites')}>Favorites</Text>
           </View>
         </View>
         <ScrollView style={{ backgroundColor: 'white' }}>
           <View>
-            <Text style={{ textAlign: 'center', marginTop: 10 }}>12 Dec - 22 Dec, 1 Room - 2 Adults</Text>
             <Card style={styles.card}>
-              <CardItem cardBody>
-                <Image source={{ uri: 'https://i.pinimg.com/564x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg' }}
-                  style={{ width: 320, height: 130, borderRadius: 10 }} />
-                  <View style={styles.camera}>
-                      <Icon type="Entypo" name="heart-outlined" style={{color:'#00ddbf', fontSize: 25, marginLeft: 7}}/>
-                  </View>
-              </CardItem>
               <CardItem>
                 <Left>
+                  <Image source={{ uri: 'https://i.pinimg.com/564x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg' }}
+                    style={{ width: 110, height: 130 }} />
                   <View >
-                    <View flexDirection='row'>
-                      <Title style={styles.title}>Grand Royal Hotel</Title>
-                      <Text style={styles.harga}>$180</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row' }}>
-                      <Subtitle style={styles.subtitle}>Wembley, London</Subtitle>
+                    <Title style={styles.title}>Grand Royal Hotel</Title>
+                    <Subtitle style={styles.subtitle}>Barcelona, Spain</Subtitle>
+                    <View style={styles.bwhTitle}>
                       <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
                       <Text style={styles.jarak}>2 km to city</Text>
-                      <Text style={styles.night}>/per night</Text>
+                      <Text style={styles.harga}>$180</Text>
                     </View>
                     <View style={styles.rating}>
                       <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
@@ -79,35 +70,24 @@ export default class Home extends Component {
                       <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
                       <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
                       <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.review}>80 Reviews</Text>
+                      <Text style={styles.night}>/per night</Text>
                     </View>
                   </View>
                 </Left>
               </CardItem>
             </Card>
-          </View>
-          <View>
-            <Text style={{ textAlign: 'center', marginTop: 10 }}>23 Dec - 25 Dec, 1 Room - 2 Adults</Text>
             <Card style={styles.card}>
-              <CardItem cardBody>
-                <Image source={{ uri: 'https://i.pinimg.com/236x/8f/f0/8f/8ff08f9f783b68d5077af620c46d5582.jpg' }}
-                  style={{ width: 320, height: 130, borderRadius: 10 }} />
-                  <View style={styles.camera}>
-                      <Icon type="Entypo" name="heart-outlined" style={{color:'#00ddbf', fontSize: 25, marginLeft: 7}}/>
-                  </View>
-              </CardItem>
               <CardItem>
                 <Left>
+                  <Image source={{ uri: 'https://i.pinimg.com/236x/02/79/aa/0279aac58d93bc620802e60e42905518.jpg' }}
+                    style={{ width: 110, height: 130 }} />
                   <View >
-                    <View flexDirection='row'>
-                      <Title style={styles.title}>Grand Royal Hotel</Title>
-                      <Text style={styles.harga}>$180</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row' }}>
-                      <Subtitle style={styles.subtitle}>Wembley, London</Subtitle>
+                    <Title style={styles.title}>Queen Hotel</Title>
+                    <Subtitle style={styles.subtitle}>Barcelona, Spain</Subtitle>
+                    <View style={styles.bwhTitle}>
                       <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
                       <Text style={styles.jarak}>2 km to city</Text>
-                      <Text style={styles.night}>/per night</Text>
+                      <Text style={styles.harga}>$220</Text>
                     </View>
                     <View style={styles.rating}>
                       <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
@@ -115,35 +95,24 @@ export default class Home extends Component {
                       <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
                       <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
                       <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.review}>80 Reviews</Text>
+                      <Text style={styles.night}>/per night</Text>
                     </View>
                   </View>
                 </Left>
               </CardItem>
             </Card>
-          </View>
-          <View>
-            <Text style={{ textAlign: 'center', marginTop: 10 }}>12 Dec - 22 Dec, 1 Room - 2 Adults</Text>
             <Card style={styles.card}>
-              <CardItem cardBody>
-                <Image source={{ uri: 'https://i.pinimg.com/564x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg' }}
-                  style={{ width: 320, height: 130, borderRadius: 10 }} />
-                  <View style={styles.camera}>
-                      <Icon type="Entypo" name="heart-outlined" style={{color:'#00ddbf', fontSize: 25, marginLeft: 7}}/>
-                  </View>
-              </CardItem>
               <CardItem>
                 <Left>
+                  <Image source={{ uri: 'https://i.pinimg.com/236x/95/8d/4c/958d4c49ae8661f7b97f12d460562bef.jpg' }}
+                    style={{ width: 110, height: 130 }} />
                   <View >
-                    <View flexDirection='row'>
-                      <Title style={styles.title}>Grand Royal Hotel</Title>
-                      <Text style={styles.harga}>$180</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row' }}>
-                      <Subtitle style={styles.subtitle}>Wembley, London</Subtitle>
+                    <Title style={styles.title}>King Villa Resort</Title>
+                    <Subtitle style={styles.subtitle}>Barcelona, Spain</Subtitle>
+                    <View style={styles.bwhTitle}>
                       <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
                       <Text style={styles.jarak}>2 km to city</Text>
-                      <Text style={styles.night}>/per night</Text>
+                      <Text style={styles.harga}>$480</Text>
                     </View>
                     <View style={styles.rating}>
                       <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
@@ -151,7 +120,57 @@ export default class Home extends Component {
                       <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
                       <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
                       <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.review}>80 Reviews</Text>
+                      <Text style={styles.night}>/per night</Text>
+                    </View>
+                  </View>
+                </Left>
+              </CardItem>
+            </Card>
+            <Card style={styles.card}>
+              <CardItem>
+                <Left>
+                  <Image source={{ uri: 'https://i.pinimg.com/564x/7d/99/96/7d9996f404401cb17b6f198385a9f115.jpg' }}
+                    style={{ width: 110, height: 130 }} />
+                  <View >
+                    <Title style={styles.title}>Victorial Hotel</Title>
+                    <Subtitle style={styles.subtitle}>Barcelona, Spain</Subtitle>
+                    <View style={styles.bwhTitle}>
+                      <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
+                      <Text style={styles.jarak}>2 km to city</Text>
+                      <Text style={styles.harga}>$180</Text>
+                    </View>
+                    <View style={styles.rating}>
+                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                      <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
+                      <Text style={styles.night}>/per night</Text>
+                    </View>
+                  </View>
+                </Left>
+              </CardItem>
+            </Card>
+            <Card style={styles.card}>
+              <CardItem>
+                <Left>
+                  <Image source={{ uri: 'https://i.pinimg.com/236x/7e/31/69/7e316987ebed8282d3a67264325374f5.jpg' }}
+                    style={{ width: 110, height: 130 }} />
+                  <View >
+                    <Title style={styles.title}>Cape Town Hotel</Title>
+                    <Subtitle style={styles.subtitle}>Barcelona, Spain</Subtitle>
+                    <View style={styles.bwhTitle}>
+                      <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
+                      <Text style={styles.jarak}>2 km to city</Text>
+                      <Text style={styles.harga}>$180</Text>
+                    </View>
+                    <View style={styles.rating}>
+                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                      <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
+                      <Text style={styles.night}>/per night</Text>
                     </View>
                   </View>
                 </Left>
@@ -193,29 +212,15 @@ const styles = StyleSheet.create({
     marginTop: 20,
     borderRadius: 20
   },
-  camera: {
-      backgroundColor: 'white',
-      position: 'absolute',
-      top: 10,
-      right: 10,
-      width: 40,
-      height: 40,
-      borderRadius: 20,
-      alignContent: 'center',
-      // alignItems: 'center',
-      // alignSelf: 'center',
-      justifyContent: 'center',
-      // textAlign: 'center'
-  },
   title: {
     color: "black",
-    marginLeft: 5,
+    marginLeft: 10,
     fontSize: 16
   },
   subtitle: {
     color: "grey",
-    marginLeft: 5,
-    // marginBottom: 40,
+    marginLeft: 10,
+    marginBottom: 40,
     fontSize: 10
   },
   bwhTitle: {
@@ -225,27 +230,20 @@ const styles = StyleSheet.create({
   jarak: {
     color: "grey",
     fontSize: 10,
-    // textAlign: 'left'
+    marginTop: 3
   },
   harga: {
     textAlign: 'right',
-    marginLeft: 100,
+    marginLeft: 60,
     fontWeight: 'bold',
-    marginTop: 5
   },
   rating: {
-    flexDirection: 'row',
-    marginLeft: 5
+    marginLeft: 5,
+    flexDirection: 'row'
   },
   night: {
     textAlign: 'right',
-    marginLeft: 60,
+    marginLeft: 20,
     fontSize: 12
-  },
-  review: {
-    fontSize: 10,
-    color: 'grey',
-    marginTop: 3,
-    marginLeft: 5
   },
 });

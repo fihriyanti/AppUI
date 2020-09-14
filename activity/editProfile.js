@@ -35,7 +35,7 @@ export default class Home extends Component {
                         <Thumbnail source={require('../gambar/profile.jpg')} 
                         style={{width: 120, height: 120, borderRadius: 80}}/>
                         <View style={styles.camera}>
-                            <Icon type="FontAwesome" name="camera" color='white'/>
+                            <Icon type="FontAwesome" name="camera" style={{color:'white', fontSize: 20}}/>
                         </View>
                     </View>
                     <List style={styles.list}>
@@ -91,9 +91,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#00ddbf',
         position: 'absolute',
         bottom: 0,
-        right: 105,
-        width: 50,
-        height: 50,
+        right: 115,
+        width: 40,
+        height: 40,
         borderRadius: 30,
         alignItems: 'center',
         justifyContent: 'center'

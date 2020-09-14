@@ -26,8 +26,40 @@ import Profile from './activity/profile';
 import Settings from './activity/Settings';
 import EditProfile from './activity/editProfile';
 import Currency from './activity/currency';
+import Favorites from './activity/favorites';
+import Finished from './activity/finished';
 
 const Stack = createStackNavigator();
+const ProfileStk = createStackNavigator();
+const TripStk = createStackNavigator();
+
+function StackProfile() {
+  return (
+    <ProfileStk.Navigator
+      screenOptions={{
+        headerShown: false
+      }}>
+      <ProfileStk.Screen name="Profile" component={Profile} />
+      <ProfileStk.Screen name="Settings" component={Settings} />
+      <ProfileStk.Screen name="EditProfile" component={EditProfile} />
+    </ProfileStk.Navigator>
+
+  )
+}
+
+function StackTrips() {
+  return (
+    <TripStk.Navigator
+      screenOptions={{
+        headerShown: false
+      }}>
+      <TripStk.Screen name="Trips" component={Trips} />
+      <TripStk.Screen name="Favorites" component={Favorites} />
+      <TripStk.Screen name="Finished" component={Finished} />
+    </TripStk.Navigator>
+
+  )
+}
 
 function MyTabs() {
   return (
@@ -56,8 +88,8 @@ function MyTabs() {
       }}
     >
       <Tab.Screen name="Explore" component={Started} />
-      <Tab.Screen name="Trips" component={Trips} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Trips" component={StackTrips} />
+      <Tab.Screen name="Profile" component={StackProfile} />
       {/* <Tab.Screen name="Settings" component={Settings}/> */}
     </Tab.Navigator>
   );
@@ -76,8 +108,6 @@ export default class App extends Component {
           <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="Forgot" component={Forgot} />
           <Stack.Screen name="Tab" component={MyTabs} />
-          <Stack.Screen name="Settings" component={Settings} />
-          <Stack.Screen name="EditProfile" component={EditProfile} />
           <Stack.Screen name="Currency" component={Currency} />
         </Stack.Navigator>
       </NavigationContainer>
