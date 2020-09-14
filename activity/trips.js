@@ -100,8 +100,8 @@ export default class Home extends Component {
                 <Left>
                   <View >
                     <View flexDirection='row'>
-                      <Title style={styles.title}>Grand Royal Hotel</Title>
-                      <Text style={styles.harga}>$180</Text>
+                      <Title style={styles.title}>King Villa Resort</Title>
+                      <Text style={styles.harga}>   $480</Text>
                     </View>
                     <View style={{ flexDirection: 'row' }}>
                       <Subtitle style={styles.subtitle}>Wembley, London</Subtitle>
