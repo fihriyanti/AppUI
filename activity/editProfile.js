@@ -18,7 +18,7 @@ import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { List, Icon, ListItem, Left, Thumbnail} from 'native-base';
+import { List, Icon, ListItem, Left, Thumbnail } from 'native-base';
 
 export default class Home extends Component {
 
@@ -31,43 +31,43 @@ export default class Home extends Component {
                     <View>
                         <Text style={styles.text}>Edit Profile</Text>
                     </View>
-                    <View style={{alignItems: 'center', marginTop: 20}}>
-                        <Thumbnail source={require('../gambar/profile.jpg')} 
-                        style={{width: 120, height: 120, borderRadius: 80}}/>
+                    <View style={{ alignItems: 'center', marginTop: 20 }}>
+                        <Thumbnail source={require('../gambar/profile.jpg')}
+                            style={{ width: 120, height: 120, borderRadius: 80 }} />
                         <View style={styles.camera}>
-                            <Icon type="FontAwesome" name="camera" style={{color:'white', fontSize: 20}}/>
+                            <Icon type="FontAwesome" name="camera" style={{ color: 'white', fontSize: 20 }} />
                         </View>
                     </View>
                     <List style={styles.list}>
                         <ListItem>
                             <Left>
-                                <Text style={{ color: '#bcbcbc'}}>Username</Text>
+                                <Text style={{ color: '#bcbcbc' }}>Username</Text>
                             </Left>
-                                <Text style={{ fontSize: 12, textAlign: 'right'}}>Amanda Jane</Text>
+                            <Text style={{ fontSize: 12, textAlign: 'right' }}>Amanda Jane</Text>
                         </ListItem>
                         <ListItem>
                             <Left>
-                                <Text style={{ color: '#bcbcbc'}}>Email</Text>
+                                <Text style={{ color: '#bcbcbc' }}>Email</Text>
                             </Left>
-                                <Text style={{ fontSize: 12, textAlign: 'right'}}>amanda@gmail.com</Text>
+                            <Text style={{ fontSize: 12, textAlign: 'right' }}>amanda@gmail.com</Text>
                         </ListItem>
                         <ListItem>
                             <Left>
-                                <Text style={{ color: '#bcbcbc'}}>Phone</Text>
+                                <Text style={{ color: '#bcbcbc' }}>Phone</Text>
                             </Left>
-                                <Text style={{ fontSize: 12, textAlign: 'right'}}>+ 65 2311 333</Text>
+                            <Text style={{ fontSize: 12, textAlign: 'right' }}>+ 65 2311 333</Text>
                         </ListItem>
                         <ListItem>
                             <Left>
-                                <Text style={{ color: '#bcbcbc'}}>Date of birth</Text>
+                                <Text style={{ color: '#bcbcbc' }}>Date of birth</Text>
                             </Left>
-                                <Text style={{ fontSize: 12, textAlign: 'right'}}>20/05/1990</Text>
+                            <Text style={{ fontSize: 12, textAlign: 'right' }}>20/05/1990</Text>
                         </ListItem>
                         <ListItem>
                             <Left>
-                                <Text style={{ color: '#bcbcbc'}}>Address</Text>
+                                <Text style={{ color: '#bcbcbc' }}>Address</Text>
                             </Left>
-                                <Text style={{ fontSize: 12, textAlign: 'right'}}>123 Royal Street, New York</Text>
+                            <Text style={{ fontSize: 12, textAlign: 'right' }}>123 Royal Street, New York</Text>
                         </ListItem>
                     </List>
                 </View>

@@ -30,7 +30,7 @@ export default class Home extends Component {
                         <View>
                             <Text style={styles.nama}>Amanda</Text>
                             <Text style={styles.txt}
-                            onPress={() => this.props.navigation.navigate('EditProfile')}>View and edit profile</Text>
+                                onPress={() => this.props.navigation.navigate('EditProfile')}>View and edit profile</Text>
                         </View>
                         <View>
                             <Thumbnail large source={require('../gambar/profile.jpg')} style={{ marginTop: 40, marginRight: 20 }} />

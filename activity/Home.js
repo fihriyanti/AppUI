@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {Component } from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -20,33 +20,33 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Button} from 'native-base';
+import { Button } from 'native-base';
 
 export default class Home extends Component {
 
   render() {
     return (
-        <ScrollView>
-            <View>
-              <ImageBackground source={require('../gambar/12.jpg')} style={styles.backgroundImage}>
-                <Image source={require('../gambar/logo.png')} style={styles.logo}/>
-                <Text style={styles.judul}>
-                  Roome
+      <ScrollView>
+        <View>
+          <ImageBackground source={require('../gambar/12.jpg')} style={styles.backgroundImage}>
+            <Image source={require('../gambar/logo.png')} style={styles.logo} />
+            <Text style={styles.judul}>
+              Roome
                 </Text>
-                <Text style={styles.bwhJudul}>
-                  Best hotel deals for your holiday
+            <Text style={styles.bwhJudul}>
+              Best hotel deals for your holiday
                 </Text>
-                <Button full rounded style={styles.btn1}
-                onPress={() => this.props.navigation.navigate('Tab')}>
-                  <Text style={styles.btnTxt}>Get started</Text>
-                </Button>
-                <Text style={styles.login}
-                 onPress={() => this.props.navigation.navigate('Login')}>
-                  Already have account? Log in
+            <Button full rounded style={styles.btn1}
+              onPress={() => this.props.navigation.navigate('Tab')}>
+              <Text style={styles.btnTxt}>Get started</Text>
+            </Button>
+            <Text style={styles.login}
+              onPress={() => this.props.navigation.navigate('Login')}>
+              Already have account? Log in
                 </Text>
-              </ImageBackground>
-            </View>
-        </ScrollView>
+          </ImageBackground>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -68,13 +68,13 @@ const styles = StyleSheet.create({
   },
   judul: {
     fontWeight: 'bold',
-    alignSelf: 'center', 
+    alignSelf: 'center',
     fontSize: 50,
     fontFamily: 'serif',
     marginTop: 20
   },
   bwhJudul: {
-    alignSelf: 'center', 
+    alignSelf: 'center',
     fontSize: 15,
     fontFamily: 'serif',
     color: '#9e9e9e',
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 100,
     marginEnd: 20,
-    alignSelf: 'center', 
+    alignSelf: 'center',
     fontSize: 15,
     fontWeight: 'bold',
     color: '#fafafa'

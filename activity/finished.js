@@ -39,14 +39,14 @@ export default class Home extends Component {
         <View style={styles.tab}>
           <View>
             <Text style={{ fontSize: 13 }}
-            onPress={() => this.props.navigation.navigate('Trips')}>Upcoming</Text>
+              onPress={() => this.props.navigation.navigate('Trips')}>Upcoming</Text>
           </View>
           <View style={{ marginLeft: 30, marginRight: 30 }}>
-            <Text style={{  color: '#1de9b6', fontSize: 13 }}>Finished</Text>
+            <Text style={{ color: '#1de9b6', fontSize: 13 }}>Finished</Text>
           </View>
           <View>
             <Text style={{ fontSize: 13 }}
-            onPress={() => this.props.navigation.navigate('Favorites')}>Favorites</Text>
+              onPress={() => this.props.navigation.navigate('Favorites')}>Favorites</Text>
           </View>
         </View>
         <ScrollView style={{ backgroundColor: 'white' }}>

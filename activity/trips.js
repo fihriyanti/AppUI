@@ -19,14 +19,7 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Item, Icon, Input, Button, CardItem, Left, Card, Body, Subtitle, Title, Container } from 'native-base';
-
-const image = [
-  'https://i.pinimg.com/564x/84/5e/26/845e268a29b111b8137a7e0fbdfa8d12.jpg',
-  'https://i.pinimg.com/564x/3b/55/80/3b55806dc652eeccb1fb9ff421a61390.jpg',
-  'https://i.pinimg.com/236x/28/6e/38/286e38d49ddff3d9a39588f5d9709ac4.jpg',
-  'https://i.pinimg.com/236x/9d/ab/ff/9dabff8eacef9141a8dd05835509ec31.jpg'
-]
+import { Icon, CardItem, Left, Card, Subtitle, Title, Container } from 'native-base';
 
 export default class Home extends Component {
 
@@ -56,9 +49,9 @@ export default class Home extends Component {
               <CardItem cardBody>
                 <Image source={{ uri: 'https://i.pinimg.com/564x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg' }}
                   style={{ width: 320, height: 130, borderRadius: 10 }} />
-                  <View style={styles.camera}>
-                      <Icon type="Entypo" name="heart-outlined" style={{color:'#00ddbf', fontSize: 25, marginLeft: 7}}/>
-                  </View>
+                <View style={styles.camera}>
+                  <Icon type="Entypo" name="heart-outlined" style={{ color: '#00ddbf', fontSize: 25, marginLeft: 7 }} />
+                </View>
               </CardItem>
               <CardItem>
                 <Left>
@@ -92,9 +85,9 @@ export default class Home extends Component {
               <CardItem cardBody>
                 <Image source={{ uri: 'https://i.pinimg.com/236x/8f/f0/8f/8ff08f9f783b68d5077af620c46d5582.jpg' }}
                   style={{ width: 320, height: 130, borderRadius: 10 }} />
-                  <View style={styles.camera}>
-                      <Icon type="Entypo" name="heart-outlined" style={{color:'#00ddbf', fontSize: 25, marginLeft: 7}}/>
-                  </View>
+                <View style={styles.camera}>
+                  <Icon type="Entypo" name="heart-outlined" style={{ color: '#00ddbf', fontSize: 25, marginLeft: 7 }} />
+                </View>
               </CardItem>
               <CardItem>
                 <Left>
@@ -128,9 +121,9 @@ export default class Home extends Component {
               <CardItem cardBody>
                 <Image source={{ uri: 'https://i.pinimg.com/564x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg' }}
                   style={{ width: 320, height: 130, borderRadius: 10 }} />
-                  <View style={styles.camera}>
-                      <Icon type="Entypo" name="heart-outlined" style={{color:'#00ddbf', fontSize: 25, marginLeft: 7}}/>
-                  </View>
+                <View style={styles.camera}>
+                  <Icon type="Entypo" name="heart-outlined" style={{ color: '#00ddbf', fontSize: 25, marginLeft: 7 }} />
+                </View>
               </CardItem>
               <CardItem>
                 <Left>
@@ -194,18 +187,18 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   camera: {
-      backgroundColor: 'white',
-      position: 'absolute',
-      top: 10,
-      right: 10,
-      width: 40,
-      height: 40,
-      borderRadius: 20,
-      alignContent: 'center',
-      // alignItems: 'center',
-      // alignSelf: 'center',
-      justifyContent: 'center',
-      // textAlign: 'center'
+    backgroundColor: 'white',
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignContent: 'center',
+    // alignItems: 'center',
+    // alignSelf: 'center',
+    justifyContent: 'center',
+    // textAlign: 'center'
   },
   title: {
     color: "black",

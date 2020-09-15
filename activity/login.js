@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {Component } from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -19,7 +19,7 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Container, Button} from 'native-base';
+import { Container, Button } from 'native-base';
 
 // const logo = require('./gambar/logo2.png');
 // const logo = require('./gambar/logo.png');
@@ -30,19 +30,19 @@ export default class Login extends Component {
     return (
       <Container>
         <ScrollView>
-            <View>
-                <Image source={require('../gambar/ikon.png')} style={styles.logo}/>
-                <Text style={styles.txt1}>Plan your trips</Text>
-                <Text style={styles.txt2}>Book one of our unique hotel to escape the ordinary</Text>
-                <Button full rounded style={styles.btn1}
-                onPress={() => this.props.navigation.navigate('Masuk')}>
-                  <Text style={styles.btnTxt}>Log In</Text>
-                </Button>
-                <Button full rounded style={styles.btn2}
-                onPress={() => this.props.navigation.navigate('SignUp')}>
-                  <Text style={styles.btnTxt2}>Create Account</Text>
-                </Button>
-            </View>
+          <View>
+            <Image source={require('../gambar/ikon.png')} style={styles.logo} />
+            <Text style={styles.txt1}>Plan your trips</Text>
+            <Text style={styles.txt2}>Book one of our unique hotel to escape the ordinary</Text>
+            <Button full rounded style={styles.btn1}
+              onPress={() => this.props.navigation.navigate('Masuk')}>
+              <Text style={styles.btnTxt}>Log In</Text>
+            </Button>
+            <Button full rounded style={styles.btn2}
+              onPress={() => this.props.navigation.navigate('SignUp')}>
+              <Text style={styles.btnTxt2}>Create Account</Text>
+            </Button>
+          </View>
         </ScrollView>
       </Container>
     );

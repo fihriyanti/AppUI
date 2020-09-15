@@ -39,11 +39,11 @@ export default class Home extends Component {
         <View style={styles.tab}>
           <View>
             <Text style={{ fontSize: 13 }}
-            onPress={() => this.props.navigation.navigate('Trips')}>Upcoming</Text>
+              onPress={() => this.props.navigation.navigate('Trips')}>Upcoming</Text>
           </View>
           <View style={{ marginLeft: 30, marginRight: 30 }}>
             <Text style={{ fontSize: 13 }}
-            onPress={() => this.props.navigation.navigate('Finished')}>Finished</Text>
+              onPress={() => this.props.navigation.navigate('Finished')}>Finished</Text>
           </View>
           <View>
             <Text style={{ color: '#1de9b6', fontSize: 13 }}>Favorites</Text>

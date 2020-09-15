@@ -35,29 +35,29 @@ export default class Home extends Component {
     return (
       <ScrollView style={{ backgroundColor: 'white' }}>
         <View>
-        <ScrollView
-          pagingEnabled
-          horizontal
-          showsHorizontalScrollIndicator={false}>
-          {
-            image.map((image, index) => (
-              <ImageBackground
-                key={index}
-                source={{ uri: image }}
-                style={{ width: 360, height: 380, resizeMode: 'cover' }}>
-                <Item searchBar rounded style={styles.search}>
-                  <Icon type='AntDesign' name="search1" style={{ color: '#00ddbf', marginLeft: 10 }} />
-                  <Input style={{ fontSize: 12 }} placeholder="Where are you going?" />
-                </Item>
-                <Text style={styles.judul}>Cape Town</Text>
-                <Text style={styles.txt}>Extraordinary five-star outdoor activities</Text>
-                <Button full rounded style={styles.btn}>
-                  <Text style={styles.txtBtn}>View Hotels</Text>
-                </Button>
-              </ImageBackground>
-            ))
-          }
-        </ScrollView>
+          <ScrollView
+            pagingEnabled
+            horizontal
+            showsHorizontalScrollIndicator={false}>
+            {
+              image.map((image, index) => (
+                <ImageBackground
+                  key={index}
+                  source={{ uri: image }}
+                  style={{ width: 360, height: 380, resizeMode: 'cover' }}>
+                  <Item searchBar rounded style={styles.search}>
+                    <Icon type='AntDesign' name="search1" style={{ color: '#00ddbf', marginLeft: 10 }} />
+                    <Input style={{ fontSize: 12 }} placeholder="Where are you going?" />
+                  </Item>
+                  <Text style={styles.judul}>Cape Town</Text>
+                  <Text style={styles.txt}>Extraordinary five-star outdoor activities</Text>
+                  <Button full rounded style={styles.btn}>
+                    <Text style={styles.txtBtn}>View Hotels</Text>
+                  </Button>
+                </ImageBackground>
+              ))
+            }
+          </ScrollView>
           <Text style={styles.txtPop}>Popular Destinations</Text>
           <View style={{ flexDirection: 'row', marginLeft: 20, marginTop: 10, marginRight: 20 }}>
             <ScrollView horizontal>
