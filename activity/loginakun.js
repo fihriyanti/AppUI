@@ -18,7 +18,7 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Container, Button, Header, Left, Icon, Item, Input } from 'native-base';
+import { Container, Button, Icon, Item, Input } from 'native-base';
 
 import { SocialIcon } from 'react-native-elements';
 import { } from 'react-native-vector-icons';

@@ -45,8 +45,9 @@ export default class Home extends Component {
                   key={index}
                   source={{ uri: image }}
                   style={{ width: 360, height: 380, resizeMode: 'cover' }}>
-                  <Item searchBar rounded style={styles.search}>
-                    <Icon type='AntDesign' name="search1" style={{ color: '#00ddbf', marginLeft: 10 }} />
+                  <Item searchBar rounded style={styles.search}
+                    onPress={() => this.props.navigation.navigate('Search')}>
+                    <Icon type='AntDesign' name="search1" style={{ color: '#00ddbf', marginLeft: 10 , fontSize: 20}} />
                     <Input style={{ fontSize: 12 }} placeholder="Where are you going?" />
                   </Item>
                   <Text style={styles.judul}>Cape Town</Text>
