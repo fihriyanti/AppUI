@@ -28,7 +28,7 @@ import EditProfile from './activity/editProfile';
 import Currency from './activity/currency';
 import Favorites from './activity/favorites';
 import Finished from './activity/finished';
-import Seacrh from './activity/search';
+import Details from './activity/details';
 
 const Stack = createStackNavigator();
 const ProfileStk = createStackNavigator();
@@ -110,7 +110,7 @@ export default class App extends Component {
           <Stack.Screen name="Forgot" component={Forgot} />
           <Stack.Screen name="Tab" component={MyTabs} />
           <Stack.Screen name="Currency" component={Currency} />
-          <Stack.Screen name="Search" component={Seacrh} />
+          <Stack.Screen name="Details" component={Details} />
         </Stack.Navigator>
       </NavigationContainer>
     );

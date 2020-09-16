@@ -13,6 +13,7 @@ import {
   View,
   Text,
   Image,
+  TouchableHighlight
 } from 'react-native';
 
 import {
@@ -81,41 +82,49 @@ export default class Home extends Component {
         <FlatList
           data={this.state.UPCOMINGDATA}
           keyExtractor={this.keyExtractor}
-          renderItem={({ item }) =>
-            <Card style={styles.card}>
-              <Text style={{ textAlign: 'center', marginTop: 10, marginBottom: 10 }}>{item.tgl}</Text>
-              <CardItem cardBody>
-                <Image source={{ uri: item.image }}
-                  style={{ width: 320, height: 130, borderRadius: 10 }} />
-                <View style={styles.camera}>
-                  <Icon type="Entypo" name="heart-outlined" style={{ color: '#00ddbf', fontSize: 25, marginLeft: 7 }} />
-                </View>
-              </CardItem>
-              <CardItem>
-                <Left>
-                  <View >
-                    <View flexDirection='row'>
-                      <Title style={styles.title}>{item.title}</Title>
-                      <Text style={styles.harga}>{item.harga}</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row' }}>
-                      <Subtitle style={styles.subtitle}>{item.tempat}</Subtitle>
-                      <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.jarak}>{item.jarak}</Text>
-                      <Text style={styles.night}>{item.night}</Text>
-                    </View>
-                    <View style={styles.rating}>
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.review}>{item.rev}</Text>
-                    </View>
+          renderItem={({ item }) => (
+            <TouchableHighlight
+              onPress={() => {
+                console.log(item._id);
+                this.props.navigation.navigate('Details')
+              }
+              }
+              style={styles.rowFront}>
+              <Card style={styles.card}>
+                <Text style={{ textAlign: 'center', marginTop: 10, marginBottom: 10 }}>{item.tgl}</Text>
+                <CardItem cardBody>
+                  <Image source={{ uri: item.image }}
+                    style={{ width: 320, height: 130, borderRadius: 10 }} />
+                  <View style={styles.camera}>
+                    <Icon type="Entypo" name="heart-outlined" style={{ color: '#00ddbf', fontSize: 25, marginLeft: 7 }} />
                   </View>
-                </Left>
-              </CardItem>
-            </Card>}
+                </CardItem>
+                <CardItem>
+                  <Left>
+                    <View >
+                      <View flexDirection='row'>
+                        <Title style={styles.title}>{item.title}</Title>
+                        <Text style={styles.harga}>{item.harga}</Text>
+                      </View>
+                      <View style={{ flexDirection: 'row' }}>
+                        <Subtitle style={styles.subtitle}>{item.tempat}</Subtitle>
+                        <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
+                        <Text style={styles.jarak}>{item.jarak}</Text>
+                        <Text style={styles.night}>{item.night}</Text>
+                      </View>
+                      <View style={styles.rating}>
+                        <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                        <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                        <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                        <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                        <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
+                        <Text style={styles.review}>{item.rev}</Text>
+                      </View>
+                    </View>
+                  </Left>
+                </CardItem>
+              </Card>
+            </TouchableHighlight>)}
         />
       </Container>
     );
