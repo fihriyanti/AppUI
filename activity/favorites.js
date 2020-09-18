@@ -20,7 +20,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import { Icon, CardItem, Left, Card, Subtitle, Title, Container } from 'native-base';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
 
 export default class Home extends Component {
   constructor(props) {
@@ -104,7 +104,13 @@ export default class Home extends Component {
             <FlatList
               data={this.state.FAVIMG}
               keyExtractor={this.keyExtractor}
-              renderItem={({ item }) =>
+              renderItem={({ item }) => (
+              <TouchableHighlight
+              onPress={() => {
+                console.log(item._id);
+                this.props.navigation.navigate('Details')
+              }}
+              style={styles.rowFont}>
                 <Card style={styles.card}>
                   <CardItem>
                     <Left>
@@ -130,7 +136,7 @@ export default class Home extends Component {
                     </Left>
                   </CardItem>
                 </Card>
-              }
+              </TouchableHighlight>)}
             />
       </Container>
     );
@@ -199,5 +205,10 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     marginLeft: 20,
     fontSize: 12
+  },
+  rowFront: {
+      justifyContent: 'flex-start',
+      paddingLeft: 10,
+      paddingRight: 10,
   },
 });

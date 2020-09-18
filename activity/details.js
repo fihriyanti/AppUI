@@ -53,7 +53,7 @@ export default class Home extends Component {
                         <Header style={{ backgroundColor: 'white' }}>
                             <Left>
                                 <Icon type='AntDesign' name='arrowleft'
-                                    onPress={() => this.props.navigation.navigate('Trips')} />
+                                    onPress={() => this.props.navigation.navigate('Favorites')} />
                             </Left>
                             <Body>
                                 <Text style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 13, fontFamily: 'serif' }}>Grand Royal Hotel</Text>

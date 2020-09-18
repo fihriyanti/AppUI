@@ -29,6 +29,8 @@ import Currency from './activity/currency';
 import Favorites from './activity/favorites';
 import Finished from './activity/finished';
 import Details from './activity/details';
+import GrandRoyal from './activity/grandroyal';
+import More from './activity/more';
 
 const Stack = createStackNavigator();
 const ProfileStk = createStackNavigator();
@@ -111,6 +113,8 @@ export default class App extends Component {
           <Stack.Screen name="Tab" component={MyTabs} />
           <Stack.Screen name="Currency" component={Currency} />
           <Stack.Screen name="Details" component={Details} />
+          <Stack.Screen name="GrandRoyal" component={GrandRoyal} />
+          <Stack.Screen name="More" component={More} />
         </Stack.Navigator>
       </NavigationContainer>
     );

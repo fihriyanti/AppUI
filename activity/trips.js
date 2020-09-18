@@ -86,7 +86,7 @@ export default class Home extends Component {
             <TouchableHighlight
               onPress={() => {
                 console.log(item._id);
-                this.props.navigation.navigate('Details')
+                this.props.navigation.navigate('GrandRoyal')
               }
               }
               style={styles.rowFront}>
