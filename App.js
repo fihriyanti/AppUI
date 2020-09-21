@@ -31,10 +31,14 @@ import Finished from './activity/finished';
 import Details from './activity/details';
 import GrandRoyal from './activity/grandroyal';
 import More from './activity/more';
+import Review from './activity/review';
+import Explore from './activity/explore';
+import Filters from './activity/filters';
 
 const Stack = createStackNavigator();
 const ProfileStk = createStackNavigator();
 const TripStk = createStackNavigator();
+const ExStk = createStackNavigator();
 
 function StackProfile() {
   return (
@@ -60,6 +64,19 @@ function StackTrips() {
       <TripStk.Screen name="Favorites" component={Favorites} />
       <TripStk.Screen name="Finished" component={Finished} />
     </TripStk.Navigator>
+
+  )
+}
+
+function StackExplore() {
+  return (
+    <ExStk.Navigator
+      screenOptions={{
+        headerShown: false
+      }}>
+      <ExStk.Screen name="Explore" component={Started} />
+      <ExStk.Screen name="London" component={Explore} />
+    </ExStk.Navigator>
 
   )
 }
@@ -90,7 +107,7 @@ function MyTabs() {
         inactiveTintColor: '#00ddbf'
       }}
     >
-      <Tab.Screen name="Explore" component={Started} />
+      <Tab.Screen name="Explore" component={StackExplore} />
       <Tab.Screen name="Trips" component={StackTrips} />
       <Tab.Screen name="Profile" component={StackProfile} />
       {/* <Tab.Screen name="Settings" component={Settings}/> */}
@@ -115,6 +132,8 @@ export default class App extends Component {
           <Stack.Screen name="Details" component={Details} />
           <Stack.Screen name="GrandRoyal" component={GrandRoyal} />
           <Stack.Screen name="More" component={More} />
+          <Stack.Screen name="Review" component={Review} />
+          <Stack.Screen name="Filters" component={Filters} />
         </Stack.Navigator>
       </NavigationContainer>
     );

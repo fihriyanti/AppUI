@@ -62,7 +62,8 @@ export default class Home extends Component {
                     </Item>
                     <Text style={styles.judul}>Cape Town</Text>
                     <Text style={styles.txt}>Extraordinary five-star outdoor activities</Text>
-                    <Button full rounded style={styles.btn}>
+                    <Button full rounded style={styles.btn}
+                      onPress={() => this.props.navigation.navigate('London')}>
                       <Text style={styles.txtBtn}>View Hotels</Text>
                     </Button>
                   </ImageBackground>

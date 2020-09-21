@@ -20,7 +20,7 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Icon, CardItem, Left, Card, Subtitle, Title, Container } from 'native-base';
+import { Icon, CardItem, Left, Card, Subtitle, Title, Container, Row, Right } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
 
 export default class Home extends Component {
@@ -101,16 +101,12 @@ export default class Home extends Component {
                 </CardItem>
                 <CardItem>
                   <Left>
-                    <View >
-                      <View flexDirection='row'>
-                        <Title style={styles.title}>{item.title}</Title>
-                        <Text style={styles.harga}>{item.harga}</Text>
-                      </View>
+                    <View style={{ flexDirection: 'column' }}>
+                      <Title style={styles.title}>{item.title}</Title>
                       <View style={{ flexDirection: 'row' }}>
                         <Subtitle style={styles.subtitle}>{item.tempat}</Subtitle>
                         <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
                         <Text style={styles.jarak}>{item.jarak}</Text>
-                        <Text style={styles.night}>{item.night}</Text>
                       </View>
                       <View style={styles.rating}>
                         <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
@@ -122,6 +118,12 @@ export default class Home extends Component {
                       </View>
                     </View>
                   </Left>
+                  <Right style={{ marginBottom: 20 }}>
+                    <View style={{ flexDirection: 'column' }}>
+                      <Title style={styles.harga}>{item.harga}</Title>
+                      <Text style={styles.night}>{item.night}</Text>
+                    </View>
+                  </Right>
                 </CardItem>
               </Card>
             </TouchableHighlight>)}
@@ -188,13 +190,12 @@ const styles = StyleSheet.create({
   jarak: {
     color: "grey",
     fontSize: 10,
-    // textAlign: 'left'
   },
   harga: {
-    alignItems: 'flex-end',
-    marginLeft: 100,
-    fontWeight: 'bold',
-    marginTop: 5
+    color: "black",
+    marginLeft: 5,
+    fontSize: 16,
+    textAlign: 'right'
   },
   rating: {
     flexDirection: 'row',

@@ -27,8 +27,7 @@ export default class Home extends Component {
 
     render() {
         return (
-            <ScrollView style={{ backgroundColor: 'white' }}
-                showsVerticalScrollIndicator={false}>
+            <ScrollView style={{ backgroundColor: 'white' }}>
                 <View>
                     <ImageBackground source={{ uri: 'https://i.pinimg.com/564x/e0/ae/6e/e0ae6ee48721a5dc76cdc53dd8038eb5.jpg' }}
                         style={{ width: 420, height: 150, resizeMode: 'cover' }}>
@@ -112,7 +111,8 @@ export default class Home extends Component {
                                 </View>
                                 <View style={styles.foto}>
                                     <Text style={styles.sum}>Reviews (20)</Text>
-                                    <Text style={styles.more}>View all</Text>
+                                    <Text style={styles.more}
+                                        onPress={() => this.props.navigation.navigate('Review')}>View all</Text>
                                 </View>
                             </Body>
                         </ListItem>
