@@ -33,7 +33,7 @@ export default class Profile extends Component {
                                 onPress={() => this.props.navigation.navigate('EditProfile')}>View and edit profile</Text>
                         </View>
                         <View>
-                            <Thumbnail large source={require('../gambar/profile.jpg')} style={{ marginTop: 40, marginRight: 20 }} />
+                            <Thumbnail large source={require('../gambar/dp.jpg')} style={{ marginTop: 40, marginRight: 20 }} />
                         </View>
                     </View>
                     <List style={styles.list}>

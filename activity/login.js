@@ -28,7 +28,7 @@ export default class Login extends Component {
       <Container>
         <ScrollView>
           <View>
-            <Image source={require('../gambar/ikon.png')} style={styles.logo} />
+            <Image source={require('../image/ikon.png')} style={styles.logo} />
             <Text style={styles.txt1}>Plan your trips</Text>
             <Text style={styles.txt2}>Book one of our unique hotel to escape the ordinary</Text>
             <Button full rounded style={styles.btn1}

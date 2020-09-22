@@ -23,7 +23,7 @@ import { Item, Icon, Input, Card, CardItem, Left, Title, Subtitle, Container, Ri
 import { FlatList } from 'react-native-gesture-handler';
 
 
-export default class Explore extends Component {
+export default class Map extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -77,8 +77,7 @@ export default class Explore extends Component {
                     <Text style={styles.txtHeader}>Explore</Text>
                     <View style={{ flexDirection: 'row' }}>
                         <Icon style={{ marginRight: 10 }} type="Entypo" name="heart-outlined" />
-                        <Icon type='Ionicons' name='location-sharp'
-                            onPress={() => this.props.navigation.navigate('Map')}/>
+                        <Icon type='Ionicons' name='location-sharp' />
                     </View>
                 </View>
                 <ImageBackground style={styles.imageBg}>

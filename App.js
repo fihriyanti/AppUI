@@ -44,6 +44,7 @@ import Started from './activity/Explore/getstarted';
 import Explore from './activity/Explore/explore';
 import Where from './activity/Explore/where';
 import Roma from './activity/Explore/roma';
+import Map from './activity/Explore/map';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -90,6 +91,7 @@ function StackExplore() {
       <ExStk.Screen name="London" component={Explore} />
       <ExStk.Screen name="Where" component={Where}/>
       <ExStk.Screen name="Roma" component={Roma}/>
+      <ExStk.Screen name="Map" component={Map}/>
     </ExStk.Navigator>
 
   )

@@ -28,8 +28,8 @@ export default class Home extends Component {
     return (
       <ScrollView>
         <View>
-          <ImageBackground source={require('../gambar/12.jpg')} style={styles.backgroundImage}>
-            <Image source={require('../gambar/logo.png')} style={styles.logo} />
+          <ImageBackground source={require('../image/12.jpg')} style={styles.backgroundImage}>
+            <Image source={require('../image/logo.png')} style={styles.logo} />
             <Text style={styles.judul}>
               Roome
                 </Text>

@@ -72,7 +72,7 @@ export default class Where extends Component {
                 <ImageBackground source={{ uri: 'https://i.pinimg.com/236x/d6/c2/b4/d6c2b4cd8a7f3ac2b1afe629be7941e6.jpg' }}
                     style={{ height: 350, resizeMode: 'cover' }}>
                     <View style={styles.header}>
-                        <Thumbnail small source={require('../gambar/profile.jpg')} />
+                        <Thumbnail small source={require('../gambar/dp.jpg')} />
                     </View>
                     <Text style={styles.judul}
                         onPress={() => this.props.navigation.navigate('Roma')}>Where are you {"\n"} going next?</Text>

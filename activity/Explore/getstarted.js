@@ -84,8 +84,8 @@ export default class Started extends Component {
             <View style={{ flexDirection: 'row', marginLeft: 20, marginTop: 10, marginRight: 20 }}>
               <ScrollView horizontal 
               showsHorizontalScrollIndicator={false}>
-                <Image source={require('.../gambar/gmb1.jpg')} style={styles.gambar} />
-                <Image source={require('.../gambar/gmb2.jpg')} style={styles.gambar} />
+                <Image source={require('../gambar/gmb1.jpg')} style={styles.gambar} />
+                <Image source={require('../gambar/gmb2.jpg')} style={styles.gambar} />
                 <Image source={{ uri: 'https://i.pinimg.com/564x/a8/54/e8/a854e81b5c6b8b1ef6098980bcfaed9a.jpg' }}
                   style={styles.gambar} />
                 <Image source={{ uri: 'https://i.pinimg.com/236x/f7/c1/9b/f7c19b23f6f03bfce37adeb6043b15e5.jpg' }}

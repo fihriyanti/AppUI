@@ -32,7 +32,7 @@ export default class EditProfile extends Component {
                         <Text style={styles.text}>Edit Profile</Text>
                     </View>
                     <View style={{ alignItems: 'center', marginTop: 20 }}>
-                        <Thumbnail source={require('../gambar/profile.jpg')}
+                        <Thumbnail source={require('../gambar/dp.jpg')}
                             style={{ width: 120, height: 120, borderRadius: 80 }} />
                         <View style={styles.camera}>
                             <Icon type="FontAwesome" name="camera" style={{ color: 'white', fontSize: 20 }} />
