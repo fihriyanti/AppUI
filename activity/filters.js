@@ -19,13 +19,13 @@ import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Icon, Container, List, ListItem, Body, Button } from 'native-base';
-import { CheckBox, Slider } from 'react-native-elements';
-// import Slider from "react-native-slider";
+import { Icon, Container, List, ListItem, Body, Button, Radio,} from 'native-base';
+import {Slider } from 'react-native-elements';
 
 export default class Filters extends Component {
     state = {
-        value: 5
+        value: 5,
+        value2: 5.5
     };
 
     render() {
@@ -39,43 +39,111 @@ export default class Filters extends Component {
                     </View>
                     <List style={{ marginLeft: 20, marginRight: 20 }}>
                         <ListItem>
-                            <Text style={styles.price}>Price (for 1 night)</Text>
-                        </ListItem>
-                        <ListItem>
                             <Body>
-                                <Text style={styles.popular}>Popular filters</Text>
-                                <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                                    <CheckBox
-                                        title='Free Breakfast'
-                                        checked={false}
-                                    />
-                                    <CheckBox
-                                        title='Free Parking'
-                                        checked={false}
-                                    />
+                                <Text style={styles.price}>Price (for 1 night)</Text>
+                                <View style={styles.harga}>
+                                    <Text style={{ fontFamily: 'serif'}}>$100</Text>
+                                    <Text style={{ fontFamily: 'serif'}}>$800</Text>
                                 </View>
-                                <View style={{ flexDirection: 'row', marginTop: 5,}}>
-                                    <CheckBox
-                                        title='Pool'
-                                        checked={true}
+                                <View style={{ flexDirection: 'row', }}>
+                                    <Slider
+                                        style={{ width: '50%' }}
+                                        value={this.state.value2}
+                                        onValueChange={value2 => this.setState({ value2 })}
+                                        maximumValue={10}
+                                        minimumValue={1}
+                                        step={0.5}
+                                        thumbStyle={{ height: 22, width: 22, backgroundColor: '#00ddbf', borderColor: 'white', borderStyle: 'solid' }}
+                                        minimumTrackTintColor='#e0e0e0'
+                                        maximumTrackTintColor='#00ddbf'
+                                        thumbProps={{
+                                            children: (
+                                                <Icon
+                                                    name="leftcircleo"
+                                                    type="AntDesign"
+                                                    style={{ color: "white", fontSize: 22 }}
+                                                />
+                                            ),
+                                        }}
                                     />
-                                    <CheckBox
-                                        title='Pet Friendly'
-                                        checked={false}
-                                    />
-                                </View>
-                                <View style={{ flexDirection: 'row', marginTop: 5,}}>
-                                    <CheckBox
-                                        title='Pet Friendly'
-                                        checked={false}
+                                    <Slider
+                                        style={{ width: '50%' }}
+                                        value={this.state.value2}
+                                        onValueChange={value2 => this.setState({ value2 })}
+                                        maximumValue={10}
+                                        minimumValue={1}
+                                        step={1}
+                                        thumbStyle={{ height: 20, width: 20, backgroundColor: '#00ddbf', borderColor: 'white', borderStyle: 'solid' }}
+                                        minimumTrackTintColor='#00ddbf'
+                                        maximumTrackTintColor='#e0e0e0'
+                                        thumbProps={{
+                                            children: (
+                                                <Icon
+                                                    name="rightcircleo"
+                                                    type="AntDesign"
+                                                    style={{ color: "white", fontSize: 22 }}
+                                                />
+                                            ),
+                                        }}
                                     />
                                 </View>
                             </Body>
                         </ListItem>
                         <ListItem>
                             <Body>
+                                <Text style={styles.popular}>Popular filters</Text>
+                                <View style={styles.popFil}>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Radio
+                                            color={"grey"}
+                                            selectedColor={"#5cb85c"}
+                                            selected={false}
+                                        />
+                                        <Text style={styles.namePop}>Free Breakfast</Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Radio
+                                            color={"grey"}
+                                            selectedColor={"#5cb85c"}
+                                            selected={false}
+                                        />
+                                        <Text style={styles.namePop}>Free Parking</Text>
+                                    </View>
+                                </View>
+                                <View style={styles.popFil}>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Radio
+                                            color={"grey"}
+                                            selectedColor={"#00ddbf"}
+                                            selected={true}
+                                        />
+                                        <Text style={styles.namePop}>Pool</Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row'}}>
+                                        <Radio
+                                            color={"grey"}
+                                            selectedColor={"#5cb85c"}
+                                            selected={false}
+                                        />
+                                        <Text style={styles.namePop}>Pet Friendly</Text>
+                                    </View>
+                                </View>
+                                <View style={styles.popFil}>
+                                    <View style={{ flexDirection: 'row', marginRight: 5 }}>
+                                        <Radio
+                                            color={"grey"}
+                                            selectedColor={"#5cb85c"}
+                                            selected={false}
+                                        />
+                                        <Text style={styles.namePop}>Free Wifi</Text>
+                                    </View>
+                                </View>
+                            </Body>
+                        </ListItem>
+                        <ListItem>
+                            <Body>
                                 <Text style={styles.popular}>Distance from city center</Text>
-                                <Text style={{ fontSize: 11, marginTop: 5, textAlign: 'center' }}>Less than {this.state.value}km</Text>
+                                <Text style={styles.less}>Less than {this.state.value}km</Text>
                                 <Slider
                                     value={this.state.value}
                                     onValueChange={value => this.setState({ value })}
@@ -91,61 +159,72 @@ export default class Filters extends Component {
                         <ListItem>
                             <Body>
                                 <Text style={styles.popular}>Type of Accommodation</Text>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 20 }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'serif' }}>All</Text>
+                                <View style={styles.type}>
+                                    <Text style={styles.item}>All</Text>
                                     <Switch
                                         value={true}
+                                        trackColor={{ true: "#00ddbf" }}
+                                        thumbColor='white'
                                     />
                                 </View>
                             </Body>
                         </ListItem>
                         <ListItem>
                             <Body>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'serif' }}>Apartment</Text>
+                                <View style={styles.row}>
+                                    <Text style={styles.item}>Apartment</Text>
                                     <Switch
                                         value={false}
+                                        trackColor={{ false: "#e0e0e0" }}
+                                        thumbColor='white'
                                     />
                                 </View>
                             </Body>
                         </ListItem>
                         <ListItem>
                             <Body>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'serif' }}>Home</Text>
+                                <View style={styles.row}>
+                                    <Text style={styles.item}>Home</Text>
                                     <Switch
                                         value={false}
+                                        trackColor={{ false: "#e0e0e0" }}
+                                        thumbColor='white'
                                     />
                                 </View>
                             </Body>
                         </ListItem>
                         <ListItem>
                             <Body>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'serif' }}>Villa</Text>
+                                <View style={styles.row}>
+                                    <Text style={styles.item}>Villa</Text>
                                     <Switch
                                         value={false}
-                                        // thumbColor='white'
+                                        trackColor={{ false: "#e0e0e0" }}
+                                        thumbColor='white'
                                     />
                                 </View>
                             </Body>
                         </ListItem>
                         <ListItem>
                             <Body>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'serif' }}>Hotel</Text>
+                                <View style={styles.row}>
+                                    <Text style={styles.item}>Hotel</Text>
                                     <Switch
                                         value={false}
+                                        trackColor={{ false: "#e0e0e0" }}
+                                        thumbColor='white'
                                     />
                                 </View>
                             </Body>
                         </ListItem>
                         <ListItem>
                             <Body>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'serif' }}>Resort</Text>
+                                <View style={styles.row}>
+                                    <Text style={styles.item}>Resort</Text>
                                     <Switch
                                         value={false}
+                                        trackColor={{ false: "#e0e0e0" }}
+                                        thumbColor='white'
                                     />
                                 </View>
                                 <Button full rounded style={styles.btn}>
@@ -183,10 +262,46 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontFamily: 'serif'
     },
+    harga: { 
+        flexDirection: 'row', 
+        justifyContent: 'space-around', 
+        marginTop: 10 
+    },
     popular: {
         color: 'grey',
         fontSize: 12,
         fontFamily: 'serif'
+    },
+    popFil: { 
+        flexDirection: 'row', 
+        marginTop: 10, 
+        justifyContent: 'space-between', 
+        marginRight: 40 
+    },
+    namePop: { 
+        marginTop: 2, 
+        marginLeft: 5, 
+        fontFamily: 'serif' 
+    },
+    less: { 
+        fontSize: 11, 
+        marginTop: 5, 
+        textAlign: 'center', 
+        fontFamily: 'serif' 
+    },
+    type: { 
+        flexDirection: 'row', 
+        justifyContent: 'space-between', 
+        marginTop: 20 
+    },
+    item: { 
+        fontWeight: 'bold', 
+        fontSize: 15, 
+        fontFamily: 'serif' 
+    },
+    row: { 
+        flexDirection: 'row', 
+        justifyContent: 'space-between' 
     },
     btn: {
         marginTop: 20,
@@ -194,6 +309,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#00ddbf',
     },
     txtBtn: {
-      color: 'white',
+        color: 'white',
+        fontFamily: 'serif'
     },
 });

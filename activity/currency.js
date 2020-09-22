@@ -20,7 +20,7 @@ import {
 
 import { List, Icon, ListItem, Right, Left } from 'native-base';
 
-export default class Home extends Component {
+export default class Currency extends Component {
 
     render() {
         return (

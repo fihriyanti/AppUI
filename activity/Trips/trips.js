@@ -9,7 +9,6 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  ScrollView,
   View,
   Text,
   Image,
@@ -20,10 +19,10 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Icon, CardItem, Left, Card, Subtitle, Title, Container, Row, Right } from 'native-base';
+import { Icon, CardItem, Left, Card, Subtitle, Title, Container, Right } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
 
-export default class Home extends Component {
+export default class Trips extends Component {
   constructor(props) {
     super(props);
     this.state = {

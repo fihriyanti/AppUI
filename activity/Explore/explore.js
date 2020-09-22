@@ -23,7 +23,7 @@ import { Item, Icon, Input, Card, CardItem, Left, Title, Subtitle, Container, Ri
 import { FlatList } from 'react-native-gesture-handler';
 
 
-export default class Home extends Component {
+export default class Explore extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -86,7 +86,7 @@ export default class Home extends Component {
                             <Input style={{ fontSize: 15, marginLeft: 15, fontWeight: 'bold', fontFamily: 'serif' }} placeholder="London" />
                         </Item>
                         <View style={styles.camera}>
-                            <Icon type='AntDesign' name="search1" style={{ color: 'white', fontSize: 20 }} />
+                            <Icon type='AntDesign' name="search1" style={{ color: 'white', fontSize: 20 }}/>
                         </View>
                     </View>
                     <View style={{ flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginRight: 70 }}>

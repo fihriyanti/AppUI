@@ -19,11 +19,9 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import { Container, Button, Icon, Item, Input } from 'native-base';
-
-import { SocialIcon } from 'react-native-elements';
 import { } from 'react-native-vector-icons';
 
-export default class LoginAkun extends Component {
+export default class Forgot extends Component {
 
   render() {
     return (

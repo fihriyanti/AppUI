@@ -33,7 +33,7 @@ export default class Home extends Component {
                         style={{ width: 420, height: 150, resizeMode: 'cover' }}>
                         <View style={styles.header}>
                             <Icon type='AntDesign' name='arrowleft'
-                                onPress={() => this.props.navigation.navigate('Trips')} />
+                                onPress={() => this.props.navigation.navigate('GrandRoyal')} />
                             <View style={styles.heart}>
                                 <Icon type="Entypo" name="heart-outlined" style={{ color: '#00ddbf', fontSize: 25, marginLeft: 7 }} />
                             </View>

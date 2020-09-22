@@ -28,7 +28,7 @@ const image = [
   'https://i.pinimg.com/236x/9d/ab/ff/9dabff8eacef9141a8dd05835509ec31.jpg'
 ]
 
-export default class Home extends Component {
+export default class Finished extends Component {
 
   render() {
     return (

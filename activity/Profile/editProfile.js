@@ -20,7 +20,7 @@ import {
 
 import { List, Icon, ListItem, Left, Thumbnail } from 'native-base';
 
-export default class Home extends Component {
+export default class EditProfile extends Component {
 
     render() {
         return (

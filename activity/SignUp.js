@@ -23,7 +23,7 @@ import { Container, Button, Icon, Item, Input } from 'native-base';
 import { SocialIcon } from 'react-native-elements';
 import { } from 'react-native-vector-icons';
 
-export default class LoginAkun extends Component {
+export default class SignUp extends Component {
 
     render() {
         return (

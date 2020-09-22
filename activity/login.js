@@ -21,9 +21,6 @@ import {
 
 import { Container, Button } from 'native-base';
 
-// const logo = require('./gambar/logo2.png');
-// const logo = require('./gambar/logo.png');
-
 export default class Login extends Component {
 
   render() {

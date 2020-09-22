@@ -13,28 +13,39 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const Tab = createBottomTabNavigator();
-
+// Screen Stack
 import Home from './activity/Home';
 import Login from './activity/login';
 import LoginAkun from './activity/loginakun';
 import SignUp from './activity/SignUp';
 import Forgot from './activity/Forgot';
-import Started from './activity/getstarted';
-import Trips from './activity/trips';
-import Profile from './activity/profile';
-import Settings from './activity/Settings';
-import EditProfile from './activity/editProfile';
 import Currency from './activity/currency';
-import Favorites from './activity/favorites';
-import Finished from './activity/finished';
 import Details from './activity/details';
 import GrandRoyal from './activity/grandroyal';
 import More from './activity/more';
 import Review from './activity/review';
-import Explore from './activity/explore';
 import Filters from './activity/filters';
+import Search from './activity/search';
+import Cancel from './activity/cancel';
 
+//Screen Profile
+import Profile from './activity/Profile/profile';
+import Settings from './activity/Profile/Settings';
+import EditProfile from './activity/Profile/editProfile';
+import Help from './activity/Profile/help';
+
+//Screen Trips
+import Trips from './activity/Trips/trips';
+import Favorites from './activity/Trips/favorites';
+import Finished from './activity/Trips/finished';
+
+//Screen Explore
+import Started from './activity/Explore/getstarted';
+import Explore from './activity/Explore/explore';
+import Where from './activity/Explore/where';
+import Roma from './activity/Explore/roma';
+
+const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const ProfileStk = createStackNavigator();
 const TripStk = createStackNavigator();
@@ -49,6 +60,7 @@ function StackProfile() {
       <ProfileStk.Screen name="Profile" component={Profile} />
       <ProfileStk.Screen name="Settings" component={Settings} />
       <ProfileStk.Screen name="EditProfile" component={EditProfile} />
+      <ProfileStk.Screen name="Help" component={Help} />
     </ProfileStk.Navigator>
 
   )
@@ -76,6 +88,8 @@ function StackExplore() {
       }}>
       <ExStk.Screen name="Explore" component={Started} />
       <ExStk.Screen name="London" component={Explore} />
+      <ExStk.Screen name="Where" component={Where}/>
+      <ExStk.Screen name="Roma" component={Roma}/>
     </ExStk.Navigator>
 
   )
@@ -97,8 +111,6 @@ function MyTabs() {
           } else if (route.name === 'Profile') {
             iconName = focused ? 'ios-person-outline' : 'ios-person-outline';
           }
-
-          // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}
@@ -110,7 +122,6 @@ function MyTabs() {
       <Tab.Screen name="Explore" component={StackExplore} />
       <Tab.Screen name="Trips" component={StackTrips} />
       <Tab.Screen name="Profile" component={StackProfile} />
-      {/* <Tab.Screen name="Settings" component={Settings}/> */}
     </Tab.Navigator>
   );
 }
@@ -134,6 +145,8 @@ export default class App extends Component {
           <Stack.Screen name="More" component={More} />
           <Stack.Screen name="Review" component={Review} />
           <Stack.Screen name="Filters" component={Filters} />
+          <Stack.Screen name="Search" component={Search} />
+          <Stack.Screen name="Cancel" component={Cancel} />
         </Stack.Navigator>
       </NavigationContainer>
     );

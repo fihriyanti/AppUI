@@ -12,7 +12,6 @@ import {
     ScrollView,
     View,
     Text,
-    Image,
     ImageBackground,
 } from 'react-native';
 
@@ -23,7 +22,7 @@ import {
 import { Icon, Button, Card } from 'native-base';
 
 
-export default class Home extends Component {
+export default class GrandRoyal extends Component {
 
     render() {
         return (

@@ -20,7 +20,7 @@ import {
 
 import { List, Icon, Thumbnail, ListItem, Right, Left } from 'native-base';
 
-export default class Home extends Component {
+export default class Profile extends Component {
 
     render() {
         return (
@@ -61,7 +61,7 @@ export default class Home extends Component {
                                 <Icon type='Feather' name='gift' color='#bcbcbc' />
                             </Right>
                         </ListItem>
-                        <ListItem>
+                        <ListItem onPress={() => this.props.navigation.navigate('Help')}>
                             <Left>
                                 <Text>Help Center</Text>
                             </Left>

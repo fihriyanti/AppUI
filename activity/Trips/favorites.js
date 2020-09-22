@@ -9,7 +9,6 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  ScrollView,
   View,
   Text,
   Image,
@@ -22,7 +21,7 @@ import {
 import { Icon, CardItem, Left, Card, Subtitle, Title, Container } from 'native-base';
 import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
 
-export default class Home extends Component {
+export default class Favorites extends Component {
   constructor(props) {
     super(props);
     this.state = {

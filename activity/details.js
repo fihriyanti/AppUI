@@ -12,7 +12,6 @@ import {
     ScrollView,
     View,
     Text,
-    Image,
     ImageBackground,
 } from 'react-native';
 
@@ -34,7 +33,7 @@ const images = [
     'https://i.pinimg.com/236x/80/0f/c9/800fc985537506aae0c87d6954487572.jpg',
 ]
 
-export default class Home extends Component {
+export default class Details extends Component {
     state = {
         active: 0
     }
