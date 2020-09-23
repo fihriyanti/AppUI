@@ -20,7 +20,7 @@ import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Icon, Button, Card, CardItem, Thumbnail, Item, Input, Title, Left, Subtitle, Right} from 'native-base';
+import { Icon, Button, Card, CardItem, Thumbnail, Item, Input, Title, Left, Subtitle, Right, List, ListItem, Body } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
 
 
@@ -93,7 +93,7 @@ export default class Where extends Component {
                         </View>
                     </View>
                     <Button full rounded style={styles.btn}
-                      onPress={() => this.props.navigation.navigate('London')}>
+                        onPress={() => this.props.navigation.navigate('London')}>
                         <Text style={styles.txtBtn}>Seacrh Hotels</Text>
                     </Button>
                 </Card>
@@ -183,42 +183,42 @@ export default class Where extends Component {
                     </Card>
                 </ScrollView>
                 <Text style={styles.txtPop}>Best Deals</Text>
-                    <FlatList
-                        scrollEnabled={false}
-                        data={this.state.FAVIMG}
-                        keyExtractor={this.keyExtractor}
-                        renderItem={({ item }) => (
-                            <Card style={styles.card3}>
-                                <CardItem>
-                                    <Left>
-                                        <Image source={{ uri: item.image }}
-                                            style={{ width: 110, height: 130 }} />
-                                        <View >
-                                            <Title style={styles.title}>{item.title}</Title>
-                                            <Subtitle style={styles.subtitle}>{item.sub}</Subtitle>
-                                            <View style={styles.bwhTitle}>
-                                                <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                                <Text style={styles.jarak}>{item.jarak}</Text>
-                                            </View>
-                                            <View style={styles.rating}>
-                                                <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                                <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                                <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                                <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                                <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                            </View>
+                <FlatList
+                    scrollEnabled={false}
+                    data={this.state.FAVIMG}
+                    keyExtractor={this.keyExtractor}
+                    renderItem={({ item }) => (
+                        <Card style={styles.card3}>
+                            <CardItem>
+                                <Left>
+                                    <Image source={{ uri: item.image }}
+                                        style={{ width: 110, height: 130 }} />
+                                    <View >
+                                        <Title style={styles.title}>{item.title}</Title>
+                                        <Subtitle style={styles.subtitle}>{item.sub}</Subtitle>
+                                        <View style={styles.bwhTitle}>
+                                            <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
+                                            <Text style={styles.jarak}>{item.jarak}</Text>
                                         </View>
-                                    </Left>
-                                    <Right>
-                                        <View style={{ flexDirection: 'column', justifyContent: 'flex-end', marginTop: 80 }}>
-                                            <Text style={styles.harga}>{item.harga}</Text>
-                                            <Text style={styles.night}>{item.night}</Text>
+                                        <View style={styles.rating}>
+                                            <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                                            <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                                            <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                                            <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                                            <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
                                         </View>
-                                    </Right>
-                                </CardItem>
-                            </Card>
-                        )}
-                    />
+                                    </View>
+                                </Left>
+                                <Right>
+                                    <View style={{ flexDirection: 'column', justifyContent: 'flex-end', marginTop: 80 }}>
+                                        <Text style={styles.harga}>{item.harga}</Text>
+                                        <Text style={styles.night}>{item.night}</Text>
+                                    </View>
+                                </Right>
+                            </CardItem>
+                        </Card>
+                    )}
+                />
             </ScrollView>
         );
     }
@@ -265,10 +265,10 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontFamily: 'serif'
     },
-    tgl: { 
-        marginTop: 5, 
-        fontFamily: 'serif', 
-        fontSize: 16 
+    tgl: {
+        marginTop: 5,
+        fontFamily: 'serif',
+        fontSize: 16
     },
     btn: {
         backgroundColor: '#00ddbf',
@@ -295,11 +295,11 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: '#f5f5f5'
     },
-    txtKota: { 
-        position: 'absolute', 
-        bottom: 10, 
-        left: 15, 
-        fontFamily: 'serif' 
+    txtKota: {
+        position: 'absolute',
+        bottom: 10,
+        left: 15,
+        fontFamily: 'serif'
     },
     kota: {
         fontFamily: 'serif',
@@ -355,6 +355,60 @@ const styles = StyleSheet.create({
         textAlign: 'right',
         marginLeft: 20,
         fontSize: 12,
+        fontFamily: 'serif'
+    },
+    modal: {
+        justifyContent: 'center',
+        // alignContent: "center",
+        // alignItems: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        marginLeft: 20,
+        marginRight: 20,
+    },
+    cardModal: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 20,
+        marginLeft: 20,
+        marginRight: 20,
+    },
+    left: {
+        fontFamily: 'serif',
+        fontWeight: 'bold'
+    },
+    right: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    plusmin: {
+        color: 'grey',
+        fontSize: 15,
+        marginTop: 5
+    },
+    txtRight: {
+        marginLeft: 15,
+        marginRight: 15,
+        fontWeight: 'bold',
+        fontFamily: 'serif',
+        fontSize: 18
+    },
+    kurung: {
+        fontSize: 10,
+        fontFamily: 'serif',
+        color: 'grey',
+        marginLeft: 12,
+        marginTop: 3
+    },
+    btn: {
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: 10,
+        backgroundColor: '#00ddbf',
+    },
+    txtBtn: {
+        color: 'white',
         fontFamily: 'serif'
     },
 });

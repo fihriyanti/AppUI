@@ -22,7 +22,6 @@ import {
 import { Item, Icon, Input, Card, CardItem, Left, Title, Subtitle, Container, Right } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
 
-
 export default class Map extends Component {
     constructor(props) {
         super(props);
@@ -74,7 +73,7 @@ export default class Map extends Component {
                 <View style={styles.header}>
                     <Icon type="AntDesign" name="arrowleft" style={{ fontSize: 25 }}
                         onPress={() => this.props.navigation.navigate('Explore')} />
-                    <Text style={styles.txtHeader}>Explore</Text>
+                    <Text style={styles.txtHeader}>Map</Text>
                     <View style={{ flexDirection: 'row' }}>
                         <Icon style={{ marginRight: 10 }} type="Entypo" name="heart-outlined" />
                         <Icon type='Ionicons' name='location-sharp' />
@@ -101,14 +100,9 @@ export default class Map extends Component {
                     </View>
                 </ImageBackground>
                 <View style={styles.bwhImgBg}>
-                    <Text style={{ fontFamily: 'serif' }}>530 hotels found</Text>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Text style={{ fontFamily: 'serif' }}>Filters</Text>
-                        <Icon type='MaterialIcons' name='filter-list' style={styles.icFilter} 
-                            onPress={() => this.props.navigation.navigate('Filters')}/>
-                    </View>
+                    
                 </View>
-                <FlatList
+                {/* <FlatList
                     data={this.state.explore}
                     keyExtractor={this.keyExtractor}
                     renderItem={({ item }) => (
@@ -148,7 +142,7 @@ export default class Map extends Component {
                             </CardItem>
                         </Card>
                     )}
-                />
+                /> */}
             </Container>
         );
     }

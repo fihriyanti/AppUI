@@ -27,6 +27,7 @@ import Review from './activity/review';
 import Filters from './activity/filters';
 import Search from './activity/search';
 import Cancel from './activity/cancel';
+import Rooms from './activity/rooms';
 
 //Screen Profile
 import Profile from './activity/Profile/profile';
@@ -149,6 +150,7 @@ export default class App extends Component {
           <Stack.Screen name="Filters" component={Filters} />
           <Stack.Screen name="Search" component={Search} />
           <Stack.Screen name="Cancel" component={Cancel} />
+          <Stack.Screen name="Rooms" component={Rooms} />
         </Stack.Navigator>
       </NavigationContainer>
     );

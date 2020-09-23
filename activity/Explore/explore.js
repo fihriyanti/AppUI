@@ -13,23 +13,39 @@ import {
     Text,
     Image,
     ImageBackground,
+    Modal
 } from 'react-native';
 
 import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Item, Icon, Input, Card, CardItem, Left, Title, Subtitle, Container, Right } from 'native-base';
+import { Item, Icon, Input, Card, CardItem, Left, Title, Subtitle, Container, Right, List, ListItem, Body, Button, CheckBox, DatePicker } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
-
+// import Calendar from 'react-native-calendar-select';
+import { Calendar } from 'react-native-calendars';
 
 export default class Explore extends Component {
     constructor(props) {
         super(props);
         this.state = {
             explore: [],
+            show: false,
+            show2: false,
         }
     }
+
+    // state = {
+    //     show: false
+    // }
+
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         show: false,
+    //         show2: false,
+    //     }
+    // }
 
     componentDidMount() {
         this.setState({
@@ -78,7 +94,7 @@ export default class Explore extends Component {
                     <View style={{ flexDirection: 'row' }}>
                         <Icon style={{ marginRight: 10 }} type="Entypo" name="heart-outlined" />
                         <Icon type='Ionicons' name='location-sharp'
-                            onPress={() => this.props.navigation.navigate('Map')}/>
+                            onPress={() => this.props.navigation.navigate('Map')} />
                     </View>
                 </View>
                 <ImageBackground style={styles.imageBg}>
@@ -87,16 +103,18 @@ export default class Explore extends Component {
                             <Input style={{ fontSize: 15, marginLeft: 15, fontWeight: 'bold', fontFamily: 'serif' }} placeholder="London" />
                         </Item>
                         <View style={styles.camera}>
-                            <Icon type='AntDesign' name="search1" style={{ color: 'white', fontSize: 20 }}/>
+                            <Icon type='AntDesign' name="search1" style={{ color: 'white', fontSize: 20 }} />
                         </View>
                     </View>
                     <View style={{ flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginRight: 70 }}>
                         <View style={{ flexDirection: 'column', marginLeft: 35 }}>
-                            <Text style={styles.txtBg}>Choose date</Text>
+                            <Text style={styles.txtBg}
+                                onPress={() => this.setState({ show2: true })}>Choose date</Text>
                             <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 16 }}>12 Dec - 22 Dec</Text>
                         </View>
-                        <View style={{ flexDirection: 'column'}}>
-                            <Text style={styles.txtBg}>Number of Rooms</Text>
+                        <View style={{ flexDirection: 'column' }}>
+                            <Text style={styles.txtBg}
+                                onPress={() => this.setState({ show: true })}>Number of Rooms</Text>
                             <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 16 }}>1 Room - 2 Adults</Text>
                         </View>
                     </View>
@@ -105,8 +123,8 @@ export default class Explore extends Component {
                     <Text style={{ fontFamily: 'serif' }}>530 hotels found</Text>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={{ fontFamily: 'serif' }}>Filters</Text>
-                        <Icon type='MaterialIcons' name='filter-list' style={styles.icFilter} 
-                            onPress={() => this.props.navigation.navigate('Filters')}/>
+                        <Icon type='MaterialIcons' name='filter-list' style={styles.icFilter}
+                            onPress={() => this.props.navigation.navigate('Filters')} />
                     </View>
                 </View>
                 <FlatList
@@ -150,6 +168,106 @@ export default class Explore extends Component {
                         </Card>
                     )}
                 />
+                <Modal transparent={true} visible={this.state.show}>
+                    <View style={{ backgroundColor: '#9e9e9eaa', flex: 1, justifyContent: 'center', }}>
+                        <View style={styles.modal}>
+                            <List>
+                                <ListItem>
+                                    <Left>
+                                        <Text style={styles.left}>Number of Rooms</Text>
+                                    </Left>
+                                    <Right>
+                                        <View style={styles.right}>
+                                            <Icon type='AntDesign' name='minuscircleo' style={styles.plusmin} />
+                                            <Text style={styles.txtRight}> 1 </Text>
+                                            <Icon type='AntDesign' name='pluscircleo' style={styles.plusmin} />
+                                        </View>
+                                    </Right>
+                                </ListItem>
+                                <ListItem>
+                                    <Left>
+                                        <View style={styles.right}>
+                                            <Text style={styles.left}>Adult</Text>
+                                            <Text style={styles.kurung}>(Aged 18+)</Text>
+                                        </View>
+                                    </Left>
+                                    <Right>
+                                        <View style={styles.right}>
+                                            <Icon type='AntDesign' name='minuscircleo' style={styles.plusmin} />
+                                            <Text style={styles.txtRight}> 2 </Text>
+                                            <Icon type='AntDesign' name='pluscircleo' style={styles.plusmin} />
+                                        </View>
+                                    </Right>
+                                </ListItem>
+                                <ListItem>
+                                    <Left>
+                                        <View style={styles.right}>
+                                            <Text style={styles.left}>Childern</Text>
+                                            <Text style={styles.kurung}>(0-17)</Text>
+                                        </View>
+                                    </Left>
+                                    <Right>
+                                        <View style={styles.right}>
+                                            <Icon type='AntDesign' name='minuscircleo' style={styles.plusmin} />
+                                            <Text style={styles.txtRight}> 0 </Text>
+                                            <Icon type='AntDesign' name='pluscircleo' style={styles.plusmin} />
+                                        </View>
+                                    </Right>
+                                </ListItem>
+                                <ListItem>
+                                    <Body>
+                                        <Button full rounded style={styles.btn}
+                                            onPress={() => this.setState({ show: false })}>
+                                            <Text style={styles.txtBtn}>Apply</Text>
+                                        </Button>
+                                    </Body>
+                                </ListItem>
+                            </List>
+                        </View>
+                    </View>
+                </Modal>
+                <Modal transparent={true} visible={this.state.show2}>
+                    <View style={{ backgroundColor: '#9e9e9eaa', flex: 1, justifyContent: 'center', }}>
+                        <View style={styles.modal}>
+                            <View style={{ flexDirection: "row", justifyContent: "space-around", marginTop: 10, marginBottom: 10 }}>
+                                <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                                    <Text style={{ fontFamily: 'serif' }}>Depart</Text>
+                                    <Text style={styles.tgl}>Mon 12 Dec</Text>
+                                </View>
+                                <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                                    <Text style={{ fontFamily: 'serif' }}>Return</Text>
+                                    <Text style={styles.tgl}>Tue 22 Dec</Text>
+                                </View>
+                            </View>
+                            <Calendar
+                                markingType={'period'}
+                                markedDates={{
+                                    '2020-12-12': { color: '#00ddbf', textColor: 'white' },
+                                    '2020-12-13': { color: '#00ddbf', textColor: 'white' },
+                                    '2020-12-14': { color: '#00ddbf', textColor: 'white' },
+                                    '2020-12-15': { color: '#00ddbf', textColor: 'white' },
+                                    '2020-12-16': { color: '#00ddbf', textColor: 'white' },
+                                    '2020-12-17': { color: '#00ddbf', textColor: 'white' },
+                                    '2020-12-18': { color: '#00ddbf', textColor: 'white' },
+                                    '2020-12-19': { color: '#00ddbf', textColor: 'white' },
+                                    '2020-12-20': { color: '#00ddbf', textColor: 'white' },
+                                    '2020-12-21': { color: '#00ddbf', textColor: 'white' },
+                                    '2020-12-22': {  color: '#00ddbf', textColor: 'white' },
+                                }}
+                            />
+                            <ListItem>
+                                <Left>
+                                    <CheckBox checked={true} color="#00ddbf" />
+                                    <Text style={{ textAlign: 'left', marginLeft: 20 }}>Flexible with dates</Text>
+                                </Left>
+                            </ListItem>
+                            <Button full rounded style={styles.btn2}
+                                onPress={() => this.setState({ show2: false })}>
+                                <Text style={styles.txtBtn}>Apply</Text>
+                            </Button>
+                        </View>
+                    </View>
+                </Modal>
             </Container>
         );
     }
@@ -272,5 +390,60 @@ const styles = StyleSheet.create({
         marginTop: 5,
         marginLeft: 5,
         fontFamily: 'serif'
+    },
+    modal: {
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        marginLeft: 20,
+        marginRight: 20,
+    },
+    left: {
+        fontFamily: 'serif',
+        fontWeight: 'bold'
+    },
+    right: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    plusmin: {
+        color: 'grey',
+        fontSize: 15,
+        marginTop: 5
+    },
+    txtRight: {
+        marginLeft: 15,
+        marginRight: 15,
+        fontWeight: 'bold',
+        fontFamily: 'serif',
+        fontSize: 18
+    },
+    kurung: {
+        fontSize: 10,
+        fontFamily: 'serif',
+        color: 'grey',
+        marginLeft: 12,
+        marginTop: 3
+    },
+    btn: {
+        marginLeft: 20,
+        marginRight: 20,
+        backgroundColor: '#00ddbf',
+    },
+    btn2: {
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: 10,
+        backgroundColor: '#00ddbf',
+    },
+    txtBtn: {
+        color: 'white',
+        fontFamily: 'serif'
+    },
+    tgl: {
+        fontFamily: 'serif',
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginTop: 5
     },
 });

@@ -14,6 +14,7 @@ import {
     Text,
     Image,
     ImageBackground,
+    Modal
 } from 'react-native';
 
 import {
@@ -139,7 +140,7 @@ export default class Roma extends Component {
                         <View style={styles.pagination}>
                             {
                                 image.map((i, k) => (
-                                    <Text key={k} style={k==this.state.active ? styles.pagingActiveText : styles.pagingText}>⬤</Text>
+                                    <Text key={k} style={k == this.state.active ? styles.pagingActiveText : styles.pagingText}>⬤</Text>
                                 ))
                             }
                         </View>
@@ -221,6 +222,7 @@ export default class Roma extends Component {
                         )}
                     />
                 </ScrollView>
+                
             </Container>
         );
     }
