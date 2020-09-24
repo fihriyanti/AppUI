@@ -19,8 +19,9 @@ import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Item, Icon, Input, Card, CardItem, Left, Title, Subtitle, Container, Right } from 'native-base';
+import { Item, Icon, Input, Card, CardItem, Left, Title, Subtitle, Container, Right, Form } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
+import MapView, { Marker } from 'react-native-maps';
 
 export default class Map extends Component {
     constructor(props) {
@@ -32,36 +33,33 @@ export default class Map extends Component {
 
     componentDidMount() {
         this.setState({
-            explore: [
+            FAVIMG: [
                 {
                     id: '1',
-                    image: 'https://ik.imagekit.io/tvlk/apr-asset/guys1L+Yyer9kzI3sp-pb0CG1j2bhflZGFUZOoIf1YOBAm37kEUOKR41ieUZm7ZJ/traveloka/hotel/asset/10007472-a82813bd87a86ad1b5a5c45aea55ff6f.jpeg?tr=q-40,c-at_max,w-740,h-500&_src=imagekit',
+                    image: 'https://i.pinimg.com/564x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg',
                     title: 'Grand Royal Hotel',
+                    sub: 'Barcelona, Spain',
+                    jarak: '2 km to city',
                     harga: '$180',
                     night: '/per night',
-                    tempat: 'Wembley, London',
-                    jarak: '2 km to city',
-                    rev: '80 Reviews'
                 },
                 {
                     id: '2',
-                    image: 'https://i.pinimg.com/236x/4d/aa/2a/4daa2a66bde94b8ffb831e38a9de4010.jpg',
+                    image: 'https://i.pinimg.com/236x/02/79/aa/0279aac58d93bc620802e60e42905518.jpg',
                     title: 'Queen Hotel',
+                    sub: 'Barcelona, Spain',
+                    jarak: '2 km to city',
                     harga: '$220',
                     night: '/per night',
-                    tempat: 'Wembley, London',
-                    jarak: '2 km to city',
-                    rev: '80 Reviews'
                 },
                 {
                     id: '3',
-                    image: 'https://i.pinimg.com/236x/bc/ce/a5/bccea55dde0916a6583ed1d3b2087269.jpg',
-                    title: 'King Villa Resort',
+                    image: 'https://i.pinimg.com/236x/95/8d/4c/958d4c49ae8661f7b97f12d460562bef.jpg',
+                    title: 'Victoria Hotel',
+                    sub: 'Barcelona, Spain',
+                    jarak: '2 km to city',
                     harga: '$480',
                     night: '/per night',
-                    tempat: 'Wembley, London',
-                    jarak: '2 km to city',
-                    rev: '80 Reviews'
                 },
             ]
         })
@@ -76,7 +74,7 @@ export default class Map extends Component {
                     <Text style={styles.txtHeader}>Map</Text>
                     <View style={{ flexDirection: 'row' }}>
                         <Icon style={{ marginRight: 10 }} type="Entypo" name="heart-outlined" />
-                        <Icon type='Ionicons' name='location-sharp' />
+                        <Icon type='MaterialIcons' name='filter-list' />
                     </View>
                 </View>
                 <ImageBackground style={styles.imageBg}>
@@ -85,42 +83,46 @@ export default class Map extends Component {
                             <Input style={{ fontSize: 15, marginLeft: 15, fontWeight: 'bold', fontFamily: 'serif' }} placeholder="London" />
                         </Item>
                         <View style={styles.camera}>
-                            <Icon type='AntDesign' name="search1" style={{ color: 'white', fontSize: 20 }}/>
+                            <Icon type='AntDesign' name="search1" style={{ color: 'white', fontSize: 20 }} />
                         </View>
                     </View>
-                    <View style={{ flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginRight: 70 }}>
-                        <View style={{ flexDirection: 'column', marginLeft: 35 }}>
+                    <View style={{ flexDirection: 'row', marginTop: 20, justifyContent: 'space-around'}}>
+                        <View style={{ flexDirection: 'column' }}>
                             <Text style={styles.txtBg}>Choose date</Text>
-                            <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 16 }}>12 Dec - 22 Dec</Text>
+                            <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 14 }}>12 Dec - 22 Dec</Text>
                         </View>
-                        <View style={{ flexDirection: 'column'}}>
+                        <View style={{ flexDirection: 'column' }}>
                             <Text style={styles.txtBg}>Number of Rooms</Text>
-                            <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 16 }}>1 Room - 2 Adults</Text>
+                            <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 14 }}>1 Room - 2 Adults</Text>
                         </View>
                     </View>
                 </ImageBackground>
-                <View style={styles.bwhImgBg}>
-                    
-                </View>
-                {/* <FlatList
-                    data={this.state.explore}
+                <MapView style={{ height: 400 }}
+                    initialRegion={{
+                        latitude: 41.355146,
+                        longitude: 2.125405,
+                        latitudeDelta: 0.09,
+                        longitudeDelta: 0.0921,
+                    }}>
+
+                </MapView>
+                <FlatList
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    style={{position: 'absolute', bottom: 5}}
+                    data={this.state.FAVIMG}
                     keyExtractor={this.keyExtractor}
                     renderItem={({ item }) => (
-                        <Card style={styles.card}>
-                            <CardItem cardBody>
-                                <Image source={{ uri: item.image }}
-                                    style={{ width: 370, height: 200, borderRadius: 10 }} />
-                                <View style={styles.heart}>
-                                    <Icon type="Entypo" name="heart-outlined" style={{ color: '#00ddbf', fontSize: 25, marginLeft: 7 }} />
-                                </View>
-                            </CardItem>
+                        <Card style={styles.card3}>
                             <CardItem>
                                 <Left>
-                                    <View style={{ flexDirection: 'column' }}>
+                                    <Image source={{ uri: item.image }}
+                                        style={{ width: 110, height: 130, borderRadius: 10 }} />
+                                    <View >
                                         <Title style={styles.title}>{item.title}</Title>
-                                        <View style={{ flexDirection: 'row' }}>
-                                            <Subtitle style={styles.subtitle}>{item.tempat}</Subtitle>
-                                            <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 15, color: '#1de9b6', marginLeft: 5, marginRight: 5 }} />
+                                        <Subtitle style={styles.subtitle}>{item.sub}</Subtitle>
+                                        <View style={styles.bwhTitle}>
+                                            <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
                                             <Text style={styles.jarak}>{item.jarak}</Text>
                                         </View>
                                         <View style={styles.rating}>
@@ -129,20 +131,19 @@ export default class Map extends Component {
                                             <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
                                             <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
                                             <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                            <Text style={styles.review}>{item.rev}</Text>
                                         </View>
                                     </View>
                                 </Left>
-                                <Right style={{ marginBottom: 20 }}>
-                                    <View style={{ flexDirection: 'column' }}>
-                                        <Title style={styles.harga}>{item.harga}</Title>
+                                <Right>
+                                    <View style={{ flexDirection: 'column', justifyContent: 'flex-end', marginTop: 80 }}>
+                                        <Text style={styles.harga}>{item.harga}</Text>
                                         <Text style={styles.night}>{item.night}</Text>
                                     </View>
                                 </Right>
                             </CardItem>
                         </Card>
                     )}
-                /> */}
+                />
             </Container>
         );
     }
@@ -175,7 +176,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginLeft: 20,
         marginRight: 10,
-        width: 310,
+        width: 260,
     },
     camera: {
         backgroundColor: '#00ddbf',
@@ -200,39 +201,24 @@ const styles = StyleSheet.create({
         marginRight: 20,
         marginBottom: 10
     },
-    icFilter: {
-        color: '#00ddbf',
-        fontSize: 20,
-        marginLeft: 10
-    },
-    card: {
+    card3: {
         marginLeft: 20,
-        marginRight: 20,
         marginTop: 10,
         borderRadius: 20,
-    },
-    heart: {
-        backgroundColor: 'white',
-        position: 'absolute',
-        top: 10,
-        right: 30,
-        width: 40,
-        height: 40,
-        borderRadius: 20,
-        alignContent: 'center',
-        justifyContent: 'center',
+        width: 320
     },
     title: {
         color: "black",
-        marginLeft: 5,
-        fontSize: 16,
-        fontWeight: 'bold',
+        marginLeft: 10,
+        fontSize: 14,
         fontFamily: 'serif'
     },
     subtitle: {
         color: "grey",
-        marginLeft: 5,
-        fontSize: 10
+        marginLeft: 10,
+        marginBottom: 40,
+        fontSize: 10,
+        fontFamily: 'serif'
     },
     bwhTitle: {
         flexDirection: 'row',
@@ -241,29 +227,23 @@ const styles = StyleSheet.create({
     jarak: {
         color: "grey",
         fontSize: 10,
+        marginTop: 3,
         fontFamily: 'serif'
     },
     harga: {
-        color: "black",
         textAlign: 'right',
-        fontSize: 16,
+        marginLeft: 60,
         fontWeight: 'bold',
-        fontFamily: 'serif',
+        fontFamily: 'serif'
     },
     rating: {
-        flexDirection: 'row',
         marginLeft: 5,
+        flexDirection: 'row'
     },
     night: {
         textAlign: 'right',
-        fontSize: 10,
-        fontFamily: 'serif'
-    },
-    review: {
-        fontSize: 10,
-        color: 'grey',
-        marginTop: 5,
-        marginLeft: 5,
+        marginLeft: 20,
+        fontSize: 12,
         fontFamily: 'serif'
     },
 });

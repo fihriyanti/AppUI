@@ -22,6 +22,7 @@ import {
 
 import { Icon, Button, Card, CardItem, Thumbnail, Item, Input, Title, Left, Subtitle, Right, Body, Container } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
+// import ;
 
 
 export default class Where extends Component {
@@ -30,55 +31,7 @@ export default class Where extends Component {
         return (
             <ScrollView style={{ backgroundColor: 'white' }}>
                 <Container style={styles.container}>
-                    <Card style={styles.card}>
-                        <CardItem>
-                            <Left>
-                                <Text style={styles.left}>Number of Rooms</Text>
-                            </Left>
-                            <Right>
-                                <View style={styles.right}>
-                                    <Icon type='AntDesign' name='minuscircleo' style={styles.plusmin} />
-                                    <Text style={styles.txtRight}> 1 </Text>
-                                    <Icon type='AntDesign' name='pluscircleo' style={styles.plusmin} />
-                                </View>
-                            </Right>
-                        </CardItem>
-                        <CardItem>
-                            <Left>
-                                <View style={styles.right}>
-                                    <Text style={styles.left}>Adult</Text>
-                                    <Text style={styles.kurung}>(Aged 18+)</Text>
-                                </View>
-                            </Left>
-                            <Right>
-                                <View style={styles.right}>
-                                    <Icon type='AntDesign' name='minuscircleo' style={styles.plusmin} />
-                                    <Text style={styles.txtRight}> 2 </Text>
-                                    <Icon type='AntDesign' name='pluscircleo' style={styles.plusmin} />
-                                </View>
-                            </Right>
-                        </CardItem>
-                        <CardItem>
-                            <Left>
-                                <View style={styles.right}>
-                                    <Text style={styles.left}>Childern</Text>
-                                    <Text style={styles.kurung}>(0-17)</Text>
-                                </View>
-                            </Left>
-                            <Right>
-                                <View style={styles.right}>
-                                    <Icon type='AntDesign' name='minuscircleo' style={styles.plusmin} />
-                                    <Text style={styles.txtRight}> 0 </Text>
-                                    <Icon type='AntDesign' name='pluscircleo' style={styles.plusmin} />
-                                </View>
-                            </Right>
-                        </CardItem>
-                        {/* <CardItem> */}
-                            <Button full rounded style={styles.btn}>
-                                <Text style={styles.txtBtn}>Apply</Text>
-                            </Button>
-                        {/* </CardItem> */}
-                    </Card>
+                    <Text>Map</Text>
                 </Container>
             </ScrollView>
         );
