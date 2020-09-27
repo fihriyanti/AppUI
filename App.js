@@ -25,7 +25,6 @@ import GrandRoyal from './activity/grandroyal';
 import More from './activity/more';
 import Review from './activity/review';
 import Filters from './activity/filters';
-import Search from './activity/search';
 import Cancel from './activity/cancel';
 import Rooms from './activity/rooms';
 
@@ -148,7 +147,6 @@ export default class App extends Component {
           <Stack.Screen name="More" component={More} />
           <Stack.Screen name="Review" component={Review} />
           <Stack.Screen name="Filters" component={Filters} />
-          <Stack.Screen name="Search" component={Search} />
           <Stack.Screen name="Cancel" component={Cancel} />
           <Stack.Screen name="Rooms" component={Rooms} />
         </Stack.Navigator>

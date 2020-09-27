@@ -14,6 +14,7 @@ import {
   Text,
   Image,
   ImageBackground,
+  Modal,
 } from 'react-native';
 
 import {
@@ -21,6 +22,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import { Item, Icon, Input, Button } from 'native-base';
+
+import ModalSearch from '../component/modalsearch';
 
 const image = [
   'https://i.pinimg.com/564x/84/5e/26/845e268a29b111b8137a7e0fbdfa8d12.jpg',
@@ -30,7 +33,8 @@ const image = [
 
 export default class Started extends Component {
   state = {
-    active: 0
+    active: 0,
+    show: false,
   }
 
   change = ({ nativeEvent }) => {
@@ -57,12 +61,12 @@ export default class Started extends Component {
                     source={{ uri: image }}
                     style={{ width: 360, height: 380, resizeMode: 'cover' }}>
                     <Item searchBar rounded style={styles.search}
-                      onPress={() => this.props.navigation.navigate('Search')}>
+                      onPress={() => this.setState({show: true})}>
                       <Icon type='AntDesign' name="search1" style={{ color: '#00ddbf', marginLeft: 10, fontSize: 20 }} />
                       <Input style={{ fontSize: 12 }} placeholder="Where are you going?" />
                     </Item>
                     <Text style={styles.judul}>Cape Town</Text>
-                <Text style={styles.txt}>Extraordinary five-star {"\n"}outdoor activities</Text>
+                    <Text style={styles.txt}>Extraordinary five-star {"\n"}outdoor activities</Text>
                     <Button full rounded style={styles.btn}
                       onPress={() => this.props.navigation.navigate('Where')}>
                       <Text style={styles.txtBtn}>View Hotels</Text>
@@ -82,8 +86,8 @@ export default class Started extends Component {
           <View>
             <Text style={styles.txtPop}>Popular Destinations</Text>
             <View style={{ flexDirection: 'row', marginLeft: 20, marginTop: 10, marginRight: 20 }}>
-              <ScrollView horizontal 
-              showsHorizontalScrollIndicator={false}>
+              <ScrollView horizontal
+                showsHorizontalScrollIndicator={false}>
                 <Image source={require('../gambar/gmb1.jpg')} style={styles.gambar} />
                 <Image source={require('../gambar/gmb2.jpg')} style={styles.gambar} />
                 <Image source={{ uri: 'https://i.pinimg.com/564x/a8/54/e8/a854e81b5c6b8b1ef6098980bcfaed9a.jpg' }}
@@ -96,6 +100,14 @@ export default class Started extends Component {
             </View>
           </View>
         </View>
+        <Modal visible={this.state.show}>
+            <ModalSearch
+              icClose={() => this.setState({show: false})}
+              txtHeader='Search'
+              last='Last Searches'
+              clear='Clear all'
+            />
+        </Modal>
       </ScrollView>
     );
   }

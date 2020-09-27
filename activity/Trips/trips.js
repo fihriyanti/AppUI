@@ -22,6 +22,8 @@ import {
 import { Icon, CardItem, Left, Card, Subtitle, Title, Container, Right } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
 
+import CardHotelB from '../component/cardHotelB';
+
 export default class Trips extends Component {
   constructor(props) {
     super(props);
@@ -89,42 +91,16 @@ export default class Trips extends Component {
               }
               }
               style={styles.rowFront}>
-              <Card style={styles.card}>
-                <Text style={{ textAlign: 'center', marginTop: 10, marginBottom: 10 }}>{item.tgl}</Text>
-                <CardItem cardBody>
-                  <Image source={{ uri: item.image }}
-                    style={{ width: 320, height: 130, borderRadius: 10 }} />
-                  <View style={styles.camera}>
-                    <Icon type="Entypo" name="heart-outlined" style={{ color: '#00ddbf', fontSize: 25, marginLeft: 7 }} />
-                  </View>
-                </CardItem>
-                <CardItem>
-                  <Left>
-                    <View style={{ flexDirection: 'column' }}>
-                      <Title style={styles.title}>{item.title}</Title>
-                      <View style={{ flexDirection: 'row' }}>
-                        <Subtitle style={styles.subtitle}>{item.tempat}</Subtitle>
-                        <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
-                        <Text style={styles.jarak}>{item.jarak}</Text>
-                      </View>
-                      <View style={styles.rating}>
-                        <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                        <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                        <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                        <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                        <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                        <Text style={styles.review}>{item.rev}</Text>
-                      </View>
-                    </View>
-                  </Left>
-                  <Right style={{ marginBottom: 20 }}>
-                    <View style={{ flexDirection: 'column' }}>
-                      <Title style={styles.harga}>{item.harga}</Title>
-                      <Text style={styles.night}>{item.night}</Text>
-                    </View>
-                  </Right>
-                </CardItem>
-              </Card>
+              <CardHotelB
+                tgl={item.tgl}
+                gambar={item.image}
+                namaHotel={item.title}
+                alamat={item.tempat}
+                jarak={item.jarak}
+                review={item.rev}
+                harga={item.harga}
+                night={item.harga}
+              />
             </TouchableHighlight>)}
         />
       </Container>
@@ -154,61 +130,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-  },
-  card: {
-    marginLeft: 20,
-    marginRight: 20,
-    marginTop: 20,
-    borderRadius: 20,
-  },
-  camera: {
-    backgroundColor: 'white',
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignContent: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    color: "black",
-    marginLeft: 5,
-    fontSize: 16
-  },
-  subtitle: {
-    color: "grey",
-    marginLeft: 5,
-    fontSize: 10
-  },
-  bwhTitle: {
-    flexDirection: 'row',
-    marginLeft: 5
-  },
-  jarak: {
-    color: "grey",
-    fontSize: 10,
-  },
-  harga: {
-    color: "black",
-    marginLeft: 5,
-    fontSize: 16,
-    textAlign: 'right'
-  },
-  rating: {
-    flexDirection: 'row',
-    marginLeft: 5
-  },
-  night: {
-    textAlign: 'right',
-    marginLeft: 60,
-    fontSize: 12
-  },
-  review: {
-    fontSize: 10,
-    color: 'grey',
-    marginTop: 3,
-    marginLeft: 5
   },
 });

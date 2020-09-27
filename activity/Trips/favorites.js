@@ -11,15 +11,16 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
 } from 'react-native';
 
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Icon, CardItem, Left, Card, Subtitle, Title, Container } from 'native-base';
+import { Container } from 'native-base';
 import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
+
+import CardHotel from '../component/cardHotelL';
 
 export default class Favorites extends Component {
   constructor(props) {
@@ -100,43 +101,26 @@ export default class Favorites extends Component {
             <Text style={{ color: '#1de9b6', fontSize: 13 }}>Favorites</Text>
           </View>
         </View>
-            <FlatList
-              data={this.state.FAVIMG}
-              keyExtractor={this.keyExtractor}
-              renderItem={({ item }) => (
-              <TouchableHighlight
+        <FlatList
+          data={this.state.FAVIMG}
+          keyExtractor={this.keyExtractor}
+          renderItem={({ item }) => (
+            <TouchableHighlight
               onPress={() => {
                 console.log(item._id);
                 this.props.navigation.navigate('Details')
               }}
               style={styles.rowFont}>
-                <Card style={styles.card}>
-                  <CardItem>
-                    <Left>
-                      <Image source={{ uri: item.image}}
-                        style={{ width: 110, height: 130 }} />
-                      <View >
-                        <Title style={styles.title}>{item.title}</Title>
-                        <Subtitle style={styles.subtitle}>{item.sub}</Subtitle>
-                        <View style={styles.bwhTitle}>
-                          <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
-                          <Text style={styles.jarak}>{item.jarak}</Text>
-                          <Text style={styles.harga}>{item.harga}</Text>
-                        </View>
-                        <View style={styles.rating}>
-                          <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                          <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                          <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                          <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                          <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                          <Text style={styles.night}>{item.night}</Text>
-                        </View>
-                      </View>
-                    </Left>
-                  </CardItem>
-                </Card>
-              </TouchableHighlight>)}
-            />
+              <CardHotel
+                gambar={item.image}
+                namaHotel={item.title}
+                tempat={item.sub}
+                jarak={item.jarak}
+                harga={item.harga}
+                night={item.night}
+              />
+            </TouchableHighlight>)}
+        />
       </Container>
     );
   }
@@ -206,8 +190,8 @@ const styles = StyleSheet.create({
     fontSize: 12
   },
   rowFront: {
-      justifyContent: 'flex-start',
-      paddingLeft: 10,
-      paddingRight: 10,
+    justifyContent: 'flex-start',
+    paddingLeft: 10,
+    paddingRight: 10,
   },
 });

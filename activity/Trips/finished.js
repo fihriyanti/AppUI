@@ -19,16 +19,70 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Item, Icon, Input, Button, CardItem, Left, Card, Body, Subtitle, Title, Container } from 'native-base';
+import { Icon, CardItem, Left, Card, Subtitle, Title, Container } from 'native-base';
+import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
 
-const image = [
-  'https://i.pinimg.com/564x/84/5e/26/845e268a29b111b8137a7e0fbdfa8d12.jpg',
-  'https://i.pinimg.com/564x/3b/55/80/3b55806dc652eeccb1fb9ff421a61390.jpg',
-  'https://i.pinimg.com/236x/28/6e/38/286e38d49ddff3d9a39588f5d9709ac4.jpg',
-  'https://i.pinimg.com/236x/9d/ab/ff/9dabff8eacef9141a8dd05835509ec31.jpg'
-]
+import CardHotel from '../component/cardHotelL';
 
 export default class Finished extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      FAVIMG: [],
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      FAVIMG: [
+        {
+          id: '1',
+          image: 'https://i.pinimg.com/564x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg',
+          title: 'Grand Royal Hotel',
+          sub: 'Barcelona, Spain',
+          jarak: '2 km to city',
+          harga: '$180',
+          night: '/per night',
+        },
+        {
+          id: '2',
+          image: 'https://i.pinimg.com/236x/02/79/aa/0279aac58d93bc620802e60e42905518.jpg',
+          title: 'Queen Hotel',
+          sub: 'Barcelona, Spain',
+          jarak: '2 km to city',
+          harga: '$220',
+          night: '/per night',
+        },
+        {
+          id: '3',
+          image: 'https://i.pinimg.com/236x/95/8d/4c/958d4c49ae8661f7b97f12d460562bef.jpg',
+          title: 'King Villa Resort',
+          sub: 'Barcelona, Spain',
+          jarak: '2 km to city',
+          harga: '$480',
+          night: '/per night',
+        },
+        {
+          id: '4',
+          image: 'https://i.pinimg.com/564x/7d/99/96/7d9996f404401cb17b6f198385a9f115.jpg',
+          title: 'Victoria Hotel',
+          sub: 'Barcelona, Spain',
+          jarak: '2 km to city',
+          harga: '$180',
+          night: '/per night',
+        },
+        {
+          id: '5',
+          image: 'https://i.pinimg.com/236x/7e/31/69/7e316987ebed8282d3a67264325374f5.jpg',
+          title: 'Cape Town Hotel',
+          sub: 'Barcelona, Spain',
+          jarak: '2 km to city',
+          harga: '$180',
+          night: '/per night',
+        },
+      ]
+    })
+  }
 
   render() {
     return (
@@ -49,135 +103,25 @@ export default class Finished extends Component {
               onPress={() => this.props.navigation.navigate('Favorites')}>Favorites</Text>
           </View>
         </View>
-        <ScrollView style={{ backgroundColor: 'white' }}>
-          <View>
-            <Card style={styles.card}>
-              <CardItem>
-                <Left>
-                  <Image source={{ uri: 'https://i.pinimg.com/564x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg' }}
-                    style={{ width: 110, height: 130 }} />
-                  <View >
-                    <Title style={styles.title}>Grand Royal Hotel</Title>
-                    <Subtitle style={styles.subtitle}>Barcelona, Spain</Subtitle>
-                    <View style={styles.bwhTitle}>
-                      <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.jarak}>2 km to city</Text>
-                      <Text style={styles.harga}>$180</Text>
-                    </View>
-                    <View style={styles.rating}>
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.night}>/per night</Text>
-                    </View>
-                  </View>
-                </Left>
-              </CardItem>
-            </Card>
-            <Card style={styles.card}>
-              <CardItem>
-                <Left>
-                  <Image source={{ uri: 'https://i.pinimg.com/236x/02/79/aa/0279aac58d93bc620802e60e42905518.jpg' }}
-                    style={{ width: 110, height: 130 }} />
-                  <View >
-                    <Title style={styles.title}>Queen Hotel</Title>
-                    <Subtitle style={styles.subtitle}>Barcelona, Spain</Subtitle>
-                    <View style={styles.bwhTitle}>
-                      <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.jarak}>2 km to city</Text>
-                      <Text style={styles.harga}>$220</Text>
-                    </View>
-                    <View style={styles.rating}>
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.night}>/per night</Text>
-                    </View>
-                  </View>
-                </Left>
-              </CardItem>
-            </Card>
-            <Card style={styles.card}>
-              <CardItem>
-                <Left>
-                  <Image source={{ uri: 'https://i.pinimg.com/236x/95/8d/4c/958d4c49ae8661f7b97f12d460562bef.jpg' }}
-                    style={{ width: 110, height: 130 }} />
-                  <View >
-                    <Title style={styles.title}>King Villa Resort</Title>
-                    <Subtitle style={styles.subtitle}>Barcelona, Spain</Subtitle>
-                    <View style={styles.bwhTitle}>
-                      <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.jarak}>2 km to city</Text>
-                      <Text style={styles.harga}>$480</Text>
-                    </View>
-                    <View style={styles.rating}>
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.night}>/per night</Text>
-                    </View>
-                  </View>
-                </Left>
-              </CardItem>
-            </Card>
-            <Card style={styles.card}>
-              <CardItem>
-                <Left>
-                  <Image source={{ uri: 'https://i.pinimg.com/564x/7d/99/96/7d9996f404401cb17b6f198385a9f115.jpg' }}
-                    style={{ width: 110, height: 130 }} />
-                  <View >
-                    <Title style={styles.title}>Victorial Hotel</Title>
-                    <Subtitle style={styles.subtitle}>Barcelona, Spain</Subtitle>
-                    <View style={styles.bwhTitle}>
-                      <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.jarak}>2 km to city</Text>
-                      <Text style={styles.harga}>$180</Text>
-                    </View>
-                    <View style={styles.rating}>
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.night}>/per night</Text>
-                    </View>
-                  </View>
-                </Left>
-              </CardItem>
-            </Card>
-            <Card style={styles.card}>
-              <CardItem>
-                <Left>
-                  <Image source={{ uri: 'https://i.pinimg.com/236x/7e/31/69/7e316987ebed8282d3a67264325374f5.jpg' }}
-                    style={{ width: 110, height: 130 }} />
-                  <View >
-                    <Title style={styles.title}>Cape Town Hotel</Title>
-                    <Subtitle style={styles.subtitle}>Barcelona, Spain</Subtitle>
-                    <View style={styles.bwhTitle}>
-                      <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.jarak}>2 km to city</Text>
-                      <Text style={styles.harga}>$180</Text>
-                    </View>
-                    <View style={styles.rating}>
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                      <Text style={styles.night}>/per night</Text>
-                    </View>
-                  </View>
-                </Left>
-              </CardItem>
-            </Card>
-          </View>
-        </ScrollView>
+        <FlatList
+          data={this.state.FAVIMG}
+          keyExtractor={this.keyExtractor}
+          renderItem={({ item }) => (
+            <TouchableHighlight
+              onPress={() => {
+                console.log(item._id);
+              }}
+              style={styles.rowFont}>
+              <CardHotel
+                gambar={item.image}
+                namaHotel={item.title}
+                tempat={item.sub}
+                jarak={item.jarak}
+                harga={item.harga}
+                night={item.night}
+              />
+            </TouchableHighlight>)}
+        />
       </Container>
     );
   }

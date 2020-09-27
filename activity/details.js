@@ -49,18 +49,12 @@ export default class Details extends Component {
             <Container>
                 <ScrollView>
                     <View>
-                        <Header style={{ backgroundColor: 'white' }}>
-                            <Left>
-                                <Icon type='AntDesign' name='arrowleft'
-                                    onPress={() => this.props.navigation.navigate('Favorites')} />
-                            </Left>
-                            <Body>
-                                <Text style={{ alignContent: 'center', fontWeight: 'bold', fontSize: 13, fontFamily: 'serif' }}>Grand Royal Hotel</Text>
-                            </Body>
-                            <Right>
-                                <Icon type='AntDesign' name='hearto' />
-                            </Right>
-                        </Header>
+                        <View style={styles.header}>
+                            <Icon type='AntDesign' name='arrowleft'
+                                onPress={() => this.props.navigation.navigate('Favorites')} />
+                            <Text style={styles.txtHeader}>Grand Royale Hotel</Text>
+                            <Icon type='AntDesign' name='hearto' />
+                        </View>
                         <ScrollView
                             pagingEnabled
                             horizontal
@@ -156,6 +150,19 @@ const styles = StyleSheet.create({
     scrollView: {
         backgroundColor: Colors.lighter,
     },
+    header: {
+        flexDirection: 'row',
+        marginTop: 10,
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: 10,
+        justifyContent: 'space-between'
+    },
+    txtHeader: {
+        fontWeight: 'bold',
+        fontSize: 20,
+        fontFamily: 'serif'
+    },
     backgroundImage: {
         width: 360,
         height: 220,
@@ -201,8 +208,8 @@ const styles = StyleSheet.create({
     btnBook: {
         backgroundColor: '#00ddbf',
     },
-    details: { 
-        marginTop: 20, 
-        color: 'grey' 
+    details: {
+        marginTop: 20,
+        color: 'grey'
     },
 });
