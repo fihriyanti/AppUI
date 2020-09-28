@@ -16,11 +16,13 @@ const CardChoose = (props) => {
             </Item>
             <View style={styles.date}>
                 <View style={{ flexDirection: 'column', marginLeft: 35 }}>
-                    <Text style={styles.txtBg}>{props.date}</Text>
+                    <Text style={styles.txtBg}
+                    onPress={props. mdlChoose}>{props.date}</Text>
                     <Text style={styles.tgl}>{props.tgl}</Text>
                 </View>
                 <View style={{ flexDirection: 'column' }}>
-                    <Text style={styles.txtBg}>{props.room}</Text>
+                    <Text style={styles.txtBg}
+                    onPress={props.mdlNum}>{props.room}</Text>
                     <Text style={styles.tgl}>{props.adult}</Text>
                 </View>
             </View>

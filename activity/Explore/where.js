@@ -13,6 +13,7 @@ import {
     View,
     Text,
     ImageBackground,
+    Modal,
 } from 'react-native';
 
 import {
@@ -25,15 +26,19 @@ import CardChoose from '../component/cardchoose';
 import CardSearch from '../component/cardsearch';
 import CardPopular from '../component/cardpopular';
 import CardHotelL from '../component/cardHotelL';
+import Modal1 from '../component/modal';
+import Modal2 from '../component/modal2';
 
 export default class Where extends Component {
     constructor(props) {
         super(props);
         this.state = {
             FAVIMG: [],
+            show: false,
+            show2: false,
         }
     }
-    
+
     componentDidMount() {
         this.setState({
             FAVIMG: [
@@ -79,14 +84,16 @@ export default class Where extends Component {
                     <Text style={styles.judul}
                         onPress={() => this.props.navigation.navigate('Roma')}>Where are you {"\n"} going next?</Text>
                 </ImageBackground>
-                <CardChoose 
+                <CardChoose
                     date='Choose date'
+                    mdlChoose={() => this.setState({ show2: true })}
                     tgl='12 Dec - 22 Dec'
                     room='Number of Rooms'
+                    mdlNum={() => this.setState({ show: true })}
                     adult='1 Room - 2 Adulss'
                     namaBtn='Search Hotels'
                     onPress={() => this.props.navigation.navigate('London')}
-                    
+
                 />
                 <Text style={styles.txtPop}>Last searches</Text>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -146,6 +153,32 @@ export default class Where extends Component {
                         />
                     )}
                 />
+
+                <Modal transparent={true} visible={this.state.show}>
+                    <Modal1
+                        list1='Number of Rooms'
+                        val1='1'
+                        list2='Adult'
+                        list22='(Aged 18+)'
+                        val2='2'
+                        list3='Childern'
+                        list33='(0-17)'
+                        val3='0'
+                        onPress={() => this.setState({ show: false })}
+                        apply='Apply'
+                    />
+                </Modal>
+                <Modal transparent={true} visible={this.state.show2}>
+                    <Modal2
+                        txtDepart='Depart'
+                        txtTgl='Mon 12 Dec'
+                        txtReturn='Return'
+                        tglReturn='Tue 22 Dec'
+                        txtCheck='Flexible with dates'
+                        onPress={() => this.setState({ show2: false })}
+                        apply='Apply'
+                    />
+                </Modal>
             </ScrollView>
         );
     }

@@ -59,7 +59,7 @@ export default class Started extends Component {
                   <ImageBackground
                     key={index}
                     source={{ uri: image }}
-                    style={{ width: 360, height: 380, resizeMode: 'cover' }}>
+                    style={{ width: 420, height: 450, resizeMode: 'cover' }}>
                     <Item searchBar rounded style={styles.search}
                       onPress={() => this.setState({show: true})}>
                       <Icon type='AntDesign' name="search1" style={{ color: '#00ddbf', marginLeft: 10, fontSize: 20 }} />

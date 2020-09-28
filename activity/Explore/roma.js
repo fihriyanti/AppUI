@@ -21,8 +21,12 @@ import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Icon, Card, CardItem, Thumbnail, Item, Input, Title, Left, Subtitle, Right, Container } from 'native-base';
+import { Icon, Thumbnail, Item, Input, Container } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
+
+import Highlight from '../component/highlight';
+import CardPopular from '../component/cardPopularRoma';
+import CardHotel from '../component/cardHotelL';
 
 const image = [
     'https://i.pinimg.com/236x/d9/22/87/d9228760d7df416dc24a3a4b1eba990c.jpg',
@@ -93,30 +97,30 @@ export default class Roma extends Component {
                     </Item>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false}
                         style={{ marginTop: 10 }}>
-                        <View style={styles.thumb}>
-                            <Thumbnail source={{ uri: 'https://i.pinimg.com/236x/08/20/cd/0820cd8d6a6f1fb822b6626c5ba2277f.jpg' }} />
-                            <Text style={styles.txtThumb}>Hotels</Text>
-                        </View>
-                        <View style={styles.thumb}>
-                            <Thumbnail source={{ uri: 'https://i.pinimg.com/236x/97/07/4e/97074e4f145d309e1ea80304d836014c.jpg' }} />
-                            <Text style={styles.txtThumb}>Homes</Text>
-                        </View>
-                        <View style={styles.thumb}>
-                            <Thumbnail source={{ uri: 'https://i.pinimg.com/236x/1d/8f/ef/1d8fef5ebe95e4113b68d6cfe2cd5f87.jpg' }} />
-                            <Text style={styles.txtThumb}>Resort</Text>
-                        </View>
-                        <View style={styles.thumb}>
-                            <Thumbnail source={{ uri: 'https://i.pinimg.com/236x/8a/66/3a/8a663a4008ce8aa22af205b427f7eb12.jpg' }} />
-                            <Text style={styles.txtThumb}>Villa</Text>
-                        </View>
-                        <View style={styles.thumb}>
-                            <Thumbnail source={{ uri: 'https://i.pinimg.com/236x/08/f7/d4/08f7d426d9565079407fe1ee1b39e241.jpg' }} />
-                            <Text style={styles.txtThumb}>Apartment</Text>
-                        </View>
-                        <View style={styles.thumb}>
-                            <Thumbnail source={{ uri: 'https://i.pinimg.com/236x/09/6f/0f/096f0ff9568566b72014d70d306892b1.jpg' }} />
-                            <Text style={styles.txtThumb}>Hotels</Text>
-                        </View>
+                        <Highlight
+                            thumb='https://i.pinimg.com/236x/08/20/cd/0820cd8d6a6f1fb822b6626c5ba2277f.jpg'
+                            namaThumb='Hotels'
+                        />
+                        <Highlight
+                            thumb='https://i.pinimg.com/236x/97/07/4e/97074e4f145d309e1ea80304d836014c.jpg'
+                            namaThumb='Homes'
+                        />
+                        <Highlight
+                            thumb='https://i.pinimg.com/236x/1d/8f/ef/1d8fef5ebe95e4113b68d6cfe2cd5f87.jpg'
+                            namaThumb='Resort'
+                        />
+                        <Highlight
+                            thumb='https://i.pinimg.com/236x/8a/66/3a/8a663a4008ce8aa22af205b427f7eb12.jpg'
+                            namaThumb='Villa'
+                        />
+                        <Highlight
+                            thumb='https://i.pinimg.com/236x/08/f7/d4/08f7d426d9565079407fe1ee1b39e241.jpg'
+                            namaThumb='Apartment'
+                        />
+                        <Highlight
+                            thumb='https://i.pinimg.com/236x/09/6f/0f/096f0ff9568566b72014d70d306892b1.jpg'
+                            namaThumb='Hotels'
+                        />
                     </ScrollView>
                     <View style={{ marginTop: 20 }}>
                         <ScrollView
@@ -147,38 +151,22 @@ export default class Roma extends Component {
                     </View>
                     <Text style={styles.txtPop}>Popular Destinations</Text>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                        <Card style={styles.card2}>
-                            <CardItem cardBody>
-                                <Image source={{ uri: 'https://i.pinimg.com/236x/9c/c8/f9/9cc8f97452d0968938a87f9702f57220.jpg' }}
-                                    style={{ height: 180, width: 120, borderRadius: 10 }}
-                                />
-                                <Title style={{ position: 'absolute', bottom: 10, left: 15, fontFamily: 'serif' }}>London</Title>
-                            </CardItem>
-                        </Card>
-                        <Card style={styles.card2}>
-                            <CardItem cardBody>
-                                <Image source={{ uri: 'https://i.pinimg.com/236x/de/bb/7c/debb7cfc4768f531ad1043e45769c4c7.jpg' }}
-                                    style={{ height: 180, width: 120, borderRadius: 10 }}
-                                />
-                                <Title style={{ position: 'absolute', bottom: 10, left: 15, fontFamily: 'serif' }}>Spain</Title>
-                            </CardItem>
-                        </Card>
-                        <Card style={styles.card2}>
-                            <CardItem cardBody>
-                                <Image source={{ uri: 'https://i.pinimg.com/236x/f3/c7/79/f3c77929b0224ace2822d1acedc344d4.jpg' }}
-                                    style={{ height: 180, width: 120, borderRadius: 10 }}
-                                />
-                                <Title style={{ position: 'absolute', bottom: 10, left: 15, fontFamily: 'serif' }}>Italia</Title>
-                            </CardItem>
-                        </Card>
-                        <Card style={styles.card2}>
-                            <CardItem cardBody>
-                                <Image source={{ uri: 'https://i.pinimg.com/236x/36/86/88/368688f66ebf9c4ea0e0a077b474b7d5.jpg' }}
-                                    style={{ height: 180, width: 120, borderRadius: 10 }}
-                                />
-                                <Title style={{ position: 'absolute', bottom: 10, left: 15, fontFamily: 'serif' }}>Hawaii</Title>
-                            </CardItem>
-                        </Card>
+                        <CardPopular
+                            image='https://i.pinimg.com/236x/9c/c8/f9/9cc8f97452d0968938a87f9702f57220.jpg'
+                            title='London'
+                        />
+                        <CardPopular
+                            image='https://i.pinimg.com/236x/de/bb/7c/debb7cfc4768f531ad1043e45769c4c7.jpg'
+                            title='Spain'
+                        />
+                        <CardPopular
+                            image='https://i.pinimg.com/236x/f3/c7/79/f3c77929b0224ace2822d1acedc344d4.jpg'
+                            title='Italia'
+                        />
+                        <CardPopular
+                            image='https://i.pinimg.com/236x/36/86/88/368688f66ebf9c4ea0e0a077b474b7d5.jpg'
+                            title='Hawaii'
+                        />
                     </ScrollView>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.txtPop}>Best Deals</Text>
@@ -190,39 +178,17 @@ export default class Roma extends Component {
                         data={this.state.FAVIMG}
                         keyExtractor={this.keyExtractor}
                         renderItem={({ item }) => (
-                            <Card style={styles.card3}>
-                                <CardItem>
-                                    <Left>
-                                        <Image source={{ uri: item.image }}
-                                            style={{ width: 110, height: 130 }} />
-                                        <View >
-                                            <Title style={styles.title}>{item.title}</Title>
-                                            <Subtitle style={styles.subtitle}>{item.sub}</Subtitle>
-                                            <View style={styles.bwhTitle}>
-                                                <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                                <Text style={styles.jarak}>{item.jarak}</Text>
-                                            </View>
-                                            <View style={styles.rating}>
-                                                <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                                <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                                <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                                <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                                <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                            </View>
-                                        </View>
-                                    </Left>
-                                    <Right>
-                                        <View style={{ flexDirection: 'column', justifyContent: 'flex-end', marginTop: 80 }}>
-                                            <Text style={styles.harga}>{item.harga}</Text>
-                                            <Text style={styles.night}>{item.night}</Text>
-                                        </View>
-                                    </Right>
-                                </CardItem>
-                            </Card>
+                            <CardHotel
+                                gambar={item.image}
+                                namaHotel={item.title}
+                                tempat={item.sub}
+                                jarak={item.jarak}
+                                harga={item.harga}
+                                night={item.night}
+                            />
                         )}
                     />
                 </ScrollView>
-                
             </Container>
         );
     }

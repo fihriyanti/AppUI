@@ -11,17 +11,21 @@ import {
     StyleSheet,
     View,
     Text,
-    Image,
-    ImageBackground,
+    Modal
 } from 'react-native';
 
 import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Item, Icon, Input, Card, CardItem, Left, Title, Subtitle, Container, Right, Form } from 'native-base';
+import { Icon, Container } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
 import MapView, { Marker } from 'react-native-maps';
+
+import ImageBg from '../component/imgBackground';
+import CardHotel from '../component/cardHotelL';
+import Modal1 from '../component/modal';
+import Modal2 from '../component/modal2';
 
 export default class Map extends Component {
     constructor(props) {
@@ -77,26 +81,15 @@ export default class Map extends Component {
                         <Icon type='MaterialIcons' name='filter-list' />
                     </View>
                 </View>
-                <ImageBackground style={styles.imageBg}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Item searchBar rounded style={styles.search}>
-                            <Input style={{ fontSize: 15, marginLeft: 15, fontWeight: 'bold', fontFamily: 'serif' }} placeholder="London" />
-                        </Item>
-                        <View style={styles.camera}>
-                            <Icon type='AntDesign' name="search1" style={{ color: 'white', fontSize: 20 }} />
-                        </View>
-                    </View>
-                    <View style={{ flexDirection: 'row', marginTop: 20, justifyContent: 'space-around'}}>
-                        <View style={{ flexDirection: 'column' }}>
-                            <Text style={styles.txtBg}>Choose date</Text>
-                            <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 14 }}>12 Dec - 22 Dec</Text>
-                        </View>
-                        <View style={{ flexDirection: 'column' }}>
-                            <Text style={styles.txtBg}>Number of Rooms</Text>
-                            <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 14 }}>1 Room - 2 Adults</Text>
-                        </View>
-                    </View>
-                </ImageBackground>
+                <ImageBg
+                    input='London'
+                    mdlChoose={() => this.setState({ show2: true })}
+                    date='Choose date'
+                    tgl='12 Dec - 22 Dec'
+                    mdlNum={() => this.setState({ show: true })}
+                    number='Number of Rooms'
+                    room='1 Room - 2 Adults'
+                />
                 <MapView style={{ height: 400 }}
                     initialRegion={{
                         latitude: 41.355146,
@@ -104,46 +97,49 @@ export default class Map extends Component {
                         latitudeDelta: 0.09,
                         longitudeDelta: 0.0921,
                     }}>
-
                 </MapView>
                 <FlatList
                     horizontal
                     showsHorizontalScrollIndicator={false}
-                    style={{position: 'absolute', bottom: 5}}
+                    style={{ position: 'absolute', bottom: 5 }}
                     data={this.state.FAVIMG}
                     keyExtractor={this.keyExtractor}
                     renderItem={({ item }) => (
-                        <Card style={styles.card3}>
-                            <CardItem>
-                                <Left>
-                                    <Image source={{ uri: item.image }}
-                                        style={{ width: 110, height: 130, borderRadius: 10 }} />
-                                    <View >
-                                        <Title style={styles.title}>{item.title}</Title>
-                                        <Subtitle style={styles.subtitle}>{item.sub}</Subtitle>
-                                        <View style={styles.bwhTitle}>
-                                            <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                            <Text style={styles.jarak}>{item.jarak}</Text>
-                                        </View>
-                                        <View style={styles.rating}>
-                                            <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                            <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                            <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                            <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                            <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                        </View>
-                                    </View>
-                                </Left>
-                                <Right>
-                                    <View style={{ flexDirection: 'column', justifyContent: 'flex-end', marginTop: 80 }}>
-                                        <Text style={styles.harga}>{item.harga}</Text>
-                                        <Text style={styles.night}>{item.night}</Text>
-                                    </View>
-                                </Right>
-                            </CardItem>
-                        </Card>
+                        <CardHotel
+                            gambar={item.image}
+                            namaHotel={item.title}
+                            tempat={item.sub}
+                            jarak={item.jarak}
+                            harga={item.harga}
+                            night={item.night}
+                        />
                     )}
                 />
+                <Modal transparent={true} visible={this.state.show}>
+                    <Modal1
+                        list1='Number of Rooms'
+                        val1='1'
+                        list2='Adult'
+                        list22='(Aged 18+)'
+                        val2='2'
+                        list3='Childern'
+                        list33='(0-17)'
+                        val3='0'
+                        onPress={() => this.setState({ show: false })}
+                        apply='Apply'
+                    />
+                </Modal>
+                <Modal transparent={true} visible={this.state.show2}>
+                    <Modal2
+                        txtDepart='Depart'
+                        txtTgl='Mon 12 Dec'
+                        txtReturn='Return'
+                        tglReturn='Tue 22 Dec'
+                        txtCheck='Flexible with dates'
+                        onPress={() => this.setState({ show2: false })}
+                        apply='Apply'
+                    />
+                </Modal>
             </Container>
         );
     }

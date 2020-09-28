@@ -18,7 +18,9 @@ import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { List, Icon, ListItem, Right, Left } from 'native-base';
+import { List, Icon, } from 'native-base';
+
+import ListItem from './component/currencyList';
 
 export default class Currency extends Component {
 
@@ -32,78 +34,42 @@ export default class Currency extends Component {
                         <Text style={styles.text}>Currency</Text>
                     </View>
                     <List style={styles.list}>
-                        <ListItem>
-                            <Left>
-                                <Text>Australian Dollar</Text>
-                            </Left>
-                            <Right>
-                                <Text style={{ color: '#bcbcbc' }}>AUD</Text>
-                            </Right>
-                        </ListItem>
-                        <ListItem>
-                            <Left>
-                                <Text>Argentine Peso</Text>
-                            </Left>
-                            <Right>
-                                <Text style={{ color: '#bcbcbc' }}>ARS</Text>
-                            </Right>
-                        </ListItem>
-                        <ListItem>
-                            <Left>
-                                <Text>Belgian Euro</Text>
-                            </Left>
-                            <Right>
-                                <Text style={{ color: '#bcbcbc' }}>Euro</Text>
-                            </Right>
-                        </ListItem>
-                        <ListItem>
-                            <Left>
-                                <Text>Brazilian Real</Text>
-                            </Left>
-                            <Right>
-                                <Text style={{ color: '#bcbcbc' }}>REAL</Text>
-                            </Right>
-                        </ListItem>
-                        <ListItem>
-                            <Left>
-                                <Text>Canadian Dollar</Text>
-                            </Left>
-                            <Right>
-                                <Text style={{ color: '#bcbcbc' }}>CAD</Text>
-                            </Right>
-                        </ListItem>
-                        <ListItem>
-                            <Left>
-                                <Text>Buban Peso</Text>
-                            </Left>
-                            <Right>
-                                <Text style={{ color: '#bcbcbc' }}>PESO</Text>
-                            </Right>
-                        </ListItem>
-                        <ListItem>
-                            <Left>
-                                <Text>French Euro</Text>
-                            </Left>
-                            <Right>
-                                <Text style={{ color: '#bcbcbc' }}>EURO</Text>
-                            </Right>
-                        </ListItem>
-                        <ListItem>
-                            <Left>
-                                <Text>Hong Kong Dollar</Text>
-                            </Left>
-                            <Right>
-                                <Text style={{ color: '#bcbcbc' }}>HKD</Text>
-                            </Right>
-                        </ListItem>
-                        <ListItem>
-                            <Left>
-                                <Text>Italian Euro</Text>
-                            </Left>
-                            <Right>
-                                <Text style={{ color: '#bcbcbc' }}>EURO</Text>
-                            </Right>
-                        </ListItem>
+                        <ListItem
+                            left='Australian Dollar'
+                            right='AUD'
+                        />
+                        <ListItem
+                            left='Argentine Pese'
+                            right='ARS'
+                        />
+                        <ListItem
+                            left='Belgian Euro'
+                            right='Euro'
+                        />
+                        <ListItem
+                            left='Brazilian Real'
+                            right='REAL'
+                        />
+                        <ListItem
+                            left='Canadian Dollar'
+                            right='CAD'
+                        />
+                        <ListItem
+                            left='Buban Peso'
+                            right='PESO'
+                        />
+                        <ListItem
+                            left='French Euro'
+                            right='EURO'
+                        />
+                        <ListItem
+                            left='Hong Kong Dollar'
+                            right='HKD'
+                        />
+                        <ListItem
+                            left='Italian Euro'
+                            right='EURO'
+                        />
                     </List>
                 </View>
             </ScrollView>
