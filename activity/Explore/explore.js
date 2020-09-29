@@ -78,7 +78,7 @@ export default class Explore extends Component {
         return (
             <Container>
                 <Header
-                    icBack={() => this.props.navigation.navigate('Explore')}
+                    icBack={() => this.props.navigation.navigate('Where')}
                     txtHeader='Explore'
                     icMap={() => this.props.navigation.navigate('Map')}
                 />
@@ -154,7 +154,6 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         marginTop: 20,
         marginRight: 20,
-        marginBottom: 10
     },
     icFilter: {
         color: '#00ddbf',

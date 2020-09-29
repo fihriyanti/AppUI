@@ -6,46 +6,48 @@ import {
     Image
 } from 'react-native';
 
-import { Icon,  Card, CardItem, Left, Title, Subtitle, Right, } from 'native-base';
+import { Icon, Card, CardItem, Left, Title, Subtitle, Right, } from 'native-base';
 
 const CardHotelB = (props) => {
     return (
-        <Card style={styles.card}>
-            <Text style={{ textAlign: 'center', marginTop: 10, marginBottom: 10 }}>{props.tgl}</Text>
-            <CardItem cardBody>
-                <Image source={{ uri: props.gambar }}
-                    style={{ width: 370, height: 200, borderRadius: 10 }} />
-                <View style={styles.heart}>
-                    <Icon type="Entypo" name="heart-outlined" style={{ color: '#00ddbf', fontSize: 25, marginLeft: 7 }} />
-                </View>
-            </CardItem>
-            <CardItem>
-                <Left>
-                    <View style={{ flexDirection: 'column' }}>
-                        <Title style={styles.title}>{props.namaHotel}</Title>
-                        <View style={{ flexDirection: 'row' }}>
-                            <Subtitle style={styles.subtitle}>{props.alamat}</Subtitle>
-                            <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 15, color: '#1de9b6', marginLeft: 5, marginRight: 5 }} />
-                            <Text style={styles.jarak}>{props.jarak}</Text>
-                        </View>
-                        <View style={styles.rating}>
-                            <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                            <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                            <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                            <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
-                            <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                            <Text style={styles.review}>{props.review}</Text>
-                        </View>
+        <View>
+            <Text style={{ textAlign: 'center', marginTop: 10}}>{props.tgl}</Text>
+            <Card style={styles.card}>
+                <CardItem cardBody>
+                    <Image source={{ uri: props.gambar }}
+                        style={{ width: 370, height: 200, borderRadius: 10 }} />
+                    <View style={styles.heart}>
+                        <Icon type="Entypo" name="heart-outlined" style={{ color: '#00ddbf', fontSize: 25, marginLeft: 7 }} />
                     </View>
-                </Left>
-                <Right style={{ marginBottom: 20 }}>
-                    <View style={{ flexDirection: 'column' }}>
-                        <Title style={styles.harga}>{props.harga}</Title>
-                        <Text style={styles.night}>{props.night}</Text>
-                    </View>
-                </Right>
-            </CardItem>
-        </Card>
+                </CardItem>
+                <CardItem>
+                    <Left>
+                        <View style={{ flexDirection: 'column' }}>
+                            <Title style={styles.title}>{props.namaHotel}</Title>
+                            <View style={{ flexDirection: 'row' }}>
+                                <Subtitle style={styles.subtitle}>{props.alamat}</Subtitle>
+                                <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 15, color: '#1de9b6', marginLeft: 5, marginRight: 5 }} />
+                                <Text style={styles.jarak}>{props.jarak}</Text>
+                            </View>
+                            <View style={styles.rating}>
+                                <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                                <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                                <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                                <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
+                                <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
+                                <Text style={styles.review}>{props.review}</Text>
+                            </View>
+                        </View>
+                    </Left>
+                    <Right style={{ marginBottom: 20 }}>
+                        <View style={{ flexDirection: 'column' }}>
+                            <Title style={styles.harga}>{props.harga}</Title>
+                            <Text style={styles.night}>{props.night}</Text>
+                        </View>
+                    </Right>
+                </CardItem>
+            </Card>
+        </View>
     )
 }
 
@@ -53,7 +55,7 @@ const styles = StyleSheet.create({
     card: {
         marginLeft: 20,
         marginRight: 20,
-        marginTop: 10,
+        // marginTop: 10,
         borderRadius: 20,
     },
     heart: {
