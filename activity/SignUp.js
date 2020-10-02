@@ -11,8 +11,10 @@ import {
     StyleSheet,
     ScrollView,
     View,
-    Text
+    Text,
 } from 'react-native';
+
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
     Colors,
@@ -23,7 +25,58 @@ import { Container, Button, Icon, Item, Input } from 'native-base';
 import { SocialIcon } from 'react-native-elements';
 import { } from 'react-native-vector-icons';
 
+import axios from 'axios';
+
 export default class SignUp extends Component {
+
+    singUp = () => {
+        AsyncStorage.getItem('firstname').then((value) => this.setState({'firstname' : value}));
+        AsyncStorage.getItem('lastname').then((value) => this.setState({'lastname' : value}));
+        AsyncStorage.getItem('email').then((value) => this.setState({'email' : value}));
+        AsyncStorage.getItem('password').then((value) => this.setState({'password' : value}));
+    }
+
+    setFname = (value) => {
+        AsyncStorage.setItem('firstname', value);
+        this.setState({ 'firstname': value});
+    }
+    setLname = (value) => {
+        AsyncStorage.setItem('lastname', value);
+        this.setState({ 'lastname': value});
+    }
+    setEmail = (value) => {
+        AsyncStorage.setItem('email', value);
+        this.setState({ 'email': value});
+    }
+    setPass = (value) => {
+        AsyncStorage.setItem('password', value);
+        this.setState({ 'password': value});
+    }
+    
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            firstname: '',
+            lastname: '',
+            email: '',
+            password: '',
+        }
+    }
+
+    onSignUp = () => {
+        const users = {
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            email: this.state.email,
+            password: this.state.password,
+        }
+
+        console.log('New User', users);
+
+        axios.post('http://192.168.1.8:5000/users/add', users)
+            .then(res => console.log(res.data))
+    }
 
     render() {
         return (
@@ -46,18 +99,35 @@ export default class SignUp extends Component {
                     </View>
                     <Text style={styles.email}>or sign up with email</Text>
                     <Item rounded style={styles.item}>
-                        <Input placeholder='First Name' style={{ fontSize: 20, marginLeft: 20 }} />
+                        <Input placeholder='First Name' style={styles.input}
+                            onChangeText={this.setFname}
+                            value={this.state.firstname}
+                        />
                     </Item>
                     <Item rounded style={styles.item2}>
-                        <Input placeholder='Last Name' style={{ fontSize: 20, marginLeft: 20 }} />
+                        <Input placeholder='Last Name' style={styles.input}
+                            onChangeText={this.setLname}
+                            value={this.state.lastname}
+                        />
                     </Item>
                     <Item rounded style={styles.item2}>
-                        <Input placeholder='Your Email' style={{ fontSize: 20, marginLeft: 20 }} />
+                        <Input placeholder='Your Email' style={styles.input}
+                            onChangeText={this.setEmail}
+                            value={this.state.email}
+                        />
                     </Item>
                     <Item rounded style={styles.item2}>
-                        <Input placeholder='Password' style={{ fontSize: 20, marginLeft: 20 }} />
+                        <Input placeholder='Password' style={styles.input}
+                            onChangeText={this.setPass}
+                            value={this.state.password}
+                        />
                     </Item>
-                    <Button full rounded style={styles.btn1}>
+                    <Button full rounded style={styles.btn1}
+                        onPress={() => {
+                            this.singUp;
+                            this.onSignUp();
+                            this.props.navigation.navigate('Masuk')
+                        }}>
                         <Text style={styles.btnTxt}>Sign up</Text>
                     </Button>
                     <Text style={styles.by}>By signing up, you agreed with our Termd of Services and Privacy Policy.</Text>
@@ -108,6 +178,10 @@ const styles = StyleSheet.create({
         marginRight: 20,
         marginTop: 25,
         backgroundColor: '#fff'
+    },
+    input: {
+        fontSize: 20,
+        marginLeft: 20
     },
     item2: {
         height: 50,

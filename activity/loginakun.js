@@ -11,19 +11,64 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  Text
+  Text,
+  Alert,
 } from 'react-native';
+
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Container, Button, Icon, Item, Input } from 'native-base';
+import { Container, Button, Icon, Item, Input, } from 'native-base';
 
 import { SocialIcon } from 'react-native-elements';
 import { } from 'react-native-vector-icons';
 
+import axios from 'axios';
+
 export default class LoginAkun extends Component {
+
+  componentDidMount = () => {
+    AsyncStorage.getItem('email').then((value) => this.setState({ 'email': value }));
+    AsyncStorage.getItem('password').then((value) => this.setState({ 'password': value }));
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+      inputEmail: '',
+      inputPassword: '',
+    }
+  }
+
+  myValidate = () => {
+    const { inputEmail, inputPassword } = this.state;
+    const myEmail = this.state.email;
+    const myPass = this.state.password;
+    if (inputEmail == '' && inputPassword == '') {
+      Alert.alert('Please fill the Username and Password');
+    }
+    else if (inputEmail != myEmail && inputPassword != myPass) {
+      Alert.alert('Account not found');
+    }
+    else if (inputEmail == myEmail && inputPassword == '') {
+      Alert.alert('Password Empty');
+    }
+    else if (inputEmail == '' && inputPassword == myPass) {
+      Alert.alert('Email Empty');
+    }
+    else if (inputEmail == myEmail && inputPassword == myPass) {
+      this.props.navigation.navigate('Tab', { screen: 'Profile' })
+    }
+    else {
+      Alert.alert('Data not found')
+    }
+  }
 
   render() {
     return (
@@ -46,16 +91,21 @@ export default class LoginAkun extends Component {
           </View>
           <Text style={styles.email}>or log in with email</Text>
           <Item rounded style={styles.item}>
-            <Input placeholder='Your Email' style={{ fontSize: 20, marginLeft: 20 }} />
+            <Input placeholder='Your Email' style={styles.input}
+              onChangeText={inputEmail => this.setState({ inputEmail })}
+            />
           </Item>
           <Item rounded style={styles.item2}>
-            <Input placeholder='Password' style={{ fontSize: 20, marginLeft: 20 }} />
+            <Input placeholder='Password' style={styles.input}
+              secureTextEntry={true}
+              onChangeText={inputPassword => this.setState({ inputPassword })}
+            />
           </Item>
           <Text style={styles.forgot}
             onPress={() => this.props.navigation.navigate('Forgot')}>
             Forgot your password?
             </Text>
-          <Button full rounded style={styles.btn1}>
+          <Button full rounded style={styles.btn1} onPress={this.myValidate}>
             <Text style={styles.btnTxt}>Log In</Text>
           </Button>
           <Text style={styles.sign}>Don't have an account?
@@ -106,6 +156,10 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginTop: 35,
     backgroundColor: '#fff'
+  },
+  input: {
+    fontSize: 20,
+    marginLeft: 20
   },
   item2: {
     height: 60,
