@@ -20,7 +20,22 @@ import {
 
 import { List, Icon, Thumbnail, ListItem, Right, Left } from 'native-base';
 
+import AsyncStorage from '@react-native-community/async-storage';
+
 export default class Profile extends Component {
+
+    componentDidMount(){
+        AsyncStorage.getItem('firstname').then((value) => this.setState({'firstname' : value}));
+    }
+    
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            firstname: '',
+        }
+    }
+    
 
     render() {
         return (
@@ -28,7 +43,7 @@ export default class Profile extends Component {
                 <View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View>
-                            <Text style={styles.nama}>Amanda</Text>
+                            <Text style={styles.nama}>{this.state.firstname}</Text>
                             <Text style={styles.txt}
                                 onPress={() => this.props.navigation.navigate('EditProfile')}>View and edit profile</Text>
                         </View>

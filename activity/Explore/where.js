@@ -20,6 +20,8 @@ import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
+import axios from 'axios';
+
 import { Thumbnail } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
 import CardChoose from '../component/cardchoose';
@@ -33,44 +35,22 @@ export default class Where extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            FAVIMG: [],
+            gambar: [],
             show: false,
             show2: false,
         }
     }
 
     componentDidMount() {
-        this.setState({
-            FAVIMG: [
-                {
-                    id: '1',
-                    image: 'https://i.pinimg.com/564x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg',
-                    title: 'Grand Royal Hotel',
-                    sub: 'Barcelona, Spain',
-                    jarak: '2 km to city',
-                    harga: '$180',
-                    night: '/per night',
-                },
-                {
-                    id: '2',
-                    image: 'https://i.pinimg.com/236x/02/79/aa/0279aac58d93bc620802e60e42905518.jpg',
-                    title: 'Queen Hotel',
-                    sub: 'Barcelona, Spain',
-                    jarak: '2 km to city',
-                    harga: '$220',
-                    night: '/per night',
-                },
-                {
-                    id: '3',
-                    image: 'https://i.pinimg.com/236x/95/8d/4c/958d4c49ae8661f7b97f12d460562bef.jpg',
-                    title: 'Victoria Hotel',
-                    sub: 'Barcelona, Spain',
-                    jarak: '2 km to city',
-                    harga: '$480',
-                    night: '/per night',
-                },
-            ]
-        })
+        axios.get('http://192.168.1.8:5000/hotels/')
+            .then(response => {
+                const gambar = response.data;
+                this.setState({ gambar })
+                console.log(gambar)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     render() {
@@ -140,16 +120,13 @@ export default class Where extends Component {
                 <Text style={styles.txtPop}>Best Deals</Text>
                 <FlatList
                     scrollEnabled={false}
-                    data={this.state.FAVIMG}
-                    keyExtractor={this.keyExtractor}
+                    data={this.state.gambar}
+                    keyExtractor={(item) => item._id}
                     renderItem={({ item }) => (
                         <CardHotelL
-                            gambar={item.image}
-                            namaHotel={item.title}
-                            tempat={item.sub}
-                            jarak={item.jarak}
+                            gambar={item.gambar}
+                            namaHotel={item.namahotel}
                             harga={item.harga}
-                            night={item.night}
                         />
                     )}
                 />

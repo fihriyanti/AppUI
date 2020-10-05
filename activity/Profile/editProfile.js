@@ -20,7 +20,25 @@ import {
 
 import { List, Icon, ListItem, Left, Thumbnail } from 'native-base';
 
+import AsyncStorage from '@react-native-community/async-storage';
+
 export default class EditProfile extends Component {
+
+    componentDidMount() {
+        AsyncStorage.getItem('firstname').then((value) => this.setState({ 'firstname': value }));
+        AsyncStorage.getItem('lastname').then((value) => this.setState({ 'lastname': value }));
+        AsyncStorage.getItem('email').then((value) => this.setState({ 'email': value }));
+    }
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            firstname: '',
+            lastname: '',
+            email: '',
+        }
+    }
 
     render() {
         return (
@@ -43,13 +61,16 @@ export default class EditProfile extends Component {
                             <Left>
                                 <Text style={{ color: '#bcbcbc' }}>Username</Text>
                             </Left>
-                            <Text style={{ fontSize: 12, textAlign: 'right' }}>Amanda Jane</Text>
+                            <View style={{flexDirection: 'row',}}>
+                                <Text style={{ fontSize: 12, textAlign: 'right' }}>{this.state.firstname}</Text>
+                                <Text style={{ fontSize: 12, textAlign: 'right', marginLeft: 5 }}>{this.state.lastname}</Text>
+                            </View>
                         </ListItem>
                         <ListItem>
                             <Left>
                                 <Text style={{ color: '#bcbcbc' }}>Email</Text>
                             </Left>
-                            <Text style={{ fontSize: 12, textAlign: 'right' }}>amanda@gmail.com</Text>
+                            <Text style={{ fontSize: 12, textAlign: 'right' }}>{this.state.email}</Text>
                         </ListItem>
                         <ListItem>
                             <Left>
@@ -91,7 +112,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#00ddbf',
         position: 'absolute',
         bottom: 0,
-        right: 115,
+        right: 145,
         width: 40,
         height: 40,
         borderRadius: 30,

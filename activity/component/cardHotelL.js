@@ -17,10 +17,10 @@ const CardHotelL = (props) => {
                         style={{ width: 110, height: 130 }} />
                     <View >
                         <Title style={styles.title}>{props.namaHotel}</Title>
-                        <Subtitle style={styles.subtitle}>{props.tempat}</Subtitle>
+                        <Subtitle style={styles.subtitle}>Barcelona, Spain</Subtitle>
                         <View style={styles.bwhTitle}>
                             <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 20, color: '#1de9b6' }} />
-                            <Text style={styles.jarak}>{props.jarak}</Text>
+                            <Text style={styles.jarak}>2 km to city</Text>
                         </View>
                         <View style={styles.rating}>
                             <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
@@ -34,7 +34,7 @@ const CardHotelL = (props) => {
                 <Right>
                     <View style={{ flexDirection: 'column', justifyContent: 'flex-end', marginTop: 80 }}>
                         <Text style={styles.harga}>{props.harga}</Text>
-                        <Text style={styles.night}>{props.night}</Text>
+                        <Text style={styles.night}>/per night</Text>
                     </View>
                 </Right>
             </CardItem>

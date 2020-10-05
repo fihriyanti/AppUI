@@ -25,9 +25,9 @@ const CardHotelB = (props) => {
                         <View style={{ flexDirection: 'column' }}>
                             <Title style={styles.title}>{props.namaHotel}</Title>
                             <View style={{ flexDirection: 'row' }}>
-                                <Subtitle style={styles.subtitle}>{props.alamat}</Subtitle>
+                                <Subtitle style={styles.subtitle}>Wembley, London</Subtitle>
                                 <Icon type='Ionicons' name='location-sharp' style={{ fontSize: 15, color: '#1de9b6', marginLeft: 5, marginRight: 5 }} />
-                                <Text style={styles.jarak}>{props.jarak}</Text>
+                                <Text style={styles.jarak}>2 km to city</Text>
                             </View>
                             <View style={styles.rating}>
                                 <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
@@ -35,14 +35,14 @@ const CardHotelB = (props) => {
                                 <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
                                 <Icon type='Entypo' name='star' style={{ fontSize: 20, color: '#1de9b6' }} />
                                 <Icon type='Entypo' name='star-outlined' style={{ fontSize: 20, color: '#1de9b6' }} />
-                                <Text style={styles.review}>{props.review}</Text>
+                                <Text style={styles.review}>80 Reviews</Text>
                             </View>
                         </View>
                     </Left>
                     <Right style={{ marginBottom: 20 }}>
                         <View style={{ flexDirection: 'column' }}>
                             <Title style={styles.harga}>{props.harga}</Title>
-                            <Text style={styles.night}>{props.night}</Text>
+                            <Text style={styles.night}>/per night</Text>
                         </View>
                     </Right>
                 </CardItem>

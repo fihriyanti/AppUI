@@ -18,6 +18,8 @@ import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
+import axios from 'axios';
+
 import { Icon, Container, } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -38,40 +40,15 @@ export default class Explore extends Component {
     }
 
     componentDidMount() {
-        this.setState({
-            explore: [
-                {
-                    id: '1',
-                    image: 'https://ik.imagekit.io/tvlk/apr-asset/guys1L+Yyer9kzI3sp-pb0CG1j2bhflZGFUZOoIf1YOBAm37kEUOKR41ieUZm7ZJ/traveloka/hotel/asset/10007472-a82813bd87a86ad1b5a5c45aea55ff6f.jpeg?tr=q-40,c-at_max,w-740,h-500&_src=imagekit',
-                    title: 'Grand Royal Hotel',
-                    harga: '$180',
-                    night: '/per night',
-                    tempat: 'Wembley, London',
-                    jarak: '2 km to city',
-                    rev: '80 Reviews'
-                },
-                {
-                    id: '2',
-                    image: 'https://i.pinimg.com/236x/4d/aa/2a/4daa2a66bde94b8ffb831e38a9de4010.jpg',
-                    title: 'Queen Hotel',
-                    harga: '$220',
-                    night: '/per night',
-                    tempat: 'Wembley, London',
-                    jarak: '2 km to city',
-                    rev: '80 Reviews'
-                },
-                {
-                    id: '3',
-                    image: 'https://i.pinimg.com/236x/bc/ce/a5/bccea55dde0916a6583ed1d3b2087269.jpg',
-                    title: 'King Villa Resort',
-                    harga: '$480',
-                    night: '/per night',
-                    tempat: 'Wembley, London',
-                    jarak: '2 km to city',
-                    rev: '80 Reviews'
-                },
-            ]
-        })
+        axios.get('http://192.168.1.8:5000/hotels/')
+            .then(response => {
+                const gambar = response.data;
+                this.setState({ gambar })
+                console.log(gambar)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     render() {
@@ -100,17 +77,13 @@ export default class Explore extends Component {
                     </View>
                 </View>
                 <FlatList
-                    data={this.state.explore}
-                    keyExtractor={this.keyExtractor}
+                    data={this.state.gambar}
+                    keyExtractor={(item) => item._id}
                     renderItem={({ item }) => (
                         <CardHotelB
-                            gambar={item.image}
-                            namaHotel={item.title}
-                            alamat={item.tempat}
-                            jarak={item.jarak}
-                            review={item.rev}
+                            gambar={item.gambar2}
+                            namaHotel={item.namahotel}
                             harga={item.harga}
-                            night={item.night}
                         />
                     )}
                 />

@@ -30,29 +30,29 @@ import axios from 'axios';
 export default class SignUp extends Component {
 
     singUp = () => {
-        AsyncStorage.getItem('firstname').then((value) => this.setState({'firstname' : value}));
-        AsyncStorage.getItem('lastname').then((value) => this.setState({'lastname' : value}));
-        AsyncStorage.getItem('email').then((value) => this.setState({'email' : value}));
-        AsyncStorage.getItem('password').then((value) => this.setState({'password' : value}));
+        AsyncStorage.getItem('firstname').then((value) => this.setState({ 'firstname': value }));
+        AsyncStorage.getItem('lastname').then((value) => this.setState({ 'lastname': value }));
+        AsyncStorage.getItem('email').then((value) => this.setState({ 'email': value }));
+        AsyncStorage.getItem('password').then((value) => this.setState({ 'password': value }));
     }
 
     setFname = (value) => {
         AsyncStorage.setItem('firstname', value);
-        this.setState({ 'firstname': value});
+        this.setState({ 'firstname': value });
     }
     setLname = (value) => {
         AsyncStorage.setItem('lastname', value);
-        this.setState({ 'lastname': value});
+        this.setState({ 'lastname': value });
     }
     setEmail = (value) => {
         AsyncStorage.setItem('email', value);
-        this.setState({ 'email': value});
+        this.setState({ 'email': value });
     }
     setPass = (value) => {
         AsyncStorage.setItem('password', value);
-        this.setState({ 'password': value});
+        this.setState({ 'password': value });
     }
-    
+
     constructor(props) {
         super(props);
 
