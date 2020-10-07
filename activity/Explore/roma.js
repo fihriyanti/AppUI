@@ -12,16 +12,16 @@ import {
     ScrollView,
     View,
     Text,
-    Image,
     ImageBackground,
-    Modal
 } from 'react-native';
 
 import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Icon, Thumbnail, Item, Input, Container } from 'native-base';
+import axios from 'axios';
+
+import { Icon, Item, Input, Container } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
 
 import Highlight from '../component/highlight';
@@ -49,42 +49,20 @@ export default class Roma extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            FAVIMG: [],
+            gambar: [],
         }
     }
 
     componentDidMount() {
-        this.setState({
-            FAVIMG: [
-                {
-                    id: '1',
-                    image: 'https://i.pinimg.com/236x/9c/c8/f9/9cc8f97452d0968938a87f9702f57220.jpg',
-                    title: 'Grand Royal Hotel',
-                    sub: 'Barcelona, Spain',
-                    jarak: '2 km to city',
-                    harga: '$180',
-                    night: '/per night',
-                },
-                {
-                    id: '2',
-                    image: 'https://i.pinimg.com/236x/02/79/aa/0279aac58d93bc620802e60e42905518.jpg',
-                    title: 'Queen Hotel',
-                    sub: 'Barcelona, Spain',
-                    jarak: '2 km to city',
-                    harga: '$220',
-                    night: '/per night',
-                },
-                {
-                    id: '3',
-                    image: 'https://i.pinimg.com/236x/95/8d/4c/958d4c49ae8661f7b97f12d460562bef.jpg',
-                    title: 'Victoria Hotel',
-                    sub: 'Barcelona, Spain',
-                    jarak: '2 km to city',
-                    harga: '$480',
-                    night: '/per night',
-                },
-            ]
-        })
+        axios.get('http://192.168.1.8:5000/hotels/')
+            .then(response => {
+                const gambar = response.data;
+                this.setState({ gambar })
+                console.log(gambar)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     render() {
@@ -175,16 +153,13 @@ export default class Roma extends Component {
                     <FlatList
                         horizontal
                         showsHorizontalScrollIndicator={false}
-                        data={this.state.FAVIMG}
-                        keyExtractor={this.keyExtractor}
+                        data={this.state.gambar}
+                        keyExtractor={(item) => item._id}
                         renderItem={({ item }) => (
                             <CardHotel
-                                gambar={item.image}
-                                namaHotel={item.title}
-                                tempat={item.sub}
-                                jarak={item.jarak}
+                                gambar={item.gambar}
+                                namaHotel={item.namahotel}
                                 harga={item.harga}
-                                night={item.night}
                             />
                         )}
                     />
@@ -269,58 +244,5 @@ const styles = StyleSheet.create({
         color: '#00ddbf',
         fontFamily: 'serif',
         fontSize: 15
-    },
-    card2: {
-        marginLeft: 20,
-        borderRadius: 20,
-    },
-    kota: {
-        fontFamily: 'serif',
-        fontWeight: 'bold',
-        fontSize: 16
-    },
-    card3: {
-        marginLeft: 20,
-        marginTop: 20,
-        borderRadius: 20,
-        width: 330
-    },
-    title: {
-        color: "black",
-        marginLeft: 10,
-        fontSize: 16
-    },
-    subtitle: {
-        color: "grey",
-        marginLeft: 10,
-        marginBottom: 40,
-        fontSize: 10
-    },
-    bwhTitle: {
-        flexDirection: 'row',
-        marginLeft: 5,
-        fontFamily: 'serif'
-    },
-    jarak: {
-        color: "grey",
-        fontSize: 10,
-        marginTop: 3,
-        fontFamily: 'serif'
-    },
-    harga: {
-        textAlign: 'right',
-        marginLeft: 60,
-        fontWeight: 'bold',
-        fontFamily: 'serif'
-    },
-    rating: {
-        marginLeft: 5,
-        flexDirection: 'row'
-    },
-    night: {
-        textAlign: 'right',
-        marginLeft: 20,
-        fontSize: 12,
-        fontFamily: 'serif'
     },
 });

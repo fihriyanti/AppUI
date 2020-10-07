@@ -19,8 +19,10 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Icon, CardItem, Left, Card, Subtitle, Title, Container, Right } from 'native-base';
+import { Container } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
+
+import axios from 'axios';
 
 import CardHotelB from '../component/cardHotelB';
 
@@ -28,37 +30,20 @@ export default class Trips extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      UPCOMINGDATA: [],
+      gambar: [],
     }
   }
 
   componentDidMount() {
-    this.setState({
-      UPCOMINGDATA: [
-        {
-          id: '1',
-          tgl: '12 Dec - 22 Dec, 1 Room - 2 Adults',
-          image: 'https://i.pinimg.com/564x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg',
-          title: 'Grand Royal Hotel',
-          harga: '$180',
-          night: '/per night',
-          tempat: 'Wembley, London',
-          jarak: '2 km to city',
-          rev: '80 Reviews'
-        },
-        {
-          id: '2',
-          tgl: '23 Dec - 25 Dec, 1 Room - 2 Adults',
-          image: 'https://i.pinimg.com/236x/8f/f0/8f/8ff08f9f783b68d5077af620c46d5582.jpg',
-          title: 'King Villa Resort',
-          harga: '$480',
-          night: '/per night',
-          tempat: 'Wembley, London',
-          jarak: '2 km to city',
-          rev: '80 Reviews'
-        },
-      ]
-    })
+    axios.get('http://192.168.1.8:5000/hotels/')
+      .then(response => {
+        const gambar = response.data;
+        this.setState({ gambar })
+        console.log(gambar)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   render() {
@@ -81,8 +66,8 @@ export default class Trips extends Component {
           </View>
         </View>
         <FlatList
-          data={this.state.UPCOMINGDATA}
-          keyExtractor={this.keyExtractor}
+          data={this.state.gambar}
+          keyExtractor={(item) => item._id}
           renderItem={({ item }) => (
             <TouchableHighlight
               onPress={() => {
@@ -93,13 +78,9 @@ export default class Trips extends Component {
               style={styles.rowFront}>
               <CardHotelB
                 tgl={item.tgl}
-                gambar={item.image}
-                namaHotel={item.title}
-                alamat={item.tempat}
-                jarak={item.jarak}
-                review={item.rev}
+                gambar={item.gambar}
+                namaHotel={item.namahotel}
                 harga={item.harga}
-                night={item.harga}
               />
             </TouchableHighlight>)}
         />

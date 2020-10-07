@@ -17,6 +17,8 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
+import axios from 'axios';
+
 import { Container } from 'native-base';
 import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
 
@@ -26,60 +28,20 @@ export default class Favorites extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      FAVIMG: [],
+      gambar: [],
     }
   }
 
   componentDidMount() {
-    this.setState({
-      FAVIMG: [
-        {
-          id: '1',
-          image: 'https://i.pinimg.com/564x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg',
-          title: 'Grand Royal Hotel',
-          sub: 'Barcelona, Spain',
-          jarak: '2 km to city',
-          harga: '$180',
-          night: '/per night',
-        },
-        {
-          id: '2',
-          image: 'https://i.pinimg.com/236x/02/79/aa/0279aac58d93bc620802e60e42905518.jpg',
-          title: 'Queen Hotel',
-          sub: 'Barcelona, Spain',
-          jarak: '2 km to city',
-          harga: '$220',
-          night: '/per night',
-        },
-        {
-          id: '3',
-          image: 'https://i.pinimg.com/236x/95/8d/4c/958d4c49ae8661f7b97f12d460562bef.jpg',
-          title: 'King Villa Resort',
-          sub: 'Barcelona, Spain',
-          jarak: '2 km to city',
-          harga: '$480',
-          night: '/per night',
-        },
-        {
-          id: '4',
-          image: 'https://i.pinimg.com/564x/7d/99/96/7d9996f404401cb17b6f198385a9f115.jpg',
-          title: 'Victoria Hotel',
-          sub: 'Barcelona, Spain',
-          jarak: '2 km to city',
-          harga: '$180',
-          night: '/per night',
-        },
-        {
-          id: '5',
-          image: 'https://i.pinimg.com/236x/7e/31/69/7e316987ebed8282d3a67264325374f5.jpg',
-          title: 'Cape Town Hotel',
-          sub: 'Barcelona, Spain',
-          jarak: '2 km to city',
-          harga: '$180',
-          night: '/per night',
-        },
-      ]
-    })
+    axios.get('http://192.168.1.8:5000/hotels/')
+      .then(response => {
+        const gambar = response.data;
+        this.setState({ gambar })
+        console.log(gambar)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   render() {
@@ -102,8 +64,8 @@ export default class Favorites extends Component {
           </View>
         </View>
         <FlatList
-          data={this.state.FAVIMG}
-          keyExtractor={this.keyExtractor}
+          data={this.state.gambar}
+          keyExtractor={(item) => item._id}
           renderItem={({ item }) => (
             <TouchableHighlight
               onPress={() => {
@@ -112,12 +74,9 @@ export default class Favorites extends Component {
               }}
               style={styles.rowFont}>
               <CardHotel
-                gambar={item.image}
-                namaHotel={item.title}
-                tempat={item.sub}
-                jarak={item.jarak}
+                gambar={item.gambar}
+                namaHotel={item.namahotel}
                 harga={item.harga}
-                night={item.night}
               />
             </TouchableHighlight>)}
         />
