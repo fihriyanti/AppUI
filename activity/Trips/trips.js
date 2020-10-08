@@ -35,11 +35,10 @@ export default class Trips extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://192.168.1.8:5000/hotels/')
+    axios.get('http://192.168.1.8:5000/favorites/')
       .then(response => {
         const gambar = response.data;
-        this.setState({ gambar })
-        console.log(gambar)
+        this.setState({gambar})
       })
       .catch((error) => {
         console.log(error);
@@ -78,7 +77,7 @@ export default class Trips extends Component {
               style={styles.rowFront}>
               <CardHotelB
                 tgl={item.tgl}
-                gambar={item.gambar}
+                gambar={item.gambar2}
                 namaHotel={item.namahotel}
                 harga={item.harga}
               />

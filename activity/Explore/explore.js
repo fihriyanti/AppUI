@@ -11,7 +11,9 @@ import {
     StyleSheet,
     View,
     Text,
-    Modal
+    Modal,
+    Alert,
+    TouchableHighlight,
 } from 'react-native';
 
 import {
@@ -33,7 +35,9 @@ export default class Explore extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            explore: [],
+            gambar2: '',
+            namahotel: '',
+            harga: '',
             show: false,
             show2: false,
         }
@@ -49,6 +53,41 @@ export default class Explore extends Component {
             .catch((error) => {
                 console.log(error);
             })
+    }
+
+    btnAdd = () => {
+        const favHotel = {
+            gambar: this.state.gambar2,
+            namahotel: this.state.namahotel,
+            harga: this.state.harga,
+        }
+        console.log('Favorites Hotel ', favHotel);
+
+        axios.post('http://192.168.1.8:5000/favorites/add', favHotel)
+            .then(res => console.log(res.data))
+    }
+
+    createAlert(id, gambar2, namahotel, harga) {
+        Alert.alert(
+            "Do you want add to Favorites",
+            "Selec Action",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Ask me later pressed")
+                },
+                {
+                    text: "ADD",
+                    onPress: () => {
+                        {
+                            this.props.navigation.navigate('Trips', { ID: id, GAMBAR: gambar2, NAMA: namahotel, HARGA: harga, });
+                        }
+                    },
+                    style: "cancel"
+                },
+            ],
+            { cancelable: false }
+        );
     }
 
     render() {
@@ -80,11 +119,19 @@ export default class Explore extends Component {
                     data={this.state.gambar}
                     keyExtractor={(item) => item._id}
                     renderItem={({ item }) => (
-                        <CardHotelB
-                            gambar={item.gambar2}
-                            namaHotel={item.namahotel}
-                            harga={item.harga}
-                        />
+                        <TouchableHighlight
+                            onPress={() => {
+                                // this.createAlert(item._id, item.gambar2, item.namahotel, item.harga);
+                                this.btnAdd(item.gambar2, item.namahotel, item.harga);
+                                }
+                            }
+                        >
+                            <CardHotelB
+                                gambar={item.gambar2}
+                                namaHotel={item.namahotel}
+                                harga={item.harga}
+                            />
+                        </TouchableHighlight>
                     )}
                 />
                 <Modal transparent={true} visible={this.state.show}>

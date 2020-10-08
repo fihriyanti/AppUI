@@ -23,7 +23,7 @@ import {
 import axios from 'axios';
 
 import { Thumbnail } from 'native-base';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
 import CardChoose from '../component/cardchoose';
 import CardSearch from '../component/cardsearch';
 import CardPopular from '../component/cardpopular';
