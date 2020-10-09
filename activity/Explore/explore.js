@@ -55,39 +55,18 @@ export default class Explore extends Component {
             })
     }
 
-    btnAdd = () => {
+    btnAdd(id, tgl, gambar2, namahotel, harga){
         const favHotel = {
-            gambar: this.state.gambar2,
-            namahotel: this.state.namahotel,
-            harga: this.state.harga,
+            id : id,
+            tgl: tgl,
+            gambar2: gambar2,
+            namahotel: namahotel,
+            harga:harga,
         }
         console.log('Favorites Hotel ', favHotel);
 
         axios.post('http://192.168.1.8:5000/favorites/add', favHotel)
             .then(res => console.log(res.data))
-    }
-
-    createAlert(id, gambar2, namahotel, harga) {
-        Alert.alert(
-            "Do you want add to Favorites",
-            "Selec Action",
-            [
-                {
-                    text: "Cancel",
-                    onPress: () => console.log("Ask me later pressed")
-                },
-                {
-                    text: "ADD",
-                    onPress: () => {
-                        {
-                            this.props.navigation.navigate('Trips', { ID: id, GAMBAR: gambar2, NAMA: namahotel, HARGA: harga, });
-                        }
-                    },
-                    style: "cancel"
-                },
-            ],
-            { cancelable: false }
-        );
     }
 
     render() {
@@ -121,8 +100,9 @@ export default class Explore extends Component {
                     renderItem={({ item }) => (
                         <TouchableHighlight
                             onPress={() => {
-                                // this.createAlert(item._id, item.gambar2, item.namahotel, item.harga);
-                                this.btnAdd(item.gambar2, item.namahotel, item.harga);
+                                console.log(item._id)
+                                this.btnAdd(item._id, item.tgl, item.gambar2, item.namahotel, item.harga);
+                                this.props.navigation.navigate('Trips')
                                 }
                             }
                         >

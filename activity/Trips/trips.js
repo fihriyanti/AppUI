@@ -45,6 +45,23 @@ export default class Trips extends Component {
       })
   }
 
+  getdata(){
+    axios.get('http://192.168.1.8:5000/favorites/')
+    .then(response => {
+      const name = response.data;
+      this.setState({name:name})
+      console.log(name)
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+  
+  componentDidUpdate(){
+    this.getdata();
+  }
+  
+
   render() {
     return (
       <Container>
