@@ -53,6 +53,19 @@ export default class Where extends Component {
             })
     }
 
+    btnAdd(id, gambar, namahotel, harga) {
+        const fav2Hotel = {
+            id: id,
+            gambar: gambar,
+            namahotel: namahotel,
+            harga: harga,
+        }
+        console.log('Hotel Fovorites ', fav2Hotel);
+
+        axios.post('http://192.168.1.8:5000/fav/add', fav2Hotel)
+            .then(res => console.log(res.data))
+    }
+
     render() {
         return (
             <ScrollView style={{ backgroundColor: 'white' }}>
@@ -123,11 +136,19 @@ export default class Where extends Component {
                     data={this.state.gambar}
                     keyExtractor={(item) => item._id}
                     renderItem={({ item }) => (
-                        <CardHotelL
-                            gambar={item.gambar}
-                            namaHotel={item.namahotel}
-                            harga={item.harga}
-                        />
+                        <TouchableHighlight
+                            onPress={() => {
+                                console.log(item._id)
+                                this.btnAdd(item._id, item.gambar, item.namahotel, item.harga);
+                                this.props.navigation.navigate('Trips', {screen : 'Favorites'})
+                            }}
+                        >
+                            <CardHotelL
+                                gambar={item.gambar}
+                                namaHotel={item.namahotel}
+                                harga={item.harga}
+                            />
+                        </TouchableHighlight>
                     )}
                 />
 

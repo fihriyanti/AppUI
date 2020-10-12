@@ -33,7 +33,7 @@ export default class Favorites extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://192.168.1.8:5000/hotels/')
+    axios.get('http://192.168.1.8:5000/fav/')
       .then(response => {
         const gambar = response.data;
         this.setState({ gambar })
@@ -42,6 +42,22 @@ export default class Favorites extends Component {
       .catch((error) => {
         console.log(error);
       })
+  }
+
+  getdata() {
+    axios.get('http://192.168.1.8:5000/fav/')
+      .then(response => {
+        const name = response.data;
+        this.setState({ name: name })
+        console.log(name)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  componentDidUpdate() {
+    this.getdata();
   }
 
   render() {
