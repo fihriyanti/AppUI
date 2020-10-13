@@ -60,6 +60,13 @@ export default class Favorites extends Component {
     this.getdata();
   }
 
+  detail(namahotel){
+    const namaHeader = {
+      namahotel: namahotel
+    }
+    console.log('Detail Hotel', namaHeader);
+  }
+
   render() {
     return (
       <Container>
@@ -86,6 +93,7 @@ export default class Favorites extends Component {
             <TouchableHighlight
               onPress={() => {
                 console.log(item._id);
+                this.detail(item.namahotel);
                 this.props.navigation.navigate('Details')
               }}
               style={styles.rowFont}>

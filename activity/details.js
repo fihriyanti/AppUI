@@ -19,7 +19,9 @@ import {
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Icon, Header, Left, Body, Right, Button, Container } from 'native-base';
+import { Icon, Button, Container } from 'native-base';
+
+import axios from 'axios';
 
 const image = [
     'https://i.pinimg.com/564x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg',
@@ -44,7 +46,28 @@ export default class Details extends Component {
             this.setState({ active: slide });
         }
     }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            namahotel: '',
+        }
+    }
+
+    componentDidMount() {
+        axios.get('http://192.168.1.8:5000/fav/' + this.props.route.params.ID)
+            .then(response => {
+                this.setState({
+                    namahotel : response.data.namahotel,
+                   })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     render() {
+        console.log(this.props.route.params.ID)
         return (
             <Container>
                 <ScrollView>
@@ -52,7 +75,9 @@ export default class Details extends Component {
                         <View style={styles.header}>
                             <Icon type='AntDesign' name='arrowleft'
                                 onPress={() => this.props.navigation.navigate('Favorites')} />
-                            <Text style={styles.txtHeader}>Grand Royale Hotel</Text>
+                            <Text style={styles.txtHeader}>
+                                {this.state.namahotel}
+                            </Text>
                             <Icon type='AntDesign' name='hearto' />
                         </View>
                         <ScrollView

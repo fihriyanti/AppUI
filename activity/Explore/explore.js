@@ -55,13 +55,35 @@ export default class Explore extends Component {
             })
     }
 
-    btnAdd(id, tgl, gambar2, namahotel, harga){
+    btnAlert(id, tgl, gambar2, namahotel, harga){
+        Alert.alert(
+            "Do you want add this hotel to favorites?",
+            "Select Action",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Ask me later pressed")
+                },
+                {
+                    text: "ADD",
+                    onPress: () => {
+                        this.btnAdd(id, tgl, gambar2, namahotel, harga);
+                        this.props.navigation.navigate('Trips')
+                    },
+                    style: "cancel"
+                },
+            ],
+            { cancelable: false }
+        );
+    }
+
+    btnAdd(id, tgl, gambar2, namahotel, harga) {
         const favHotel = {
-            id : id,
+            id: id,
             tgl: tgl,
             gambar2: gambar2,
             namahotel: namahotel,
-            harga:harga,
+            harga: harga,
         }
         console.log('Favorites Hotel ', favHotel);
 
@@ -101,9 +123,9 @@ export default class Explore extends Component {
                         <TouchableHighlight
                             onPress={() => {
                                 console.log(item._id)
-                                this.btnAdd(item._id, item.tgl, item.gambar2, item.namahotel, item.harga);
-                                this.props.navigation.navigate('Trips')
-                                }
+                                this.btnAlert(item._id, item.tgl, item.gambar2, item.namahotel, item.harga);
+                                // this.props.navigation.navigate('Trips')
+                            }
                             }
                         >
                             <CardHotelB
