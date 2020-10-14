@@ -55,7 +55,7 @@ export default class Details extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://192.168.1.8:5000/fav/' + this.props.route.params.ID)
+        axios.get('http://192.168.1.3:5000/fav/')
             .then(response => {
                 this.setState({
                     namahotel : response.data.namahotel,
@@ -67,7 +67,6 @@ export default class Details extends Component {
     }
 
     render() {
-        console.log(this.props.route.params.ID)
         return (
             <Container>
                 <ScrollView>
@@ -76,7 +75,7 @@ export default class Details extends Component {
                             <Icon type='AntDesign' name='arrowleft'
                                 onPress={() => this.props.navigation.navigate('Favorites')} />
                             <Text style={styles.txtHeader}>
-                                {this.state.namahotel}
+                                {this.props.route.params.NAMA}
                             </Text>
                             <Icon type='AntDesign' name='hearto' />
                         </View>

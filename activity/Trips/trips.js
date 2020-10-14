@@ -35,7 +35,7 @@ export default class Trips extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://192.168.1.8:5000/favorites/')
+    axios.get('http://192.168.1.3:5000/favorites/')
       .then(response => {
         const gambar = response.data;
         this.setState({gambar})
@@ -46,7 +46,7 @@ export default class Trips extends Component {
   }
 
   getdata(){
-    axios.get('http://192.168.1.8:5000/favorites/')
+    axios.get('http://192.168.1.3:5000/favorites/')
     .then(response => {
       const name = response.data;
       this.setState({name:name})

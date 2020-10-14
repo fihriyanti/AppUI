@@ -74,7 +74,7 @@ export default class SignUp extends Component {
 
         console.log('New User', users);
 
-        axios.post('http://192.168.1.8:5000/users/add', users)
+        axios.post('http://192.168.1.3:5000/users/add', users)
             .then(res => console.log(res.data))
     }
 

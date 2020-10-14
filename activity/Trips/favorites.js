@@ -33,7 +33,7 @@ export default class Favorites extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://192.168.1.8:5000/fav/')
+    axios.get('http://192.168.1.3:5000/fav/')
       .then(response => {
         const gambar = response.data;
         this.setState({ gambar })
@@ -45,7 +45,7 @@ export default class Favorites extends Component {
   }
 
   getdata() {
-    axios.get('http://192.168.1.8:5000/fav/')
+    axios.get('http://192.168.1.3:5000/fav/')
       .then(response => {
         const name = response.data;
         this.setState({ name: name })
@@ -93,8 +93,7 @@ export default class Favorites extends Component {
             <TouchableHighlight
               onPress={() => {
                 console.log(item._id);
-                this.detail(item.namahotel);
-                this.props.navigation.navigate('Details')
+                this.props.navigation.navigate('Details', {NAMA: item.namahotel})
               }}
               style={styles.rowFont}>
               <CardHotel

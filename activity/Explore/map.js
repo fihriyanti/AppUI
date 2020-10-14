@@ -40,7 +40,7 @@ export default class Map extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://192.168.1.8:5000/hotels/')
+        axios.get('http://192.168.1.3:5000/hotels/')
           .then(response => {
             const gambar = response.data;
             this.setState({ gambar })

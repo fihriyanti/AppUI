@@ -44,7 +44,7 @@ export default class Explore extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://192.168.1.8:5000/hotels/')
+        axios.get('http://192.168.1.3:5000/hotels/')
             .then(response => {
                 const gambar = response.data;
                 this.setState({ gambar })
@@ -87,7 +87,7 @@ export default class Explore extends Component {
         }
         console.log('Favorites Hotel ', favHotel);
 
-        axios.post('http://192.168.1.8:5000/favorites/add', favHotel)
+        axios.post('http://192.168.1.3:5000/favorites/add', favHotel)
             .then(res => console.log(res.data))
     }
 

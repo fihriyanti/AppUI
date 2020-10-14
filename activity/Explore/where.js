@@ -42,7 +42,7 @@ export default class Where extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://192.168.1.8:5000/hotels/')
+        axios.get('http://192.168.1.3:5000/hotels/')
             .then(response => {
                 const gambar = response.data;
                 this.setState({ gambar })
@@ -62,7 +62,7 @@ export default class Where extends Component {
         }
         console.log('Hotel Fovorites ', fav2Hotel);
 
-        axios.post('http://192.168.1.8:5000/fav/add', fav2Hotel)
+        axios.post('http://192.168.1.3:5000/fav/add', fav2Hotel)
             .then(res => console.log(res.data))
     }
 
