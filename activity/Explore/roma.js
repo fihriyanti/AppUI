@@ -71,7 +71,9 @@ export default class Roma extends Component {
                 <ScrollView style={{ backgroundColor: 'white' }}>
                     <Item searchBar rounded style={styles.search}>
                         <Icon type='AntDesign' name="search1" style={{ color: '#00ddbf', marginLeft: 10, fontSize: 20 }} />
-                        <Input style={{ fontSize: 12, fontFamily: 'serif' }} placeholder="Where are you going?" />
+                        <Input style={{ fontSize: 12, fontFamily: 'serif' }}
+                            placeholder="Where are you going?"
+                            />
                     </Item>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false}
                         style={{ marginTop: 10 }}>
@@ -156,6 +158,7 @@ export default class Roma extends Component {
                         data={this.state.gambar}
                         keyExtractor={(item) => item._id}
                         renderItem={({ item }) => (
+                            
                             <CardHotel
                                 gambar={item.gambar}
                                 namaHotel={item.namahotel}

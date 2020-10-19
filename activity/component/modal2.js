@@ -7,6 +7,7 @@ import {
 
 import { ListItem, Left, CheckBox, Button} from 'native-base';
 import { Calendar } from 'react-native-calendars';
+import CalendarPicker from 'react-native-calendar-picker';
 
 const Modal2 = (props) => {
     return (

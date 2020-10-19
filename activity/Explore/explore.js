@@ -22,8 +22,10 @@ import {
 
 import axios from 'axios';
 
-import { Icon, Container, } from 'native-base';
+import { Icon, Container, ListItem, Left, CheckBox, Button } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
+import { Calendar } from 'react-native-calendars';
+import CalendarPicker from 'react-native-calendar-picker';
 
 import CardHotelB from '../component/cardHotelB';
 import Header from '../component/headerEM';
@@ -40,8 +42,26 @@ export default class Explore extends Component {
             harga: '',
             show: false,
             show2: false,
+
+            selectedStartDate: null,
+            selectedEndDate: null,
+        };
+        this.onDateChange = this.onDateChange.bind(this);
+    }
+
+    onDateChange(date, type) {
+        if (type === 'END_DATE') {
+            this.setState({
+                selectedEndDate: date,
+            });
+        } else {
+            this.setState({
+                selectedStartDate: date,
+                selectedEndDate: null,
+            });
         }
     }
+
 
     componentDidMount() {
         axios.get('http://192.168.1.3:5000/hotels/')
@@ -55,7 +75,7 @@ export default class Explore extends Component {
             })
     }
 
-    btnAlert(id, tgl, gambar2, namahotel, harga){
+    btnAlert(id, tgl, gambar2, namahotel, harga) {
         Alert.alert(
             "Do you want add this hotel to favorites?",
             "Select Action",
@@ -92,6 +112,11 @@ export default class Explore extends Component {
     }
 
     render() {
+        const { selectedStartDate, selectedEndDate } = this.state;
+        const minDate = new Date(); // Today
+        const maxDate = new Date(2020, 12, 31);
+        const startDate = selectedStartDate ? selectedStartDate.toString().substr(4, 7) : '';
+        const endDate = selectedEndDate ? selectedEndDate.toString().substr(4, 7) : '';
         return (
             <Container>
                 <Header
@@ -100,10 +125,11 @@ export default class Explore extends Component {
                     icMap={() => this.props.navigation.navigate('Map')}
                 />
                 <ImageBg
-                    input='London'
+                    input='Search Hotel'
                     mdlChoose={() => this.setState({ show2: true })}
                     date='Choose date'
-                    tgl='12 Dec - 22 Dec'
+                    tgl={startDate}
+                    tgl2={endDate}
                     mdlNum={() => this.setState({ show: true })}
                     number='Number of Rooms'
                     room='1 Room - 2 Adults'
@@ -124,8 +150,7 @@ export default class Explore extends Component {
                             onPress={() => {
                                 console.log(item._id)
                                 this.btnAlert(item._id, item.tgl, item.gambar2, item.namahotel, item.harga);
-                                // this.props.navigation.navigate('Trips')
-                            }
+                                }
                             }
                         >
                             <CardHotelB
@@ -151,7 +176,51 @@ export default class Explore extends Component {
                     />
                 </Modal>
                 <Modal transparent={true} visible={this.state.show2}>
-                    <Modal2
+                    <View style={styles.bgModal}>
+                        <View style={styles.modal}>
+                            <View style={styles.tanggal}>
+                                <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                                    <Text style={{ fontFamily: 'serif' }}>Depart</Text>
+                                    <Text style={styles.tgl}>{startDate}</Text>
+                                </View>
+                                <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                                    <Text style={{ fontFamily: 'serif' }}>Return</Text>
+                                    <Text style={styles.tgl}>{endDate}</Text>
+                                </View>
+                            </View>
+                            <CalendarPicker
+                                margin={10}
+                                startFromMonday={false}
+                                allowRangeSelection={true}
+                                minDate={minDate}
+                                maxDate={maxDate}
+                                weekdays={['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']}
+                                months={['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
+                                previousTitle="Back"
+                                nextTitle="Previous"
+                                todayBackgroundColor="#00bfa5"
+                                selectedDayColor="#00ddbf"
+                                selectedDayTextColor="#000000"
+                                scaleFactor={375}
+                                textStyle={{
+                                    fontFamily: 'Cochin',
+                                    color: '#000000',
+                                }}
+                                onDateChange={this.onDateChange}
+                            />
+                            <ListItem>
+                                <Left>
+                                    <CheckBox checked={true} color="#00ddbf" />
+                                    <Text style={{ textAlign: 'left', marginLeft: 20 }}>Flexible with dates</Text>
+                                </Left>
+                            </ListItem>
+                            <Button full rounded style={styles.btn2}
+                                onPress={() => this.setState({ show2: false })}>
+                                <Text style={styles.txtBtn}>Apply</Text>
+                            </Button>
+                        </View>
+                    </View>
+                    {/* <Modal2
                         txtDepart='Depart'
                         txtTgl='Mon 12 Dec'
                         txtReturn='Return'
@@ -159,7 +228,7 @@ export default class Explore extends Component {
                         txtCheck='Flexible with dates'
                         onPress={() => this.setState({ show2: false })}
                         apply='Apply'
-                    />
+                    /> */}
                 </Modal>
             </Container>
         );
@@ -188,6 +257,72 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginLeft: 20,
         marginRight: 20,
+    },
+    left: {
+        fontFamily: 'serif',
+        fontWeight: 'bold'
+    },
+    right: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    plusmin: {
+        color: 'grey',
+        fontSize: 15,
+        marginTop: 5
+    },
+    txtRight: {
+        marginLeft: 15,
+        marginRight: 15,
+        fontWeight: 'bold',
+        fontFamily: 'serif',
+        fontSize: 18
+    },
+    kurung: {
+        fontSize: 10,
+        fontFamily: 'serif',
+        color: 'grey',
+        marginLeft: 12,
+        marginTop: 3
+    },
+    btn: {
+        marginLeft: 20,
+        marginRight: 20,
+        backgroundColor: '#00ddbf',
+    },
+    btn2: {
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: 10,
+        backgroundColor: '#00ddbf',
+    },
+    txtBtn: {
+        color: 'white',
+        fontFamily: 'serif'
+    },
+    tgl: {
+        fontFamily: 'serif',
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginTop: 5
+    },
+    bgModal: {
+        backgroundColor: '#9e9e9eaa',
+        flex: 1,
+        justifyContent: 'center',
+    },
+    modal: {
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        marginLeft: 20,
+        marginRight: 20,
+    },
+    tanggal: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        marginTop: 10,
+        marginBottom: 10
     },
     left: {
         fontFamily: 'serif',

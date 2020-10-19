@@ -23,7 +23,10 @@ const ImageBg = (props) => {
                 <View style={{ flexDirection: 'column', marginLeft: 35 }}>
                     <Text style={styles.txtBg}
                         onPress={props.mdlChoose}>{props.date}</Text>
-                    <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 16 }}>{props.tgl}</Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 16 }}>{props.tgl}</Text>
+                        <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 16 }}>- {props.tgl2}</Text>
+                    </View>
                 </View>
                 <View style={{ flexDirection: 'column' }}>
                     <Text style={styles.txtBg}
@@ -49,11 +52,11 @@ const styles = StyleSheet.create({
         marginRight: 10,
         width: 310,
     },
-    input: { 
-        fontSize: 15, 
-        marginLeft: 15, 
-        fontWeight: 'bold', 
-        fontFamily: 'serif' 
+    input: {
+        fontSize: 15,
+        marginLeft: 15,
+        fontWeight: 'bold',
+        fontFamily: 'serif'
     },
     camera: {
         backgroundColor: '#00ddbf',
@@ -65,11 +68,11 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginRight: 20
     },
-    choose: { 
-        flexDirection: 'row', 
-        marginTop: 20, 
-        justifyContent: 'space-between', 
-        marginRight: 70 
+    choose: {
+        flexDirection: 'row',
+        marginTop: 20,
+        justifyContent: 'space-between',
+        marginRight: 70
     },
     txtBg: {
         color: 'grey',
