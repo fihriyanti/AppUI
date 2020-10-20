@@ -22,7 +22,9 @@ import {
 
 import axios from 'axios';
 
-import { Thumbnail } from 'native-base';
+import CalendarPicker from 'react-native-calendar-picker';
+
+import { Thumbnail, ListItem, Left, CheckBox, Button } from 'native-base';
 import { FlatList, TouchableHighlight } from 'react-native-gesture-handler';
 import CardChoose from '../component/cardchoose';
 import CardSearch from '../component/cardsearch';
@@ -38,6 +40,23 @@ export default class Where extends Component {
             gambar: [],
             show: false,
             show2: false,
+
+            selectedStartDate: null,
+            selectedEndDate: null,
+        };
+        this.onDateChange = this.onDateChange.bind(this);
+    }
+
+    onDateChange(date, type) {
+        if (type === 'END_DATE') {
+            this.setState({
+                selectedEndDate: date,
+            });
+        } else {
+            this.setState({
+                selectedStartDate: date,
+                selectedEndDate: null,
+            });
         }
     }
 
@@ -67,6 +86,11 @@ export default class Where extends Component {
     }
 
     render() {
+        const { selectedStartDate, selectedEndDate } = this.state;
+        const minDate = new Date(); // Today
+        const maxDate = new Date(2020, 12, 31);
+        const startDate = selectedStartDate ? selectedStartDate.toString().substr(4, 7) : '';
+        const endDate = selectedEndDate ? selectedEndDate.toString().substr(4, 7) : '';
         return (
             <ScrollView style={{ backgroundColor: 'white' }}>
                 <ImageBackground source={{ uri: 'https://i.pinimg.com/236x/d6/c2/b4/d6c2b4cd8a7f3ac2b1afe629be7941e6.jpg' }}
@@ -80,7 +104,8 @@ export default class Where extends Component {
                 <CardChoose
                     date='Choose date'
                     mdlChoose={() => this.setState({ show2: true })}
-                    tgl='12 Dec - 22 Dec'
+                    tgl={startDate}
+                    tgl2={endDate}
                     room='Number of Rooms'
                     mdlNum={() => this.setState({ show: true })}
                     adult='1 Room - 2 Adulss'
@@ -167,15 +192,50 @@ export default class Where extends Component {
                     />
                 </Modal>
                 <Modal transparent={true} visible={this.state.show2}>
-                    <Modal2
-                        txtDepart='Depart'
-                        txtTgl='Mon 12 Dec'
-                        txtReturn='Return'
-                        tglReturn='Tue 22 Dec'
-                        txtCheck='Flexible with dates'
-                        onPress={() => this.setState({ show2: false })}
-                        apply='Apply'
-                    />
+                <View style={styles.bgModal}>
+                        <View style={styles.modal}>
+                            <View style={styles.tanggal}>
+                                <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                                    <Text style={{ fontFamily: 'serif' }}>Depart</Text>
+                                    <Text style={styles.tgl}>{startDate}</Text>
+                                </View>
+                                <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                                    <Text style={{ fontFamily: 'serif' }}>Return</Text>
+                                    <Text style={styles.tgl}>{endDate}</Text>
+                                </View>
+                            </View>
+                            <CalendarPicker
+                                margin={10}
+                                startFromMonday={false}
+                                allowRangeSelection={true}
+                                minDate={minDate}
+                                maxDate={maxDate}
+                                weekdays={['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']}
+                                months={['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
+                                previousTitle="Back"
+                                nextTitle="Previous"
+                                todayBackgroundColor="#00bfa5"
+                                selectedDayColor="#00ddbf"
+                                selectedDayTextColor="#000000"
+                                scaleFactor={375}
+                                textStyle={{
+                                    fontFamily: 'Cochin',
+                                    color: '#000000',
+                                }}
+                                onDateChange={this.onDateChange}
+                            />
+                            <ListItem>
+                                <Left>
+                                    <CheckBox checked={true} color="#00ddbf" />
+                                    <Text style={{ textAlign: 'left', marginLeft: 20 }}>Flexible with dates</Text>
+                                </Left>
+                            </ListItem>
+                            <Button full rounded style={styles.btn2}
+                                onPress={() => this.setState({ show2: false })}>
+                                <Text style={styles.txtBtn}>Apply</Text>
+                            </Button>
+                        </View>
+                    </View>
                 </Modal>
             </ScrollView>
         );
@@ -206,5 +266,44 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         fontFamily: 'serif'
+    },
+    modal: {
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        marginLeft: 20,
+        marginRight: 20,
+    },
+    btn: {
+        marginLeft: 20,
+        marginRight: 20,
+        backgroundColor: '#00ddbf',
+    },
+    btn2: {
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: 10,
+        backgroundColor: '#00ddbf',
+    },
+    txtBtn: {
+        color: 'white',
+        fontFamily: 'serif'
+    },
+    tgl: {
+        fontFamily: 'serif',
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginTop: 5
+    },
+    bgModal: {
+        backgroundColor: '#9e9e9eaa',
+        flex: 1,
+        justifyContent: 'center',
+    },
+    tanggal: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        marginTop: 10,
+        marginBottom: 10
     },
 });

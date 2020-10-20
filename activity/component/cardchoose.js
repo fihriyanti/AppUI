@@ -18,7 +18,10 @@ const CardChoose = (props) => {
                 <View style={{ flexDirection: 'column', marginLeft: 35 }}>
                     <Text style={styles.txtBg}
                     onPress={props. mdlChoose}>{props.date}</Text>
-                    <Text style={styles.tgl}>{props.tgl}</Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 16 }}>{props.tgl}</Text>
+                        <Text style={{ marginTop: 5, fontFamily: 'serif', fontSize: 16 }}>- {props.tgl2}</Text>
+                    </View>
                 </View>
                 <View style={{ flexDirection: 'column' }}>
                     <Text style={styles.txtBg}

@@ -258,33 +258,6 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         marginRight: 20,
     },
-    left: {
-        fontFamily: 'serif',
-        fontWeight: 'bold'
-    },
-    right: {
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    plusmin: {
-        color: 'grey',
-        fontSize: 15,
-        marginTop: 5
-    },
-    txtRight: {
-        marginLeft: 15,
-        marginRight: 15,
-        fontWeight: 'bold',
-        fontFamily: 'serif',
-        fontSize: 18
-    },
-    kurung: {
-        fontSize: 10,
-        fontFamily: 'serif',
-        color: 'grey',
-        marginLeft: 12,
-        marginTop: 3
-    },
     btn: {
         marginLeft: 20,
         marginRight: 20,
@@ -311,65 +284,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
     },
-    modal: {
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-        borderRadius: 20,
-        marginLeft: 20,
-        marginRight: 20,
-    },
     tanggal: {
         flexDirection: "row",
         justifyContent: "space-around",
         marginTop: 10,
         marginBottom: 10
-    },
-    left: {
-        fontFamily: 'serif',
-        fontWeight: 'bold'
-    },
-    right: {
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    plusmin: {
-        color: 'grey',
-        fontSize: 15,
-        marginTop: 5
-    },
-    txtRight: {
-        marginLeft: 15,
-        marginRight: 15,
-        fontWeight: 'bold',
-        fontFamily: 'serif',
-        fontSize: 18
-    },
-    kurung: {
-        fontSize: 10,
-        fontFamily: 'serif',
-        color: 'grey',
-        marginLeft: 12,
-        marginTop: 3
-    },
-    btn: {
-        marginLeft: 20,
-        marginRight: 20,
-        backgroundColor: '#00ddbf',
-    },
-    btn2: {
-        marginLeft: 20,
-        marginRight: 20,
-        marginBottom: 10,
-        backgroundColor: '#00ddbf',
-    },
-    txtBtn: {
-        color: 'white',
-        fontFamily: 'serif'
-    },
-    tgl: {
-        fontFamily: 'serif',
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginTop: 5
     },
 });

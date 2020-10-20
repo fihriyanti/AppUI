@@ -135,4 +135,9 @@ const styles = StyleSheet.create({
         marginTop: 20,
         justifyContent: 'space-between'
     },
+    txtHeader: {
+        fontWeight: 'bold',
+        fontSize: 22,
+        fontFamily: 'serif'
+    },
 });
